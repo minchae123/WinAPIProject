@@ -6,15 +6,15 @@ class Texture :
 private:
     Texture();
     ~Texture();
-    friend class ResMgr;
+    friend class ResourceManager;
 public:
-    void Load(const wstring& _strFilePath);
-    const LONG& GetWidth() const { return (m_bitInfo.bmWidth); }
-    const LONG& GetHeight() const { return (m_bitInfo.bmHeight); }
-    const HDC& GetDC() const { return m_hDC; }
+    void Load(const wstring& filePath);
+    const LONG& GetWidth() const { return (_bitMapInfo.bmWidth); }
+    const LONG& GetHeight() const { return (_bitMapInfo.bmHeight); }
+    const HDC& GetDC() const { return _hDC; }
 private:
-    HBITMAP m_hBit;
-    HDC     m_hDC;
-    BITMAP  m_bitInfo;
+    HBITMAP _hBitMap;
+    HDC     _hDC;
+    BITMAP  _bitMapInfo;
 };
 

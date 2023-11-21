@@ -1,17 +1,17 @@
 #pragma once
 #include<assert.h>
-class Vec2
+class Vector2
 {
 public:
-	Vec2();
-	~Vec2();
-	Vec2(float _x, float _y);
-	Vec2(int _x, int _y);
-	Vec2(POINT _pt);
-	Vec2(const Vec2& _vec);
+	Vector2();
+	~Vector2();
+	Vector2(float _x, float _y);
+	Vector2(int _x, int _y);
+	Vector2(POINT _pt);
+	Vector2(const Vector2& _vec);
 public:
 	float Length() { return (float)(sqrt(pow(x, 2) + pow(y, 2))); }
-	Vec2& Normalize()
+	Vector2& Normalize()
 	{
 		float fLen = Length();
 		// 0¿Ã∏È æ»µ≈.
@@ -20,26 +20,26 @@ public:
 		y /= fLen;
 		return *this;
 	}
-	Vec2 operator + (Vec2 _vOther)
+	Vector2 operator + (Vector2 _vOther)
 	{
-		return Vec2(x + _vOther.x, y + _vOther.y);
+		return Vector2(x + _vOther.x, y + _vOther.y);
 	}
-	Vec2 operator - (Vec2 _vOther)
+	Vector2 operator - (Vector2 _vOther)
 	{
-		return Vec2(x - _vOther.x, y - _vOther.y);
+		return Vector2(x - _vOther.x, y - _vOther.y);
 	}
-	Vec2 operator * (Vec2 _vOther)
+	Vector2 operator * (Vector2 _vOther)
 	{
-		return Vec2(x * _vOther.x, y * _vOther.y);
+		return Vector2(x * _vOther.x, y * _vOther.y);
 	}
-	Vec2 operator / (Vec2 _vOther)
+	Vector2 operator / (Vector2 _vOther)
 	{
 		assert(!(0.f == _vOther.x || 0.f == _vOther.y));
-		return Vec2(x / _vOther.x, y / _vOther.y);
+		return Vector2(x / _vOther.x, y / _vOther.y);
 	}
-	Vec2 operator * (int _i)
+	Vector2 operator * (int _i)
 	{
-		return Vec2(x * (float)_i, y * (float)_i);
+		return Vector2(x * (float)_i, y * (float)_i);
 	}
 public:
 	float x;

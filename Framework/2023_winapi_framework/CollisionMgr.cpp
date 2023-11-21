@@ -4,24 +4,24 @@
 #include "Object.h"
 #include "Scene.h"
 #include "Collider.h"
-void CollisionMgr::Update()
+void CollisionManager::Update()
 {
 	for (UINT Row = 0; Row < (UINT)OBJECT_GROUP::END; ++Row)
 	{
 		for (UINT Col = Row; Col < (UINT)OBJECT_GROUP::END; ++Col)
 		{
-			if (m_arrCheck[Row] & (1 << Col))
+			if (_arrCheck[Row] & (1 << Col))
 			{
 				CollisionGroupUpdate((OBJECT_GROUP)Row, (OBJECT_GROUP)Col);
 			}
 		}
 	}
 }
-void CollisionMgr::CollisionGroupUpdate(OBJECT_GROUP _eLeft, OBJECT_GROUP _eRight)
+void CollisionManager::CollisionGroupUpdate(OBJECT_GROUP eLeft, OBJECT_GROUP eRight)
 {
-	std::shared_ptr<Scene> pCurScene = SceneMgr::GetInst()->GetCurScene();
-	const vector<Object*>& vecLeft = pCurScene->GetGroupObject(_eLeft);
-	const vector<Object*>& vecRight = pCurScene->GetGroupObject(_eRight);
+	std::shared_ptr<Scene> pCurScene = SceneMgr::GetInstance()->GetCurScene();
+	const vector<Object*>& vecLeft = pCurScene->GetGroupObject(eLeft);
+	const vector<Object*>& vecRight = pCurScene->GetGroupObject(eRight);
 	// 충돌 검사를 해보자.
 	for (size_t i = 0; i < vecLeft.size(); ++i)
 	{
@@ -40,14 +40,14 @@ void CollisionMgr::CollisionGroupUpdate(OBJECT_GROUP _eLeft, OBJECT_GROUP _eRigh
 			colID.right_ID = pRightCol->GetID();
 
 			// 찾아라.
-			auto iter = m_mapColInfo.find(colID.ID);
+			auto iter = _mapColInfo.find(colID.ID);
 			// 없어용
-			if (iter == m_mapColInfo.end())
+			if (iter == _mapColInfo.end())
 			{
 				// 넣어라
-				m_mapColInfo.insert({ colID.ID, false });
+				_mapColInfo.insert({ colID.ID, false });
 				// 넣은거 잡아라.
-				iter = m_mapColInfo.find(colID.ID);
+				iter = _mapColInfo.find(colID.ID);
 			}
 			// 충돌하네?
 			if (IsCollision(pLeftCol, pRightCol))
@@ -91,14 +91,14 @@ void CollisionMgr::CollisionGroupUpdate(OBJECT_GROUP _eLeft, OBJECT_GROUP _eRigh
 	}
 }
 
-bool CollisionMgr::IsCollision(Collider* _pLeft, Collider* _pRight)
+bool CollisionManager::IsCollision(Collider* pLeft, Collider* pRight)
 {
 	// 충돌검사 알고리즘
 	// AABB 
-	Vec2 vLeftPos = _pLeft->GetFinalPos();
-	Vec2 vRightPos = _pRight->GetFinalPos();
-	Vec2 vLeftScale = _pLeft->GetScale();
-	Vec2 vRightScale = _pRight->GetScale();
+	Vector2 vLeftPos = pLeft->GetFinalPos();
+	Vector2 vRightPos = pRight->GetFinalPos();
+	Vector2 vLeftScale = pLeft->GetScale();
+	Vector2 vRightScale = pRight->GetScale();
 	if (abs(vRightPos.x - vLeftPos.x) < (vLeftScale.x + vRightScale.x) / 2.f
 		&& abs(vRightPos.y - vLeftPos.y) < (vLeftScale.y + vRightScale.y) / 2.f)
 	{
@@ -108,28 +108,28 @@ bool CollisionMgr::IsCollision(Collider* _pLeft, Collider* _pRight)
 	return false;
 }
 
-void CollisionMgr::CheckGroup(OBJECT_GROUP _eLeft, OBJECT_GROUP _eRight)
+void CollisionManager::CheckGroup(OBJECT_GROUP eLeft, OBJECT_GROUP eRight)
 {
 	// 작은쪽을 행으로 씁시다.
-	UINT Row = (UINT)_eLeft;
-	UINT Col = (UINT)_eRight;
+	UINT Row = (UINT)eLeft;
+	UINT Col = (UINT)eRight;
 	Row = min(Row, Col);
 
 	//// 비트 연산
 	// 체크가 되어있다면
-	if (m_arrCheck[Row] & (1 << Col))
+	if (_arrCheck[Row] & (1 << Col))
 	{
-		m_arrCheck[Row] &= ~(1 << Col);
+		_arrCheck[Row] &= ~(1 << Col);
 	}
 	// 체크가 안되어있다면r
 	else
 	{
-		m_arrCheck[Row] |= (1 << Col);
+		_arrCheck[Row] |= (1 << Col);
 	}
 }
 
-void CollisionMgr::CheckReset()
+void CollisionManager::CheckReset()
 {
-	memset(m_arrCheck, 0, sizeof(UINT) * (UINT)(OBJECT_GROUP::END));
+	memset(_arrCheck, 0, sizeof(UINT) * (UINT)(OBJECT_GROUP::END));
 }
 

@@ -5,17 +5,17 @@ public:
 	Res();
 	~Res();
 public:
-	void SetKey(const wstring& _StrKey) 
-	{	m_strKey = _StrKey;	}
-	void SetRelativePath(const wstring& _StrPath)
+	void SetKey(const wstring& key) 
+	{	_key = key;	}
+	void SetRelativePath(const wstring& path)
 	{
-		m_strRelativePath = _StrPath;
+		_relativePath = path;
 	}
-	const wstring& GetKey() const { return m_strKey; }
-	const wstring& GetRelativePath() const { return m_strRelativePath; }
+	const wstring& GetKey() const { return _key; }
+	const wstring& GetRelativePath() const { return _relativePath; }
 
 private:
-	wstring m_strKey; // 키
-	wstring m_strRelativePath; // 상대경로
+	wstring _key; // 키
+	wstring _relativePath; // 상대경로
 };
 

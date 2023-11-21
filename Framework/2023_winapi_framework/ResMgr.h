@@ -5,33 +5,34 @@ enum class SOUND_CHANNEL
 {
 	BGM, EFFECT, END
 };
-struct tSoundInfo
+struct SoundInfo
 {
 	FMOD::Sound* pSound; // 실제 사운드 메모리
 	bool IsLoop;
 };
 class Texture;
-class ResMgr
+
+class ResourceManager
 {
-	SINGLE(ResMgr);
+	SINGLE(ResourceManager);
 public:
-	Texture* TexLoad(const wstring& _strKey,
-		const wstring& _strRelativePath);
-	Texture* TexFind(const wstring& _strKey);
+	Texture* TexLoad(const wstring& strKey,
+		const wstring& strRelativePath);
+	Texture* TexFind(const wstring& strKey);
 	void Release();
 private:
-	map<wstring, Texture*> m_mapTex;
-	FMOD::System* m_pSystem; // 사운드 시스템
-	map<wstring, tSoundInfo*> m_mapSod;
-	FMOD::Channel* m_pChannel[(UINT)SOUND_CHANNEL::END]; // 오디오 채널
+	map<wstring, Texture*> _mapTex;
+	FMOD::System* _pSystem; // 사운드 시스템
+	map<wstring, SoundInfo*> _mapSound;
+	FMOD::Channel* _pChannel[(UINT)SOUND_CHANNEL::END]; // 오디오 채널
 public:
 	void Init();
-	void LoadSound(const wstring& _strKey, const wstring& _strReleativePath, bool _IsLoop);
-	void Play(const wstring& _strKey);
-	void Stop(SOUND_CHANNEL _eChannel);
-	void Volume(SOUND_CHANNEL _eChannel, float _fVol);
-	void Pause(SOUND_CHANNEL _eChannel, bool _Ispause);
+	void LoadSound(const wstring& strKey, const wstring& strReleativePath, bool IsLoop);
+	void Play(const wstring& strKey);
+	void Stop(SOUND_CHANNEL eChannel);
+	void Volume(SOUND_CHANNEL eChannel, float fVol);
+	void Pause(SOUND_CHANNEL eChannel, bool Ispause);
 private:
-	tSoundInfo* FindSound(const wstring& _strKey);
+	SoundInfo* FindSound(const wstring& strKey);
 };
 
