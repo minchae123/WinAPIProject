@@ -2,10 +2,10 @@
 #include "BaseWindow.h"
 #include "Resource.h"
 #include "Core.h"
-BaseWindow::BaseWindow(POINT _ptResolution)
-	: m_hWnd(0)
-	, m_hInst(0)
-    , m_ptResolution(_ptResolution)
+BaseWindow::BaseWindow(POINT ptResolution)
+	: _hWnd(0)
+	, _instance(0)
+    , _resolution(ptResolution)
 {
 }
 
@@ -13,18 +13,18 @@ BaseWindow::~BaseWindow()
 {
 }
 
-int BaseWindow::Run(HINSTANCE _hInst, LPWSTR _lpCmdline, int _nCmdShow)
+int BaseWindow::Run(HINSTANCE hInst, LPWSTR lpCmdline, int nCmdShow)
 {
     //this->m_hWnd;
-    m_hInst = _hInst;
+    _instance = hInst;
     this->MyRegisterClass();
     this->WindowCreate();
-    this->WindowShow(_nCmdShow);
+    this->WindowShow(nCmdShow);
     this->WindowUpdate();
     // Init();
-    if (!Core::GetInst()->Init(m_hWnd, m_ptResolution))
+    if (!Core::GetInst()->Init(_hWnd, _resolution))
     {
-        MessageBox(m_hWnd, L"Core 초기화 실패", L"FAIL", MB_OK);
+        MessageBox(_hWnd, L"Core 초기화 실패", L"FAIL", MB_OK);
     }
     return this->MessageLoop();
 }
@@ -37,8 +37,8 @@ ATOM BaseWindow::MyRegisterClass()
     wcex.lpfnWndProc = BaseWindow::WndProc;
     wcex.cbClsExtra = 0;
     wcex.cbWndExtra = 0;
-    wcex.hInstance = m_hInst;
-    wcex.hIcon = LoadIcon(m_hInst, MAKEINTRESOURCE(IDI_MY2023WINAPIFRAMEWORK22));
+    wcex.hInstance = _instance;
+    wcex.hIcon = LoadIcon(_instance, MAKEINTRESOURCE(IDI_MY2023WINAPIFRAMEWORK22));
     wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
     wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
     wcex.lpszMenuName = nullptr;
@@ -50,30 +50,30 @@ ATOM BaseWindow::MyRegisterClass()
 
 void BaseWindow::WindowCreate()
 {
-    int iWinposx = GetSystemMetrics(SM_CXSCREEN) / 2 - m_ptResolution.x / 2;
-    int iWinposy = GetSystemMetrics(SM_CYSCREEN) / 2 - m_ptResolution.y / 2;
+    int iWinposx = GetSystemMetrics(SM_CXSCREEN) / 2 - _resolution.x / 2;
+    int iWinposy = GetSystemMetrics(SM_CYSCREEN) / 2 - _resolution.y / 2;
     
-    m_hWnd = CreateWindowW(WINDOW_CLASS_NAME, L"Jun's Framework", WS_OVERLAPPEDWINDOW,
-        iWinposx, iWinposy, m_ptResolution.x, m_ptResolution.y, nullptr, nullptr, m_hInst, nullptr);
+    _hWnd = CreateWindowW(WINDOW_CLASS_NAME, L"Jun's Framework", WS_OVERLAPPEDWINDOW,
+        iWinposx, iWinposy, _resolution.x, _resolution.y, nullptr, nullptr, _instance, nullptr);
     
-    RECT rt = { iWinposx, iWinposy, iWinposx + m_ptResolution.x, iWinposy + m_ptResolution.y };
+    RECT rt = { iWinposx, iWinposy, iWinposx + _resolution.x, iWinposy + _resolution.y };
     AdjustWindowRect(&rt, WS_OVERLAPPEDWINDOW, false);
-    MoveWindow(m_hWnd, iWinposx, iWinposy, rt.right - rt.left, rt.bottom - rt.top, true);
+    MoveWindow(_hWnd, iWinposx, iWinposy, rt.right - rt.left, rt.bottom - rt.top, true);
 }
 
-void BaseWindow::WindowShow(int _nCmdShow)
+void BaseWindow::WindowShow(int nCmdShow)
 {
-    ShowWindow(m_hWnd, _nCmdShow);
+    ShowWindow(_hWnd, nCmdShow);
 }
 
 void BaseWindow::WindowUpdate()
 {
-    UpdateWindow(m_hWnd);
+    UpdateWindow(_hWnd);
 }
 
-LRESULT BaseWindow::WndProc(HWND _hWnd, UINT _message, WPARAM _wParam, LPARAM _lParam)
+LRESULT BaseWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-    switch (_message)
+    switch (message)
     {
     //    // 우리가 PAINT를 쓸까..?
     //case WM_PAINT:
@@ -89,7 +89,7 @@ LRESULT BaseWindow::WndProc(HWND _hWnd, UINT _message, WPARAM _wParam, LPARAM _l
         PostQuitMessage(0);
         break;
     default:
-        return DefWindowProc(_hWnd, _message, _wParam, _lParam);
+        return DefWindowProc(hWnd, message, wParam, lParam);
     }
     return 0;
 }

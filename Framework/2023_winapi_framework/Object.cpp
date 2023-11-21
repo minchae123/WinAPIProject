@@ -5,33 +5,33 @@
 #include "Collider.h"
 #include "Animator.h"
 Object::Object()
-	: m_pCollider(nullptr)
-	, m_vPos{}
-	, m_vScale{}
-	, m_IsAlive(true)
-	, m_pAnimator(nullptr)
+	: _pCollider(nullptr)
+	, _pos{}
+	, _scale{}
+	, _isAlive(true)
+	, _pAnimator(nullptr)
 {
 }
 
 Object::~Object()
 {
-	if (nullptr != m_pCollider)
-		delete m_pCollider;
-	if (nullptr != m_pAnimator)
-		delete m_pAnimator;
+	if (nullptr != _pCollider)
+		delete _pCollider;
+	if (nullptr != _pAnimator)
+		delete _pAnimator;
 
 }
 
 void Object::CreateCollider()
 {
-	m_pCollider = new Collider;
-	m_pCollider->m_pOwner = this;
+	_pCollider = new Collider;
+	_pCollider->m_pOwner = this;
 }
 
 void Object::CreateAnimator()
 {
-	m_pAnimator = new Animator;
-	m_pAnimator->m_pOwner = this;
+	_pAnimator = new Animator;
+	_pAnimator->m_pOwner = this;
 }
 
 void Object::Update()
@@ -46,37 +46,37 @@ void Object::Update()
 
 void Object::FinalUpdate()
 {
-	if (m_pCollider)
-		m_pCollider->FinalUpdate();
+	if (_pCollider)
+		_pCollider->FinalUpdate();
 }
 
-void Object::Render(HDC _dc)
+void Object::Render(HDC dc)
 {
 	/*Vec2 vPos = m_obj.GetPos();
 	Vec2 vScale = m_obj.GetScale();*/
-	RECT_RENDER(m_vPos.x, m_vPos.y, m_vScale.x, m_vScale.y, _dc);
-	Component_Render(_dc);
+	RECT_RENDER(_pos.x, _pos.y, _scale.x, _scale.y, _dc);
+	Component_Render(dc);
 }
 
-void Object::EnterCollision(Collider* _pOther)
+void Object::EnterCollision(Collider* other)
 {
 }
 
-void Object::ExitCollision(Collider* _pOther)
+void Object::ExitCollision(Collider* other)
 {
 }
 
-void Object::StayCollision(Collider* _pOther)
+void Object::StayCollision(Collider* other)
 {
 
 }
 
-void Object::Component_Render(HDC _dc)
+void Object::Component_Render(HDC dc)
 {
-	if (nullptr != m_pCollider)
-		m_pCollider->Render(_dc);
-	if (nullptr != m_pAnimator)
-		m_pAnimator->Render(_dc);
+	if (nullptr != _pCollider)
+		_pCollider->Render(dc);
+	if (nullptr != _pAnimator)
+		_pAnimator->Render(dc);
 
 }
 

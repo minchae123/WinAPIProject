@@ -5,34 +5,34 @@ class Collider
 {
 public:
 	Collider();
-	Collider(const Collider& _origin);
+	Collider(const Collider& origin);
 	~Collider();
-	Collider& operator = (Collider& _origin) = delete;
+	Collider& operator = (Collider& origin) = delete;
 public:
 	void FinalUpdate();
-	void Render(HDC _dc);
+	void Render(HDC dc);
 public:
-	void EnterCollision(Collider* _pOther);
-	void ExitCollision(Collider* _pOther);
-	void StayCollision(Collider* _pOther);
+	void EnterCollision(Collider* other);
+	void ExitCollision(Collider* other);
+	void StayCollision(Collider* other);
 public:
-	void SetScale(Vec2 _vScale) { m_vScale = _vScale; }
-	void SetOffSetPos(Vec2 _vOffsetPos) 
-	{ m_vOffsetPos = _vOffsetPos; }
-	const Vec2& GetScale() const { return m_vScale; }
-	const Vec2& GetOffSetPos() const { return m_vOffsetPos; }
-	const Vec2& GetFinalPos() const 
-	{ return m_vFinalPos; }
-	const UINT& GetID() const { return m_ID; }
-	const Object* GetObj() const { return m_pOwner; }
+	void SetScale(Vector2 scale) { _scale = scale; }
+	void SetOffSetPos(Vector2 offsetPos)
+	{ _offsetPos = offsetPos; }
+	const Vector2& GetScale() const { return _scale; }
+	const Vector2& GetOffSetPos() const { return _offsetPos; }
+	const Vector2& GetFinalPos() const
+	{ return _finalPos; }
+	const UINT& GetID() const { return _ID; }
+	const Object* GetObj() const { return _ownerObject; }
 private:
-	UINT m_check;
-	Object* m_pOwner;
-	Vec2 m_vOffsetPos; // 오프셋
-	Vec2 m_vFinalPos; // 파이널 위치
-	Vec2 m_vScale; // 크기
+	UINT _check;
+	Object* _ownerObject;
+	Vector2 _offsetPos; // 오프셋
+	Vector2 _finalPos; // 파이널 위치
+	Vector2 _scale; // 크기
 	friend class Object;
-	UINT m_ID; // 충돌체 ID값
-	static UINT m_sNextID;
+	UINT _ID; // 충돌체 ID값
+	static UINT _nextID;
 };
 

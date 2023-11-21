@@ -1,11 +1,11 @@
 #pragma once
 class Texture; class Animator;
-struct tAnimFrame
+struct AnimationFrame
 {
-	Vec2 vLT;
-	Vec2 vSlice;
+	Vector2 vLT;
+	Vector2 vSlice;
 	float fDuration;
-	Vec2 vOffset;
+	Vector2 vOffset;
 };
 
 class Animation
@@ -15,24 +15,24 @@ public:
 	~Animation();
 public:
 	void Update();
-	void Render(HDC _dc);
+	void Render(HDC dc);
 public:
-	void Create(Texture* _pTex, Vec2 _vLT, Vec2 _vSliceSize, 
-		Vec2 _vStep, int _framecount, float _fDuration);
+	void Create(Texture* texture, Vector2 leftTop, Vector2 sliceSize,
+		Vector2 step, int framecount, float duration);
 public:
-	const wstring& GetName() const { return m_strName; }
-	void SetName(wstring _name) { m_strName = _name; }
-	void SetFrameOffset(int _index, Vec2 _offset) { m_vecAnimFrame[_index].vOffset = _offset; }
-	const size_t& GetMaxFrame() { return m_vecAnimFrame.size(); }
+	const wstring& GetName() const { return _name; }
+	void SetName(wstring name) { _name = name; }
+	void SetFrameOffset(int index, Vector2 offset) { _vecAnimationFrame[index].vOffset = offset; }
+	const size_t& GetMaxFrame() { return _vecAnimationFrame.size(); }
 	friend class Animator;
 private:
-	UINT   m_CurFrame; // 현재 프레임
-	float  m_fAccTime; // 누적 시간
-	int	   m_repeatcnt; // 반복 횟수
-	Texture* m_pTex; // 애니메이션 텍스처
-	vector<tAnimFrame> m_vecAnimFrame;
-	wstring m_strName;
-	Animator* m_pAnimator;
+	UINT   _curFrame; // 현재 프레임
+	float  _accTime; // 누적 시간
+	int	   _repeatCount; // 반복 횟수
+	Texture* _texture; // 애니메이션 텍스처
+	vector<AnimationFrame> _vecAnimationFrame;
+	wstring _name;
+	Animator* _animator;
 
 };
 

@@ -13,17 +13,17 @@ public:
 	virtual void Render(HDC _dc);
 	virtual void Release();
 public:
-	const vector<Object*>& GetGroupObject(OBJECT_GROUP _etype) const
+	const vector<Object*>& GetGroupObject(OBJECT_GROUP type) const
 	{
-		return m_vecObj[(UINT)_etype];
+		return _vecObject[(UINT)type];
 	}
 public:
-	void AddObject(Object* _pObj, OBJECT_GROUP _eType)
+	void AddObject(Object* pObject, OBJECT_GROUP type)
 	{
-		m_vecObj[(UINT)_eType].push_back(_pObj);
+		_vecObject[(UINT)type].push_back(pObject);
 	}
 private:
 //	Object*  m_obj;
-	vector<Object*> m_vecObj[(UINT)OBJECT_GROUP::END];
+	vector<Object*> _vecObject[(UINT)OBJECT_GROUP::END];
 };
 

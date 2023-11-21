@@ -12,25 +12,25 @@ public:
 	void Render(HDC _dc);
 public:
 	// 애니메이션 생성함수
-	void CreateAnim(const wstring& _strName, Texture* _pTex,
-					Vec2 _vLT, Vec2 _vSliceSize, Vec2 _vStep,
-					UINT _framecount, float _fDuration);
+	void CreateAnim(const wstring& name, Texture* texture,
+					Vector2 leftTop, Vector2 sliceSize, Vector2 step,
+					UINT frameCount, float duration);
 	// 애니메이션 찾기함수
-	Animation* FindAnim(const wstring& _strName);
+	Animation* FindAnim(const wstring& name);
 
 	// 애니메이션 플레이 함수
-	void PlayAnim(const wstring& _strName, bool _bRepeat, int _repeatcnt = 1);
+	void PlayAnim(const wstring& name, bool repeat, int repeatCount = 1);
 public:
-	Object* GetObj() const { return m_pOwner; }
-	const bool& GetRepeat() const { return m_IsRepeat; }
-	const int& GetRepeatcnt() const { return m_repeatcnt; }
-	void SetRepeatcnt() { --m_repeatcnt; }
+	Object* GetObj() const { return _ownerObject; }
+	const bool& GetRepeat() const { return _isRepeat; }
+	const int& GetRepeatcnt() const { return _repeatCount; }
+	void SetRepeatcnt() { --_repeatCount; }
 private:
-	map<wstring, Animation*> m_mapAnim;
-	Animation* m_pCurAnim;
-	Object* m_pOwner;
+	map<wstring, Animation*> _mapAnim;
+	Animation* _curAnim;
+	Object* _ownerObject;
 	friend class Object;
-	bool	m_IsRepeat;
-	int		m_repeatcnt;
+	bool	_isRepeat;
+	int		_repeatCount;
 };
 

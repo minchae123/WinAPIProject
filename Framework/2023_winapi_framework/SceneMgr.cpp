@@ -2,9 +2,10 @@
 #include "SceneMgr.h"
 #include "Start_Scene.h"
 #include "Game_Scene.h"
-void SceneMgr::Init()
+
+void SceneManager::Init()
 {
-	m_pCurScene = nullptr;
+	_pCurScene = nullptr;
 	// ¾À µî·Ï
 	RegisterScene(L"Start_Scene",std::make_shared<Start_Scene>());
 	RegisterScene(L"Game_Scene", std::make_shared<Game_Scene>());
@@ -13,35 +14,35 @@ void SceneMgr::Init()
 	LoadScene(L"Start_Scene");
 }
 
-void SceneMgr::Update()
+void SceneManager::Update()
 {
-	m_pCurScene->Update();
-	m_pCurScene->FinalUpdate();
+	_pCurScene->Update();
+	_pCurScene->FinalUpdate();
 }
 
-void SceneMgr::Render(HDC _dc)
+void SceneManager::Render(HDC dc)
 {
-	m_pCurScene->Render(_dc);
+	_pCurScene->Render(dc);
 }
 
-void SceneMgr::LoadScene(const wstring& _scenename)
+void SceneManager::LoadScene(const wstring& scenename)
 {
 	// ¾ÀÀÌ ÀÖÀ¸¸é
-	if (m_pCurScene != nullptr)
+	if (_pCurScene != nullptr)
 	{
-		m_pCurScene->Release();
-		m_pCurScene = nullptr;
+		_pCurScene->Release();
+		_pCurScene = nullptr;
 	}
 
-	auto iter = m_mapScenes.find(_scenename);
-	if (iter != m_mapScenes.end())
+	auto iter = _mapScene.find(scenename);
+	if (iter != _mapScene.end())
 	{
-		m_pCurScene = iter->second;
-		m_pCurScene->Init();
+		_pCurScene = iter->second;
+		_pCurScene->Init();
 	}
 }
 
-void SceneMgr::RegisterScene(const wstring& _scenename, std::shared_ptr<Scene> _scene)
+void SceneManager::RegisterScene(const wstring& scenename, std::shared_ptr<Scene> scene)
 {
-	m_mapScenes.insert(m_mapScenes.end(), {_scenename, _scene});
+	_mapScene.insert(_mapScene.end(), {scenename, scene});
 }

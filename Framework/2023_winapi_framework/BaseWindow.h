@@ -2,21 +2,21 @@
 class BaseWindow
 {
 public:
-	BaseWindow(POINT _ptResolution);
+	BaseWindow(POINT ptResolution);
 	~BaseWindow();
 	// 내가 이거는 꼭 멤버변수로 들고가야한다!
 	// 1. 인스턴스, 윈도우 핸들
-	int					Run(HINSTANCE _hInst, LPWSTR _lpCmdline, int _nCmdShow);
+	int					Run(HINSTANCE hInst, LPWSTR lpCmdline, int nCmdShow);
 	ATOM                MyRegisterClass();
 //	BOOL                InitInstance(HINSTANCE, int);
 	void				WindowCreate();
-	void				WindowShow(int _nCmdShow);
+	void				WindowShow(int nCmdShow);
 	void				WindowUpdate();
-	static LRESULT CALLBACK    WndProc(HWND _hWnd, UINT _message, WPARAM _wParam, LPARAM _lParam);
+	static LRESULT CALLBACK    WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 	int				    MessageLoop();
 private:
-	HWND		m_hWnd;
-	HINSTANCE	m_hInst;
-	POINT		m_ptResolution;
+	HWND		_hWnd;
+	HINSTANCE	_instance;
+	POINT		_resolution;
 };
 

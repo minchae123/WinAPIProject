@@ -7,23 +7,23 @@
 #include "ResMgr.h"
 #include "CollisionMgr.h"
 #include "EventMgr.h"
-bool Core::Init(HWND _hWnd, POINT _ptResolution)
+bool Core::Init(HWND hWnd, POINT ptResolution)
 {
 	// === 변수 초기화 === 
-	m_hWnd = _hWnd;
-	m_ptResolution = _ptResolution;
-	m_hbackDC = 0;
-	m_hbackbit = 0;
+	_hWnd = hWnd;
+	_resolution = ptResolution;
+	_backDC = 0;
+	_backBit = 0;
 
 
 	// 더블버퍼링
-	m_hDC = GetDC(m_hWnd);	
+	_dc = GetDC(_hWnd);	
 	// 1. 생성
-	m_hbackbit = CreateCompatibleBitmap(m_hDC, m_ptResolution.x, m_ptResolution.y);
-	m_hbackDC = CreateCompatibleDC(m_hDC);
+	_backBit = CreateCompatibleBitmap(_dc, _resolution.x, _resolution.y);
+	_backDC = CreateCompatibleDC(_dc);
 
 	// 2. 연결
-	SelectObject(m_hbackDC, m_hbackbit);
+	SelectObject(_backDC, _backBit);
 
 //	m_obj.SetPos(Vec2({ m_ptResolution.x / 2, m_ptResolution.y / 2 }));
 ////	m_obj.m_ptPos = ;
@@ -87,9 +87,9 @@ void Core::Render()
 {
 	// 칠한다.
 	//Rectangle(m_hbackDC, -1,-1,m_ptResolution.x +1,m_ptResolution.y + 1);
-	PatBlt(m_hbackDC, 0, 0, m_ptResolution.x, m_ptResolution.y, WHITENESS);
+	PatBlt(_backDC, 0, 0, _resolution.x, _resolution.y, WHITENESS);
 
-	SceneMgr::GetInst()->Render(m_hbackDC);
+	SceneMgr::GetInst()->Render(_backDC);
 	/*Vec2 vPos = m_obj.GetPos();
 	Vec2 vScale = m_obj.GetScale();
 	RECT_RENDER(vPos.x, vPos.y, vScale.x, vScale.y, m_hbackDC);*/
@@ -101,8 +101,8 @@ void Core::Render()
 	//TextOut(m_hbackDC, 10, 10, mousebuf, wcslen(mousebuf));
 
 	// 3. 옮긴다.
-	BitBlt(m_hDC, 0,0, m_ptResolution.x, m_ptResolution.y, 
-		m_hbackDC, 0,0, SRCCOPY);
+	BitBlt(_dc, 0,0, _resolution.x, _resolution.y, 
+		_backDC, 0,0, SRCCOPY);
 	EventMgr::GetInst()->Update();
 
 
@@ -117,32 +117,32 @@ void Core::Render()
 void Core::CreateGDI()
 {
 	// HOLLOW
-	m_arrBrush[(UINT)BRUSH_TYPE::HOLLOW] = (HBRUSH)GetStockObject(HOLLOW_BRUSH);
-	m_arrBrush[(UINT)BRUSH_TYPE::RED] = (HBRUSH)CreateSolidBrush(RGB(255, 167, 167));
-	m_arrBrush[(UINT)BRUSH_TYPE::GREEN] = (HBRUSH)CreateSolidBrush(RGB(134, 229, 134));
-	m_arrBrush[(UINT)BRUSH_TYPE::BLUE] = (HBRUSH)CreateSolidBrush(RGB(103, 153, 255));
-	m_arrBrush[(UINT)BRUSH_TYPE::YELLOW] = (HBRUSH)CreateSolidBrush(RGB(255, 187, 0));
+	_arrBrush[(UINT)BRUSH_TYPE::HOLLOW] = (HBRUSH)GetStockObject(HOLLOW_BRUSH);
+	_arrBrush[(UINT)BRUSH_TYPE::RED] = (HBRUSH)CreateSolidBrush(RGB(255, 167, 167));
+	_arrBrush[(UINT)BRUSH_TYPE::GREEN] = (HBRUSH)CreateSolidBrush(RGB(134, 229, 134));
+	_arrBrush[(UINT)BRUSH_TYPE::BLUE] = (HBRUSH)CreateSolidBrush(RGB(103, 153, 255));
+	_arrBrush[(UINT)BRUSH_TYPE::YELLOW] = (HBRUSH)CreateSolidBrush(RGB(255, 187, 0));
 
 	//RED GREEN BLUE PEN
-	m_arrPen[(UINT)PEN_TYPE::RED] = CreatePen(PS_SOLID, 1, RGB(255, 0, 0));
-	m_arrPen[(UINT)PEN_TYPE::GREEN] = CreatePen(PS_SOLID, 1, RGB(0, 255, 0));
-	m_arrPen[(UINT)PEN_TYPE::BLUE] = CreatePen(PS_SOLID, 1, RGB(0, 0, 255));
-	m_arrPen[(UINT)PEN_TYPE::YELLOW] = CreatePen(PS_SOLID, 1, RGB(255, 255, 0));
-	m_arrPen[(UINT)PEN_TYPE::HOLLOW] = CreatePen(PS_NULL, 0, RGB(0, 0, 0));
+	_arrPen[(UINT)PEN_TYPE::RED] = CreatePen(PS_SOLID, 1, RGB(255, 0, 0));
+	_arrPen[(UINT)PEN_TYPE::GREEN] = CreatePen(PS_SOLID, 1, RGB(0, 255, 0));
+	_arrPen[(UINT)PEN_TYPE::BLUE] = CreatePen(PS_SOLID, 1, RGB(0, 0, 255));
+	_arrPen[(UINT)PEN_TYPE::YELLOW] = CreatePen(PS_SOLID, 1, RGB(255, 255, 0));
+	_arrPen[(UINT)PEN_TYPE::HOLLOW] = CreatePen(PS_NULL, 0, RGB(0, 0, 0));
 }
 
 void Core::Release()
 {
-	ReleaseDC(m_hWnd, m_hDC);
-	DeleteDC(m_hbackDC); // createdc 한거 지우는거
-	DeleteObject(m_hbackbit); // createbit 한거 지우는거
+	ReleaseDC(_hWnd, _dc);
+	DeleteDC(_backDC); // createdc 한거 지우는거
+	DeleteObject(_backBit); // createbit 한거 지우는거
 	for (int i = 0; i < (UINT)PEN_TYPE::END; ++i)
 	{
-		DeleteObject(m_arrPen[i]);
+		DeleteObject(_arrPen[i]);
 	}
 	for (int i = 1; i < (UINT)BRUSH_TYPE::END; ++i)
 	{
-		DeleteObject(m_arrBrush[i]);
+		DeleteObject(_arrBrush[i]);
 	}
 
 	ResMgr::GetInst()->Release();

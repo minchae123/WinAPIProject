@@ -5,8 +5,8 @@ class PathMgr
 public:
 	void Init();
 	const wchar_t* GetResPath() const 
-	{ return m_strResPath; }
+	{ return _strResPath; }
 private:
-	wchar_t m_strResPath[255];
+	wchar_t _strResPath[255];
 };
 

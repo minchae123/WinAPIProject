@@ -9,19 +9,19 @@ union COLLIDER_ID
 	};
 	ULONGLONG ID;
 };
-class CollisionMgr
+class CollisionManager
 {
-	SINGLE(CollisionMgr);
+	SINGLE(CollisionManager);
 public:
 	void Update();
-	void CheckGroup(OBJECT_GROUP _eLeft, OBJECT_GROUP _eRight);
+	void CheckGroup(OBJECT_GROUP eLeft, OBJECT_GROUP eRight);
 	void CheckReset();
 private:
-	void CollisionGroupUpdate(OBJECT_GROUP _eLeft, OBJECT_GROUP _eRight);
-	bool IsCollision(Collider* _pLeft, Collider* _pRight);
+	void CollisionGroupUpdate(OBJECT_GROUP eLeft, OBJECT_GROUP eRight);
+	bool IsCollision(Collider* pLeft, Collider* pRight);
 private:
 	// 그룹간의 충돌체크할 배열
-	UINT m_arrCheck[(UINT)OBJECT_GROUP::END];
-	map<ULONGLONG, bool> m_mapColInfo;
+	UINT _arrCheck[(UINT)OBJECT_GROUP::END];
+	map<ULONGLONG, bool> _mapColInfo;
 };
 

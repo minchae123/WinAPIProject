@@ -25,36 +25,36 @@ class Core
 {
 	SINGLE(Core);
 public:
-	bool Init(HWND _hwnd, POINT _ptResolution);
+	bool Init(HWND hwnd, POINT ptResolution);
 	void GameLoop();
 	void Release();
 public:
-	const HWND& GetHwnd() const { return m_hWnd; }
+	const HWND& GetHwnd() const { return _hWnd; }
 	const POINT& GetResolution() const 
-	{ return m_ptResolution; }
+	{ return _resolution; }
 	const HDC& GetMainDC() const
 	{
-		return m_hDC;
+		return _dc;
 	}
-	const HBRUSH& GetBrush(BRUSH_TYPE _eType)
+	const HBRUSH& GetBrush(BRUSH_TYPE eType)
 	{
-		return m_arrBrush[(UINT)_eType];
+		return _arrBrush[(UINT)eType];
 	}
-	const HPEN& GetPen(PEN_TYPE _eType)
+	const HPEN& GetPen(PEN_TYPE eType)
 	{
-		return m_arrPen[(UINT)_eType];
+		return _arrPen[(UINT)eType];
 	}
 private:
 	void Update();
 	void Render();
 	void CreateGDI();
 private:
-	HWND	m_hWnd;
-	HDC		m_hDC; // 메인 DC
-	HDC		m_hbackDC; // 백 버퍼 DC
-	HBITMAP	m_hbackbit; // 백 버퍼에 그릴 비트맵
-	POINT	m_ptResolution; // 해상도
-	HBRUSH  m_arrBrush[(UINT)BRUSH_TYPE::END];
-	HPEN    m_arrPen[(UINT)PEN_TYPE::END];
+	HWND	_hWnd;
+	HDC		_dc; // 메인 DC
+	HDC		_backDC; // 백 버퍼 DC
+	HBITMAP	_backBit; // 백 버퍼에 그릴 비트맵
+	POINT	_resolution; // 해상도
+	HBRUSH  _arrBrush[(UINT)BRUSH_TYPE::END];
+	HPEN    _arrPen[(UINT)PEN_TYPE::END];
 };
 
