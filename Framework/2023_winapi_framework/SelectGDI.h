@@ -2,14 +2,14 @@
 class SelectGDI
 {
 public:
-	SelectGDI(HDC _dc, PEN_TYPE _ePen);
-	SelectGDI(HDC _dc, BRUSH_TYPE _eBrush);
-	SelectGDI(HDC _dc, HFONT _font);
+	SelectGDI(HDC dc, PEN_TYPE pen);
+	SelectGDI(HDC dc, BRUSH_TYPE brush);
+	SelectGDI(HDC dc, HFONT _font);
 	~SelectGDI();
 private:
-	HDC		m_hDC;
-	HPEN	m_hDefaultPen;
-	HBRUSH	m_hDefaultBrush;
-	HFONT   m_hDefaultFont;
-	HFONT	m_hFont;
+	HDC		_hDC;
+	HPEN	_hDefaultPen;
+	HBRUSH	_hDefaultBrush;
+	HFONT   _hDefaultFont;
+	HFONT	_hFont;
 };

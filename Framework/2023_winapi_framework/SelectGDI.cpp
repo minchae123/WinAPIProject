@@ -1,44 +1,44 @@
 #include "pch.h"
 #include "SelectGDI.h"
 #include "Core.h"
-SelectGDI::SelectGDI(HDC _dc, PEN_TYPE _ePen)
-	: m_hDC(_dc)
-	, m_hDefaultBrush(nullptr)
-	, m_hDefaultPen(nullptr)
-	, m_hDefaultFont(nullptr)
-	, m_hFont(nullptr)
+SelectGDI::SelectGDI(HDC dc, PEN_TYPE pen)
+	: _hDC(dc)
+	, _hDefaultBrush(nullptr)
+	, _hDefaultPen(nullptr)
+	, _hDefaultFont(nullptr)
+	, _hFont(nullptr)
 {
-	HPEN hColorPen = Core::GetInst()->GetPen(_ePen);
-	m_hDefaultPen = (HPEN)SelectObject(_dc, hColorPen);
+	HPEN hColorPen = Core::GetInst()->GetPen(pen);
+	_hDefaultPen = (HPEN)SelectObject(dc, hColorPen);
 }
 
-SelectGDI::SelectGDI(HDC _dc, BRUSH_TYPE _eBrush)
-	: m_hDC(_dc)
-	, m_hDefaultBrush(nullptr)
-	, m_hDefaultPen(nullptr)
-	, m_hDefaultFont(nullptr)
-	, m_hFont(nullptr)
+SelectGDI::SelectGDI(HDC dc, BRUSH_TYPE brush)
+	: _hDC(dc)
+	, _hDefaultBrush(nullptr)
+	, _hDefaultPen(nullptr)
+	, _hDefaultFont(nullptr)
+	, _hFont(nullptr)
 {
-	HBRUSH hColorBrush = Core::GetInst()->GetBrush(_eBrush);
-	m_hDefaultBrush = (HBRUSH)SelectObject(_dc, hColorBrush);
+	HBRUSH hColorBrush = Core::GetInst()->GetBrush(brush);
+	_hDefaultBrush = (HBRUSH)SelectObject(dc, hColorBrush);
 }
 
 SelectGDI::SelectGDI(HDC _dc, HFONT _font)
-	: m_hDC(_dc)
-	, m_hDefaultBrush(nullptr)
-	, m_hDefaultPen(nullptr)
-	, m_hDefaultFont(nullptr)
-	, m_hFont(nullptr)
+	: _hDC(_dc)
+	, _hDefaultBrush(nullptr)
+	, _hDefaultPen(nullptr)
+	, _hDefaultFont(nullptr)
+	, _hFont(nullptr)
 {
-	m_hFont = _font;
-	m_hDefaultFont = (HFONT)SelectObject(_dc, m_hFont);
+	_hFont = _font;
+	_hDefaultFont = (HFONT)SelectObject(_dc, _hFont);
 }
 
 SelectGDI::~SelectGDI()
 {
-	SelectObject(m_hDC, m_hDefaultPen);
-	SelectObject(m_hDC, m_hDefaultBrush);
-	SelectObject(m_hDC, m_hDefaultFont);
-	if (nullptr != m_hFont)
-		DeleteObject(m_hFont);
+	SelectObject(_hDC, _hDefaultPen);
+	SelectObject(_hDC, _hDefaultBrush);
+	SelectObject(_hDC, _hDefaultFont);
+	if (nullptr != _hFont)
+		DeleteObject(_hFont);
 }

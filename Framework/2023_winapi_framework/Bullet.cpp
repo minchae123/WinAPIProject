@@ -35,7 +35,6 @@ void Bullet::Render(HDC _dc)
 	Vec2 vScale = GetScale();
 	int Width = m_pTex->GetWidth();
 	int Height = m_pTex->GetHeight();
-	//ELLIPSE_RENDER(vPos.x, vPos.y, vScale.x, vScale.y, _dc);
 	TransparentBlt(_dc
 		, (int)(vPos.x - vScale.x / 2)
 		, (int)(vPos.y - vScale.y / 2)
