@@ -22,7 +22,7 @@ int BaseWindow::Run(HINSTANCE hInst, LPWSTR lpCmdline, int nCmdShow)
     this->WindowShow(nCmdShow);
     this->WindowUpdate();
     // Init();
-    if (!Core::GetInst()->Init(_hWnd, _resolution))
+    if (!Core::GetInstance()->Init(_hWnd, _resolution))
     {
         MessageBox(_hWnd, L"Core 초기화 실패", L"FAIL", MB_OK);
     }
@@ -111,9 +111,9 @@ int BaseWindow::MessageLoop()
         else
         {
             // 어? 메시지 없음? ㅇㅋ 나 따로놈 게임함
-            Core::GetInst()->GameLoop();
+            Core::GetInstance()->GameLoop();
         }
     }
-    Core::GetInst()->Release();
+    Core::GetInstance()->Release();
     return (int)msg.wParam;
 }

@@ -33,7 +33,7 @@ public:
 	bool GetIsDead() const { return !_isAlive; }
 private:
 	void SetDead() { _isAlive = false; }
-	friend class EventMgr;
+	friend class EventManager;
 public:
 	void CreateCollider();
 	void CreateAnimator();

@@ -6,9 +6,9 @@ struct Event
 	Object* Object;
 	OBJECT_GROUP ObjectType;
 };
-class EventMgr
+class EventManager
 {
-	SINGLE(EventMgr);
+	SINGLE(EventManager);
 public:
 	void Update();
 	void DeleteObject(Object* pObj);

@@ -7,7 +7,7 @@
 Monster::Monster()
 	: m_fSpeed(100.f)
 	, m_fMaxDis(50.f)
-	, m_vCenterPos(Vec2(0.f,0.f))
+	, m_vCenterPos(Vector2(0.f,0.f))
 	, m_fDir(1.f) // 오른쪽부터 이동
 	, m_iHp(5)
 {
@@ -20,8 +20,8 @@ Monster::~Monster()
 
 void Monster::Update()
 {
-	Vec2 vCurPos = GetPos();
-	vCurPos.x += m_fSpeed * fDT * m_fDir;
+	Vector2 vCurPos = GetPos();
+	vCurPos.x += m_fSpeed * DeltaTime * m_fDir;
 	
 	// 내가 갈 수 있는 거리 최대로 갔냐? => 방향 바꿔줄거야.
 	float fDist = abs(m_vCenterPos.x - vCurPos.x) - m_fMaxDis;
@@ -42,7 +42,7 @@ void Monster::EnterCollision(Collider* _pOther)
 		// 삭제처리해주면돼.
 		m_iHp--;
 		if(m_iHp<=0)
-			EventMgr::GetInst()->DeleteObject(this);
+			EventManager::GetInstance()->DeleteObject(this);
 	}
 }
 

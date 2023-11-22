@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "EventMgr.h"
 #include "Object.h"
-void EventMgr::Update()
+void EventManager::Update()
 {
 	for (size_t i = 0; i < _vecDead.size(); ++i)
 	{
@@ -16,7 +16,7 @@ void EventMgr::Update()
 	_vecEvent.clear();
 }
 
-void EventMgr::DeleteObject(Object* pObj)
+void EventManager::DeleteObject(Object* pObj)
 {
 	Event eve = {};
 	eve.eEve = EVENT_TYPE::DELETE_OBJECT;
@@ -24,7 +24,7 @@ void EventMgr::DeleteObject(Object* pObj)
 	_vecEvent.push_back(eve);
 }
 
-void EventMgr::Excute(const Event& eve)
+void EventManager::Excute(const Event& eve)
 {
 	switch (eve.eEve)
 	{

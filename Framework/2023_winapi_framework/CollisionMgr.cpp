@@ -19,7 +19,7 @@ void CollisionManager::Update()
 }
 void CollisionManager::CollisionGroupUpdate(OBJECT_GROUP eLeft, OBJECT_GROUP eRight)
 {
-	std::shared_ptr<Scene> pCurScene = SceneMgr::GetInstance()->GetCurScene();
+	std::shared_ptr<Scene> pCurScene = SceneManager::GetInstance()->GetCurScene();
 	const vector<Object*>& vecLeft = pCurScene->GetGroupObject(eLeft);
 	const vector<Object*>& vecRight = pCurScene->GetGroupObject(eRight);
 	// 충돌 검사를 해보자.

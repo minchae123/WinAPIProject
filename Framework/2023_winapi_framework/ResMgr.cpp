@@ -10,7 +10,7 @@ Texture* ResourceManager::TexLoad(const wstring& strKey, const wstring& strRelat
         return pTex;
 
     // 처음에는 없을거니까.. 경로 찾아서
-    wstring strFilepath = PathMgr::GetInstance()->GetResPath();
+    wstring strFilepath = PathManager::GetInstance()->GetResPath();
     strFilepath += strRelativePath;
     // 만들어줘가지고..
     pTex = new Texture;
@@ -69,7 +69,7 @@ void ResourceManager::LoadSound(const wstring& strKey, const wstring& strReleati
 {
     if (FindSound(strKey))
         return;
-    wstring strFilePath = PathMgr::GetInstance()->GetResPath();
+    wstring strFilePath = PathManager::GetInstance()->GetResPath();
     strFilePath += strReleativePath;
 
     // wstring to string

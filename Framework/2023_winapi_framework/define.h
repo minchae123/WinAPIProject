@@ -17,7 +17,7 @@ public:							\
 
 #define RECT_MAKE(posx, posy, scalex, scaley) {posx-scalex/2, posy-scaley/2, posx+scalex/2, posy+scaley/2}
 #define DeltaTime TimeManager::GetInstance()->GetDeltaTime()
-#define KEY_CHECK(key, state) KeyManager::GetInst()->GetKey(key) == state
+#define KEY_CHECK(key, state) KeyManager::GetInstance()->GetKey(key) == state
 #define KEY_NONE(key) KEY_CHECK(key, KEY_STATE::NONE)
 #define KEY_UP(key) KEY_CHECK(key, KEY_STATE::UP)
 #define KEY_DOWN(key) KEY_CHECK(key, KEY_STATE::DOWN)

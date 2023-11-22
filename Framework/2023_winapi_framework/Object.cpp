@@ -25,13 +25,13 @@ Object::~Object()
 void Object::CreateCollider()
 {
 	_pCollider = new Collider;
-	_pCollider->m_pOwner = this;
+	_pCollider->_ownerObject = this;
 }
 
 void Object::CreateAnimator()
 {
 	_pAnimator = new Animator;
-	_pAnimator->m_pOwner = this;
+	_pAnimator->_ownerObject = this;
 }
 
 void Object::Update()
@@ -54,7 +54,7 @@ void Object::Render(HDC dc)
 {
 	/*Vec2 vPos = m_obj.GetPos();
 	Vec2 vScale = m_obj.GetScale();*/
-	RECT_RENDER(_pos.x, _pos.y, _scale.x, _scale.y, _dc);
+	RECT_RENDER(_pos.x, _pos.y, _scale.x, _scale.y, dc);
 	Component_Render(dc);
 }
 

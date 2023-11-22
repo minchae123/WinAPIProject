@@ -1,7 +1,7 @@
 #pragma once
-class PathMgr
+class PathManager
 {
-	SINGLE(PathMgr);
+	SINGLE(PathManager);
 public:
 	void Init();
 	const wchar_t* GetResPath() const 

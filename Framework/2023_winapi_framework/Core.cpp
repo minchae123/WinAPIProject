@@ -31,11 +31,11 @@ bool Core::Init(HWND hWnd, POINT ptResolution)
 
 	CreateGDI();
 	// ==== Manager Init ====
-	PathMgr::GetInst()->Init();
-	TimeMgr::GetInst()->Init();
-	KeyMgr::GetInst()->Init();
-	ResMgr::GetInst()->Init();
-	SceneMgr::GetInst()->Init();
+	PathManager::GetInstance()->Init();
+	TimeManager::GetInstance()->Init();
+	KeyManager::GetInstance()->Init();
+	ResourceManager::GetInstance()->Init();
+	SceneManager::GetInstance()->Init();
 
 	return true;
 }
@@ -60,10 +60,10 @@ void Core::Update()
 {
 
 	// === Manager Update === 
-	TimeMgr::GetInst()->Update();
-	KeyMgr::GetInst()->Update();
-	SceneMgr::GetInst()->Update();
-	CollisionMgr::GetInst()->Update();
+	TimeManager::GetInstance()->Update();
+	KeyManager::GetInstance()->Update();
+	SceneManager::GetInstance()->Update();
+	CollisionManager::GetInstance()->Update();
 //	Vec2 vPos = m_obj.GetPos();
 //
 ////	if (GetAsyncKeyState(VK_LEFT) & 0x8000)
@@ -89,7 +89,7 @@ void Core::Render()
 	//Rectangle(m_hbackDC, -1,-1,m_ptResolution.x +1,m_ptResolution.y + 1);
 	PatBlt(_backDC, 0, 0, _resolution.x, _resolution.y, WHITENESS);
 
-	SceneMgr::GetInst()->Render(_backDC);
+	SceneManager::GetInstance()->Render(_backDC);
 	/*Vec2 vPos = m_obj.GetPos();
 	Vec2 vScale = m_obj.GetScale();
 	RECT_RENDER(vPos.x, vPos.y, vScale.x, vScale.y, m_hbackDC);*/
@@ -103,7 +103,7 @@ void Core::Render()
 	// 3. ¿Å±ä´Ù.
 	BitBlt(_dc, 0,0, _resolution.x, _resolution.y, 
 		_backDC, 0,0, SRCCOPY);
-	EventMgr::GetInst()->Update();
+	EventManager::GetInstance()->Update();
 
 
 	//TransparentBlt();
@@ -145,5 +145,5 @@ void Core::Release()
 		DeleteObject(_arrBrush[i]);
 	}
 
-	ResMgr::GetInst()->Release();
+	ResourceManager::GetInstance()->Release();
 }

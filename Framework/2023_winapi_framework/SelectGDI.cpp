@@ -8,7 +8,7 @@ SelectGDI::SelectGDI(HDC dc, PEN_TYPE pen)
 	, _hDefaultFont(nullptr)
 	, _hFont(nullptr)
 {
-	HPEN hColorPen = Core::GetInst()->GetPen(pen);
+	HPEN hColorPen = Core::GetInstance()->GetPen(pen);
 	_hDefaultPen = (HPEN)SelectObject(dc, hColorPen);
 }
 
@@ -19,7 +19,7 @@ SelectGDI::SelectGDI(HDC dc, BRUSH_TYPE brush)
 	, _hDefaultFont(nullptr)
 	, _hFont(nullptr)
 {
-	HBRUSH hColorBrush = Core::GetInst()->GetBrush(brush);
+	HBRUSH hColorBrush = Core::GetInstance()->GetBrush(brush);
 	_hDefaultBrush = (HBRUSH)SelectObject(dc, hColorBrush);
 }
 

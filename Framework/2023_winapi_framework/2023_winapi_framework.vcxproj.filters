@@ -44,23 +44,23 @@
     <Filter Include="Engine\06. Resource">
       <UniqueIdentifier>{baacb026-a0b3-4c36-87be-c02f2586d26b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\03. Manager\PathMgr">
-      <UniqueIdentifier>{74ab55a9-9601-472c-9883-01a8f1f8413f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\03. Manager\ResMgr">
-      <UniqueIdentifier>{d478c39a-9d43-4a1b-b9f4-226747582b1c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\07. Component">
       <UniqueIdentifier>{a72219c4-1f53-4d42-868c-88db0b756faf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\03. Manager\CollisionMgr">
-      <UniqueIdentifier>{f563c11d-b9a3-47c6-b8ee-28920e51bc3f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\03. Manager\EventMgr">
-      <UniqueIdentifier>{c3a341bd-ab64-4942-8210-206b9a88ce9b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\08. Module">
       <UniqueIdentifier>{b8698270-780f-4bb6-bf63-bf69c99fa2ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Manager\CollisionManager">
+      <UniqueIdentifier>{f563c11d-b9a3-47c6-b8ee-28920e51bc3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Manager\EventManager">
+      <UniqueIdentifier>{c3a341bd-ab64-4942-8210-206b9a88ce9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Manager\PathManager">
+      <UniqueIdentifier>{74ab55a9-9601-472c-9883-01a8f1f8413f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Manager\ResourceManager">
+      <UniqueIdentifier>{d478c39a-9d43-4a1b-b9f4-226747582b1c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -128,10 +128,10 @@
       <Filter>Engine\06. Resource</Filter>
     </ClInclude>
     <ClInclude Include="PathMgr.h">
-      <Filter>Engine\03. Manager\PathMgr</Filter>
+      <Filter>Engine\03. Manager\PathManager</Filter>
     </ClInclude>
     <ClInclude Include="ResMgr.h">
-      <Filter>Engine\03. Manager\ResMgr</Filter>
+      <Filter>Engine\03. Manager\ResourceManager</Filter>
     </ClInclude>
     <ClInclude Include="Collider.h">
       <Filter>Engine\07. Component</Filter>
@@ -140,10 +140,10 @@
       <Filter>Engine\08. Module</Filter>
     </ClInclude>
     <ClInclude Include="CollisionMgr.h">
-      <Filter>Engine\03. Manager\CollisionMgr</Filter>
+      <Filter>Engine\03. Manager\CollisionManager</Filter>
     </ClInclude>
     <ClInclude Include="EventMgr.h">
-      <Filter>Engine\03. Manager\EventMgr</Filter>
+      <Filter>Engine\03. Manager\EventManager</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>Engine\07. Component</Filter>
@@ -218,10 +218,10 @@
       <Filter>Engine\06. Resource</Filter>
     </ClCompile>
     <ClCompile Include="PathMgr.cpp">
-      <Filter>Engine\03. Manager\PathMgr</Filter>
+      <Filter>Engine\03. Manager\PathManager</Filter>
     </ClCompile>
     <ClCompile Include="ResMgr.cpp">
-      <Filter>Engine\03. Manager\ResMgr</Filter>
+      <Filter>Engine\03. Manager\ResourceManager</Filter>
     </ClCompile>
     <ClCompile Include="Collider.cpp">
       <Filter>Engine\07. Component</Filter>
@@ -230,10 +230,10 @@
       <Filter>Engine\08. Module</Filter>
     </ClCompile>
     <ClCompile Include="CollisionMgr.cpp">
-      <Filter>Engine\03. Manager\CollisionMgr</Filter>
+      <Filter>Engine\03. Manager\CollisionManager</Filter>
     </ClCompile>
     <ClCompile Include="EventMgr.cpp">
-      <Filter>Engine\03. Manager\EventMgr</Filter>
+      <Filter>Engine\03. Manager\EventManager</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>Engine\07. Component</Filter>
