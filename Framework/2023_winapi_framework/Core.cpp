@@ -53,6 +53,7 @@ void Core::GameLoop()
 	}*/
 	Update();
 	Render();
+	// ±ê Å×½ºÆ®
 }
 
 
