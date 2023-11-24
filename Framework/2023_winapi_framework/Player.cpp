@@ -14,17 +14,10 @@
 Player::Player()
 	: m_pTex(nullptr)
 {
-	//m_pTex = new Texture;
-	//wstring strFilePath = PathMgr::GetInst()->GetResPath();
-	//strFilePath += L"Texture\\plane.bmp";
-	//m_pTex->Load(strFilePath);
-	//m_pTex = ResMgr::GetInst()->TexLoad(L"Player", L"Texture\\plane.bmp");
 	m_pTex = ResourceManager::GetInstance()->TexLoad(L"Player", L"Texture\\jiwoo.bmp");
 	CreateCollider();
 	GetCollider()->SetScale(Vector2(20.f,30.f));
-	//GetCollider()->SetOffSetPos(Vec2(50.f,0.f));
-	
-	// ¾û¾û¾û ³» 20ºÐ ¤Ð¤Ð¤Ð ¤±³¯¾î;¤Ó³²·¯;¤±³ª¾ó
+
 	CreateAnimator();
 	GetAnimator()->CreateAnim(L"Jiwoo_Front", m_pTex, Vector2(0.f, 150.f),
 		Vector2(50.f, 50.f), Vector2(50.f, 0.f), 5, 0.2f);

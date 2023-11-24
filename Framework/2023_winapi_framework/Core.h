@@ -1,23 +1,4 @@
 #pragma once
-// 하나만, 어디서든 쓸수있어야함.
-// 싱글톤을 구현하는 방법이 엄청 많음
-// 1학기때 했던걸 다이나믹 싱글톤 = 동적할당
-// 장점: 존재하지 않더라도 다시 생성할 수 있다.
-// 단점: 동적으로 할당하기에 제거를 해줘야한다.
-//private:
-//	static Core* m_pInst;
-//public:
-//	static Core* GetInst()
-//	{
-//		if (m_pInst == nullptr)
-//			m_pInst = new Core;
-//		return m_pInst;
-//	}
-//public:
-//	static void DestroyInst()
-//	{
-//		SAFE_DELETE(m_pInst);
-
 // 정적(static)할당.
 #include "define.h"
 #include "Object.h"

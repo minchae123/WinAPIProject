@@ -75,16 +75,6 @@ LRESULT BaseWindow::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 {
     switch (message)
     {
-    //    // 우리가 PAINT를 쓸까..?
-    //case WM_PAINT:
-    //{
-    //    PAINTSTRUCT ps;
-    //    HDC hdc = BeginPaint(_hWnd, &ps);
-    //    // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
-    //    Rectangle(hdc, 10, 10, 110, 110);
-    //    EndPaint(_hWnd, &ps);
-    //}
-    //break;
     case WM_DESTROY:
         PostQuitMessage(0);
         break;

@@ -10,7 +10,7 @@ public:
 	Collider& operator = (Collider& origin) = delete;
 public:
 	void FinalUpdate();
-	void Render(HDC dc);
+	void Render(HDC dc); // 이건 제출 할때 지우기
 public:
 	void EnterCollision(Collider* other);
 	void ExitCollision(Collider* other);

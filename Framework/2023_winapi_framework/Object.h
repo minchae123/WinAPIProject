@@ -6,9 +6,6 @@ class Object
 public:
 	Object();
 	virtual ~Object();
-//public:	// 크기, 위치
-	//POINT m_ptPos;
-	//POINT m_ptScale;
 public:
 	virtual void Update();
 	virtual void FinalUpdate() final;

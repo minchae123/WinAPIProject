@@ -10,8 +10,6 @@ Collider::Collider()
 	, _check(0)
 	, _finalPos{}
 {
-	//Collider a, b;
-	//a = b;
 }
 
 Collider::Collider(const Collider& origin)
@@ -29,9 +27,6 @@ Collider::~Collider()
 
 void Collider::Render(HDC dc)
 {
-	//Core::GetInst()->GetPen(PEN_TYPE::GREEN);
-	//Core::GetInst()->GetBrush(BRUSH_TYPE::HOLLOW);
-	//SelectObject();
 	PEN_TYPE ePen = PEN_TYPE::GREEN;
 	if (_check)
 		ePen = PEN_TYPE::RED;
