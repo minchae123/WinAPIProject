@@ -10,6 +10,8 @@ Object::Object()
 	, _scale{}
 	, _isAlive(true)
 	, _pAnimator(nullptr)
+	, _clampMin(Vector2(100, 100))
+	, _clampMax(Vector2(900,500))
 {
 }
 

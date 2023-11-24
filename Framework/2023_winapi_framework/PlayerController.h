@@ -15,5 +15,7 @@ private:
     void CreateBullet();
 private:
     Texture* _texture;
+    float _moveSpeed;
+    Vector2 _rightVec;
 };
 
