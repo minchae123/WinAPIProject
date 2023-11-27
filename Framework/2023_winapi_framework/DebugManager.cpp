@@ -13,6 +13,5 @@ void DebugManager::Render(HDC dc)
 
 void DebugManager::SetLog(wstring log)
 {
-	_mapLog.insert(_mapLog.end(), { log, 130 + cnt * 15 });
-	cnt++;
+	_mapLog.insert(_mapLog.end(), { log, 130 + cnt++ * 15 });
 }

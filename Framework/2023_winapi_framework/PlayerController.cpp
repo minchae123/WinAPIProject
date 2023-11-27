@@ -70,15 +70,14 @@ void PlayerController::CreateBullet()
 {
 	POINT point;
 	GetCursorPos(&point);
-	wstring x = std::to_wstring((int)point.x);
-	wstring y = std::to_wstring((int)point.y);
-	DebugLog(x + L" " + y);
 	Vector2 pos = GetPos();
+	wstring dirX = std::to_wstring((int)point.x - pos.x);
+	wstring dirY = std::to_wstring((int)point.y - pos.y);
+	DebugLog(dirX + L" " + dirY);
 	Vector2 dir = Vector2(point.x - pos.x, point.y - pos.y);
 	//DebugManager::GetInstance()->SetLog();
 	Bullet* newBullet = new Bullet;
-	Vector2 bulletPos = GetPos();
-	newBullet->SetPos(bulletPos);
+	newBullet->SetPos(pos);
 	newBullet->SetScale(Vector2(25.f, 25.f));
 	newBullet->SetDir(dir);
 	newBullet->SetName(L"PlayerBullet");
