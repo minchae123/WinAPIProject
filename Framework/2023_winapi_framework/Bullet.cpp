@@ -21,6 +21,11 @@ void Bullet::Update()
 	Vector2 vPos = GetPos();
 	vPos.x += 500.f * DeltaTime * m_vDir.x;
 	vPos.y += 500.f * DeltaTime * m_vDir.y;
+	/*vPos.x += 500.f * DeltaTime * cosf(m_fTheta);
+	vPos.y += 500.f * DeltaTime * sinf(m_fTheta);*/
+	/*vPos.x += 500.f * DeltaTime * m_vDir.x;
+	vPos.y += 500.f * DeltaTime * m_vDir.y;*/
+
 	SetPos(vPos);
 }
 

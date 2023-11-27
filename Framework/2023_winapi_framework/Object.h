@@ -19,6 +19,8 @@ public:
 	void SetScale(Vector2 scale) { _scale = scale; }
 	const Vector2& GetPos() const { return _pos; }
 	const Vector2& GetScale() const { return _scale; }
+	const Vector2& GetClampMin() const { return _clampMin; }
+	const Vector2& GetClampMax() const { return _clampMax; }
 	Collider* GetCollider() const 
 	{ return _pCollider; }
 	Animator* GetAnimator()
@@ -37,6 +39,8 @@ public:
 private:
 	Vector2 _pos; // 위치
 	Vector2 _scale; // 크기
+	Vector2 _clampMin;
+	Vector2 _clampMax;
 	Collider* _pCollider;
 	wstring _name; // 이름.
 	bool _isAlive;
