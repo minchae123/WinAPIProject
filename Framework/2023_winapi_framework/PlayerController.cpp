@@ -61,7 +61,6 @@ void PlayerController::Move()
 	if (KEY_DOWN(KEY_TYPE::SPACE))
 	{
 		CreateBullet();
-		DebugLog(L"È÷È÷¹ß½Î");
 	}
 	//pos.x = std::clamp(pos.y, _clampMin.y, _clampMax.y);
 	SetPos(pos);
