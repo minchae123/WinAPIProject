@@ -2,6 +2,7 @@
 #include "SceneMgr.h"
 #include "Start_Scene.h"
 #include "Game_Scene.h"
+#include "DebugManager.h"
 
 void SceneManager::Init()
 {
@@ -23,6 +24,7 @@ void SceneManager::Update()
 void SceneManager::Render(HDC dc)
 {
 	_pCurScene->Render(dc);
+	DebugManager::GetInstance()->Render(dc);
 }
 
 void SceneManager::LoadScene(const wstring& scenename)
