@@ -8,6 +8,8 @@
 #include "Collider.h"
 #include "Animator.h"
 #include "Animation.h"
+#include "DebugManager.h"
+#include <string>
 
 PlayerController::PlayerController()
 	: _texture(nullptr)
@@ -30,33 +32,36 @@ void PlayerController::Render(HDC dc)
 	Vector2 pos = GetPos();
 	Vector2 scale = GetScale();
 
+	Rectangle(dc, GetClampMin().x, GetClampMin().y, GetClampMax().x, GetClampMax().y);
 	RECT_RENDER(pos.x, pos.y, scale.x, scale.y, dc);
 }
 
 void PlayerController::Move()
 {
 	Vector2 pos = GetPos();
+	Vector2 scale = GetScale();
 
 	if (KEY_PRESS(KEY_TYPE::LEFT))
 	{
 		//pos.x -= _moveSpeed * DeltaTime;
-		pos.x = std::clamp(pos.x - _moveSpeed * DeltaTime, GetClampMin().x, GetClampMax().x);
+		pos.x = std::clamp(pos.x - _moveSpeed * DeltaTime, GetClampMin().x + scale.x / 2, GetClampMax().x - scale.x / 2);
 	}
 	if (KEY_PRESS(KEY_TYPE::RIGHT))
 	{
-		pos.x = std::clamp(pos.x + _moveSpeed * DeltaTime, GetClampMin().x, GetClampMax().x);
+		pos.x = std::clamp(pos.x + _moveSpeed * DeltaTime, GetClampMin().x + scale.x / 2, GetClampMax().x - scale.x / 2);
 	}
 	if (KEY_PRESS(KEY_TYPE::UP))
 	{
-		pos.y = std::clamp(pos.y - _moveSpeed * DeltaTime, GetClampMin().y, GetClampMax().y);
+		pos.y = std::clamp(pos.y - _moveSpeed * DeltaTime, GetClampMin().y + scale.y / 2, GetClampMax().y - scale.y / 2);
 	}
 	if (KEY_PRESS(KEY_TYPE::DOWN))
 	{
-		pos.y = std::clamp(pos.y + _moveSpeed * DeltaTime, GetClampMin().y, GetClampMax().y);
+		pos.y = std::clamp(pos.y + _moveSpeed * DeltaTime, GetClampMin().y + scale.y / 2, GetClampMax().y - scale.y / 2);
 	}
 	if (KEY_DOWN(KEY_TYPE::SPACE))
 	{
 		CreateBullet();
+		DebugLog(L"È÷È÷¹ß½Î");
 	}
 	//pos.x = std::clamp(pos.y, _clampMin.y, _clampMax.y);
 	SetPos(pos);
@@ -66,8 +71,12 @@ void PlayerController::CreateBullet()
 {
 	POINT point;
 	GetCursorPos(&point);
+	wstring x = std::to_wstring((int)point.x);
+	wstring y = std::to_wstring((int)point.y);
+	DebugLog(x + L" " + y);
 	Vector2 pos = GetPos();
 	Vector2 dir = Vector2(point.x - pos.x, point.y - pos.y);
+	//DebugManager::GetInstance()->SetLog();
 	Bullet* newBullet = new Bullet;
 	Vector2 bulletPos = GetPos();
 	newBullet->SetPos(bulletPos);

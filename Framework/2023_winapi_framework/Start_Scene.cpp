@@ -8,6 +8,7 @@
 #include "CollisionMgr.h"
 #include "ResMgr.h"
 #include "PlayerController.h"
+#include "DebugManager.h"
 
 void Start_Scene::Init()
 {
