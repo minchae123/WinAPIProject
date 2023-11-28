@@ -17,5 +17,19 @@ void PatternMgr::HeartPattern()
         float y = cos(angle) * cos(angle) * cos(angle);
         Vector2 dir = { x,y };
         int a = 0;
+
+        for (int i = 0; i < 10; i++)
+        {
+            float angle = i;
+            float radians = Deg2Rad(angle);
+        
+            float x = radius * cos(radians);
+            float y = radius * sin(radians);
+        
+             // 계산된 방향으로 발사
+            Vector2 direction = {cos(radians), sin(radians)};
+        }
+
+
     }
 }
