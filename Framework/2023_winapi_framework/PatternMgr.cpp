@@ -1,35 +1,70 @@
 #include "pch.h"
 #include "PatternMgr.h"
 #include "define.h"
+#include "Bullet.h"
+#include "SceneMgr.h"
+#include "Scene.h"
+#include "TimeMgr.h"
+#include "DebugManager.h"
+#include "KeyMgr.h"
+
 void PatternMgr::Init()
 {
-    HeartPattern();
+	//HeartPattern();
+	//SpreadPattern(10);
 }
+
 void PatternMgr::Update()
 {
+	if (KEY_DOWN(KEY_TYPE::LEFT))
+		HeartPattern();
 }
+
+void PatternMgr::CreateBullet(float angle, Vector2 pos)
+{
+	Bullet* pBullet = new Bullet;
+	Vector2 vBulletPos = pos;
+	pBullet->SetPos(vBulletPos);
+	pBullet->SetScale(Vector2(25.f, 25.f));
+	pBullet->SetDir(angle);
+	pBullet->SetName(L"Enemy_Bullet");
+	SceneManager::GetInstance()->GetCurScene()->AddObject(pBullet, OBJECT_GROUP::BULLET);
+}
+
+void PatternMgr::CreateBullet(Vector2 dir, Vector2 pos)
+{
+	Bullet* pBullet = new Bullet;
+	Vector2 vBulletPos = pos;
+	pBullet->SetPos(vBulletPos);
+	pBullet->SetScale(Vector2(25.f, 25.f));
+	pBullet->SetDir(dir);
+	pBullet->SetName(L"Enemy_Bullet");
+	SceneManager::GetInstance()->GetCurScene()->AddObject(pBullet, OBJECT_GROUP::BULLET);
+}
+
 void PatternMgr::HeartPattern()
 {
-    for (int i = 0; i < 360; i += 10)
-    {
-        float angle = Deg2Rad(i);
-        float x = sin(angle) * sin(angle) * sin(angle);
-        float y = cos(angle) * cos(angle) * cos(angle);
-        Vector2 dir = { x,y };
-        int a = 0;
+	if(TimeManager::GetInstance()->TimePass(10))
+		CreateBullet({ 0,2 }, { 500,500 });		
+	//CreateBullet({ 2,3 }, { 500,500 });
+	//CreateBullet({ -2,3 }, { 500,500 });
+	//CreateBullet({ 4,2 }, { 500,500 });
+	//CreateBullet({ -4,2 }, { 500,500 });
+	//CreateBullet({ 4,0 }, { 500,500 });
+	//CreateBullet({ -4,0 }, { 500,500 });
+	//CreateBullet({ 2,-2 }, { 500,500 });
+	//CreateBullet({ -2,-2 }, { 500,500 });
+	//CreateBullet({ 0,-4 }, { 500,500 });
+	// 각 점마다 스피드 설정 필요함
+}
 
-        for (int i = 0; i < 10; i++)
-        {
-            float angle = i;
-            float radians = Deg2Rad(angle);
-        
-            float x = radius * cos(radians);
-            float y = radius * sin(radians);
-        
-             // 계산된 방향으로 발사
-            Vector2 direction = {cos(radians), sin(radians)};
-        }
-
-
-    }
+void PatternMgr::SpreadPattern(int count)
+{
+	for (int i = 0; i < count; i++)
+	{
+		float angle = (360 / count) * i;
+		float rad = Deg2Rad(angle);
+		CreateBullet(rad, { 500, 500 });
+		int a = 0;
+	}
 }

@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "TimeMgr.h"
 #include "Core.h"
+#include "DebugManager.h"
 //#include <chrono> // ns
 void TimeManager::Init()
 {
@@ -42,6 +43,17 @@ void TimeManager::Update()
 		//wsprintf();
 		//SetWindowText(Core::GetInst()->GetHwnd(), titlebuf);
 	}
+}
 
-
+bool TimeManager::TimePass(float duration)
+{
+	float time = 0;
+	while (time <= duration)
+	{
+		int a = 0;
+		time += _deltaTime;
+		continue;
+	}
+	DebugManager::GetInstance()->SetLog(L" Áö³²");
+	return true;
 }

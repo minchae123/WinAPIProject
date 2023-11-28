@@ -18,5 +18,8 @@ private:
 	UINT  _fps; // FPS
 	UINT  _frameCount; // 프레임 호출 체크
 	float _accFrameTime; // 시간 누적
+
+public:
+	bool TimePass(float duration);
 };
 

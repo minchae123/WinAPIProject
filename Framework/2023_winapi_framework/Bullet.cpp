@@ -19,10 +19,10 @@ Bullet::~Bullet()
 void Bullet::Update()
 {
 	Vector2 pos = GetPos();
-	pos.x += 500.f * DeltaTime * m_vDir.x;
-	pos.y += 500.f * DeltaTime * m_vDir.y;
-	/*vPos.x += 500.f * DeltaTime * cosf(m_fTheta);
-	vPos.y += 500.f * DeltaTime * sinf(m_fTheta);*/
+	pos.x += 5.f * DeltaTime * m_vDir.x;
+	pos.y += 5.f * DeltaTime * m_vDir.y;
+	//pos.x += 100.f * DeltaTime * cosf(m_fTheta);
+	//pos.y += 100.f * DeltaTime * sinf(m_fTheta);
 	/*vPos.x += 500.f * DeltaTime * m_vDir.x;
 	vPos.y += 500.f * DeltaTime * m_vDir.y;*/
 
