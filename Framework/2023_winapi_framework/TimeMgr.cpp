@@ -54,6 +54,5 @@ bool TimeManager::TimePass(float duration)
 		time += _deltaTime;
 		continue;
 	}
-	DebugManager::GetInstance()->SetLog(L" Áö³²");
 	return true;
 }

@@ -44,8 +44,7 @@ void PatternMgr::CreateBullet(Vector2 dir, Vector2 pos)
 
 void PatternMgr::HeartPattern()
 {
-	if(TimeManager::GetInstance()->TimePass(10))
-		CreateBullet({ 0,2 }, { 500,500 });		
+	CreateBullet({ 0,2 }, { 500,500 });		
 	//CreateBullet({ 2,3 }, { 500,500 });
 	//CreateBullet({ -2,3 }, { 500,500 });
 	//CreateBullet({ 4,2 }, { 500,500 });
