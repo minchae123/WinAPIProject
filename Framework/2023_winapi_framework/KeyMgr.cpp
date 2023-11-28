@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "KeyMgr.h"
 #include "Core.h"
+#include "DebugManager.h"
 
 void KeyManager::Init()
 {

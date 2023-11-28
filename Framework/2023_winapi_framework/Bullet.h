@@ -1,5 +1,6 @@
 #pragma once
 #include "Object.h"
+#include "DebugManager.h"
 class Texture;
 class Bullet :
     public Object
@@ -10,6 +11,8 @@ public:
 public:
     void Update() override;
     void Render(HDC _dc) override;
+    void Reflect();
+public:
     void SetDir(float _f) { m_fTheta = _f; }
     void SetDir(Vector2 _vDir) 
     { 

@@ -65,8 +65,8 @@
     <Filter Include="Engine\04. Object\AddObject">
       <UniqueIdentifier>{ea0baf00-711f-43d5-8ef0-23d657bc9ad4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\03. Manager\PatternManager">
-      <UniqueIdentifier>{c1705add-4d93-4604-a5f5-e923a89efc03}</UniqueIdentifier>
+    <Filter Include="Engine\03. Manager\DebugManager">
+      <UniqueIdentifier>{4422f890-318a-4bf0-9520-94e47efaa115}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -163,8 +163,8 @@
     <ClInclude Include="PlayerController.h">
       <Filter>Engine\04. Object\AddObject</Filter>
     </ClInclude>
-    <ClInclude Include="PatternMgr.h">
-      <Filter>Engine\03. Manager\PatternManager</Filter>
+    <ClInclude Include="DebugManager.h">
+      <Filter>Engine\03. Manager\DebugManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -256,8 +256,8 @@
     <ClCompile Include="PlayerController.cpp">
       <Filter>Engine\04. Object\AddObject</Filter>
     </ClCompile>
-    <ClCompile Include="PatternMgr.cpp">
-      <Filter>Engine\03. Manager\PatternManager</Filter>
+    <ClCompile Include="DebugManager.cpp">
+      <Filter>Engine\03. Manager\DebugManager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

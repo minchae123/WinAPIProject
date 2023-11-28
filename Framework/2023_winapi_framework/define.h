@@ -22,6 +22,7 @@ public:							\
 #define KEY_UP(key) KEY_CHECK(key, KEY_STATE::UP)
 #define KEY_DOWN(key) KEY_CHECK(key, KEY_STATE::DOWN)
 #define KEY_PRESS(key) KEY_CHECK(key, KEY_STATE::PRESS)
-
 #define Rad2Deg(rad) rad * (180 / M_PI)
 #define Deg2Rad(deg) deg * (M_PI / 180)
+#define DebugLog(value) DebugManager::GetInstance()->SetLog(value)
+
