@@ -33,11 +33,11 @@ void Bullet::Update()
 	*/
 
 	if (pos.x < GetClampMin().x || pos.x > GetClampMax().x ||
-		pos.y < GetClampMin().y || pos.y > GetClampMax().y)
+		pos.y < GetClampMin().y || pos.y > GetClampMax().y )
 	{
 		Reflect();
+		DebugLog(Text(pos.x) + L" " + Text(pos.y));
 	}
-
 	SetPos(pos);
 }
 
