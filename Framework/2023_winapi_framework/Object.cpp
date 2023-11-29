@@ -11,7 +11,7 @@ Object::Object()
 	, _isAlive(true)
 	, _pAnimator(nullptr)
 	, _clampMin(Vector2(100, 100))
-	, _clampMax(Vector2(900,500))
+	, _clampMax(Vector2(900, 600))
 {
 }
 
@@ -56,7 +56,6 @@ void Object::Render(HDC dc)
 {
 	/*Vec2 vPos = m_obj.GetPos();
 	Vec2 vScale = m_obj.GetScale();*/
-	RECT_RENDER(_pos.x, _pos.y, _scale.x, _scale.y, dc);
 	Component_Render(dc);
 }
 

@@ -23,3 +23,4 @@ public:							\
 #define KEY_DOWN(key) KEY_CHECK(key, KEY_STATE::DOWN)
 #define KEY_PRESS(key) KEY_CHECK(key, KEY_STATE::PRESS)
 #define DebugLog(value) DebugManager::GetInstance()->SetLog(value)
+#define Text(value) std::to_wstring(value)

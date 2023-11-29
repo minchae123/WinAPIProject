@@ -13,16 +13,18 @@ public:
     void Render(HDC _dc) override;
     void Reflect();
 public:
-    void SetDir(float _f) { m_fTheta = _f; }
+    void SetDir(float _f) { _theta = _f; }
     void SetDir(Vector2 _vDir) 
     { 
-        m_vDir = _vDir; 
-        m_vDir.Normalize();
+        _dir = _vDir; 
+        _dir.Normalize();
     }
+    void SetSpeed(float speed) { _moveSpeed = speed; }
 private:
 //    float m_fDir; // 총알 방향(-1 위, 1 아래);
-    float m_fTheta; // 삼각함수 방향.
-    Vector2 m_vDir;
-    Texture* m_pTex;
+    float _theta; // 삼각함수 방향.
+    float _moveSpeed;
+    Vector2 _dir;
+    Texture* _texture;
 };
 
