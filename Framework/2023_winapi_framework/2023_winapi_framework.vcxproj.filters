@@ -166,6 +166,9 @@
     <ClInclude Include="DebugManager.h">
       <Filter>Engine\03. Manager\DebugManager</Filter>
     </ClInclude>
+    <ClInclude Include="Wall.h">
+      <Filter>Engine\04. Object\AddObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -258,6 +261,9 @@
     </ClCompile>
     <ClCompile Include="DebugManager.cpp">
       <Filter>Engine\03. Manager\DebugManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall.cpp">
+      <Filter>Engine\04. Object\AddObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

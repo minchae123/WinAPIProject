@@ -9,14 +9,16 @@
 #include "ResMgr.h"
 #include "PlayerController.h"
 #include "DebugManager.h"
+#include "Wall.h"
 
 void Start_Scene::Init()
 {
+	Object* wObj = new Wall;
+	AddObject(wObj, OBJECT_GROUP::WALL);
 	Object* pObj = new PlayerController;
 	pObj->SetPos((Vector2({Core::GetInstance()->GetResolution().x /2, Core::GetInstance()->GetResolution().y / 2})));
-	pObj->SetScale(Vector2(100.f,100.f));
+	pObj->SetScale(Vector2(30.f,30.f));
 	AddObject(pObj, OBJECT_GROUP::PLAYER);
-
 	// 몬스터 세팅 마구마구 배치를 해봅시다.
 
 	//Vector2 vResolution = Core::GetInstance()->GetResolution();
@@ -39,6 +41,7 @@ void Start_Scene::Init()
 	//	AddObject(pMonster, OBJECT_GROUP::MONSTER);
 	//}
 	// 사운드 세팅
+
 	ResourceManager::GetInstance()->LoadSound(L"BGM", L"Sound\\Retro_bgm.wav", true);
 	ResourceManager::GetInstance()->LoadSound(L"Shoot", L"Sound\\laserShoot.wav", false);
 	ResourceManager::GetInstance()->Play(L"BGM");
@@ -55,7 +58,7 @@ void Start_Scene::Update()
 }
 
 void Start_Scene::Render(HDC _dc)
-{
+{	
 	Scene::Render(_dc);
 }
 

@@ -23,6 +23,7 @@ enum class KEY_TYPE
 enum class OBJECT_GROUP
 {
 	DEFAULT,
+	WALL,
 	PLAYER,
 	BULLET,
 	MONSTER,

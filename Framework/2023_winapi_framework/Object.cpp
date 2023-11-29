@@ -11,7 +11,7 @@ Object::Object()
 	, _isAlive(true)
 	, _pAnimator(nullptr)
 	, _clampMin(Vector2(100, 100))
-	, _clampMax(Vector2(900,500))
+	, _clampMax(Vector2(900, 600))
 {
 }
 
@@ -38,6 +38,12 @@ void Object::CreateAnimator()
 
 void Object::Update()
 {
+	//Vec2 vPos = m_obj.GetPos();
+
+//	if (GetAsyncKeyState(VK_LEFT) & 0x8000)
+//	if(KeyMgr::GetInst()->GetKey(KEY_TYPE::LEFT) == KEY_STATE::UP)
+
+	//m_obj.SetPos(vPos);
 }
 
 void Object::FinalUpdate()
@@ -48,7 +54,8 @@ void Object::FinalUpdate()
 
 void Object::Render(HDC dc)
 {
-	RECT_RENDER(_pos.x, _pos.y, _scale.x, _scale.y, dc);
+	/*Vec2 vPos = m_obj.GetPos();
+	Vec2 vScale = m_obj.GetScale();*/
 	Component_Render(dc);
 }
 

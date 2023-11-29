@@ -9,6 +9,7 @@
 #include "Animator.h"
 #include "Animation.h"
 #include "DebugManager.h"
+#include "KeyMgr.h"
 #include <string>
 
 PlayerController::PlayerController()
@@ -32,8 +33,8 @@ void PlayerController::Render(HDC dc)
 	Vector2 pos = GetPos();
 	Vector2 scale = GetScale();
 
-	Rectangle(dc, GetClampMin().x, GetClampMin().y, GetClampMax().x, GetClampMax().y);
 	RECT_RENDER(pos.x, pos.y, scale.x, scale.y, dc);
+	Component_Render(dc);
 }
 
 void PlayerController::Move()
@@ -68,14 +69,9 @@ void PlayerController::Move()
 
 void PlayerController::CreateBullet()
 {
-	POINT point;
-	GetCursorPos(&point);
+	Vector2 mousePos = KeyManager::GetInstance()->GetMousePos();
 	Vector2 pos = GetPos();
-	wstring dirX = std::to_wstring((int)point.x - pos.x);
-	wstring dirY = std::to_wstring((int)point.y - pos.y);
-	DebugLog(dirX + L" " + dirY);
-	Vector2 dir = Vector2(point.x - pos.x, point.y - pos.y);
-	//DebugManager::GetInstance()->SetLog();
+	Vector2 dir = Vector2(mousePos.x - pos.x, mousePos.y - pos.y);
 	Bullet* newBullet = new Bullet;
 	newBullet->SetPos(pos);
 	newBullet->SetScale(Vector2(25.f, 25.f));
