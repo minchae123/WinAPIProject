@@ -13,6 +13,7 @@ Bullet::Bullet()
 	, _dir(Vector2(0.f,0.f))
 	, _texture(nullptr)
 	, _moveSpeed(500.f)
+	, _test(true)
 {
 	_texture = ResourceManager::GetInstance()->TexLoad(L"Bullet", L"Texture\\Bullet.bmp");
 	CreateCollider();
@@ -27,13 +28,15 @@ void Bullet::Update()
 	Vector2 pos = GetPos();
 	pos.x += _moveSpeed * DeltaTime * _dir.x;
 	pos.y += _moveSpeed * DeltaTime * _dir.y;
+	pos = Vector2(std::clamp(pos.x, GetClampMin().x, GetClampMax().x)
+		, std::clamp(pos.y, GetClampMin().y, GetClampMax().y));
 	/*
 	pos.x += _moveSpeed * DeltaTime * cosf(m_fTheta);
 	pos.y += _moveSpeed * DeltaTime * sinf(m_fTheta);
 	*/
 
-	if (pos.x < GetClampMin().x || pos.x > GetClampMax().x ||
-		pos.y < GetClampMin().y || pos.y > GetClampMax().y )
+	if (pos.x <= GetClampMin().x || pos.x >= GetClampMax().x ||
+		pos.y <= GetClampMin().y || pos.y >= GetClampMax().y )
 	{
 		Reflect();
 		DebugLog(Text(pos.x) + L" " + Text(pos.y));
@@ -60,8 +63,8 @@ void Bullet::Reflect()
 	Vector2 normal = GetPos();
 	Vector2 clampMin = GetClampMin();
 	Vector2 clampMax = GetClampMax();
- 	normal = Vector2(std::clamp(normal.x, clampMin.x, clampMax.x)
-				, std::clamp(normal.y, clampMin.y, clampMax.y));
+ 	/*normal = Vector2(std::clamp(normal.x, clampMin.x, clampMax.x)
+				, std::clamp(normal.y, clampMin.y, clampMax.y));*/
 
 	if (normal.x == clampMin.x || normal.x == clampMax.x)
 	{

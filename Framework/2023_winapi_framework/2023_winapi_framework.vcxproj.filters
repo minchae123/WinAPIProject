@@ -68,6 +68,9 @@
     <Filter Include="Engine\03. Manager\DebugManager">
       <UniqueIdentifier>{4422f890-318a-4bf0-9520-94e47efaa115}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\03. Manager\PaternManager">
+      <UniqueIdentifier>{b4200277-cda9-4284-8e00-52e6b4f26c5d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -169,6 +172,12 @@
     <ClInclude Include="Wall.h">
       <Filter>Engine\04. Object\AddObject</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Engine\04. Object\AddObject</Filter>
+    </ClInclude>
+    <ClInclude Include="PatternMgr.h">
+      <Filter>Engine\03. Manager\PaternManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -264,6 +273,12 @@
     </ClCompile>
     <ClCompile Include="Wall.cpp">
       <Filter>Engine\04. Object\AddObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Engine\04. Object\AddObject</Filter>
+    </ClCompile>
+    <ClCompile Include="PatternMgr.cpp">
+      <Filter>Engine\03. Manager\PaternManager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -26,5 +26,6 @@ private:
     float _moveSpeed;
     Vector2 _dir;
     Texture* _texture;
+    bool _test;
 };
 

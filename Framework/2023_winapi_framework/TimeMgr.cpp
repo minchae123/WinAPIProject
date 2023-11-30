@@ -2,6 +2,7 @@
 #include "TimeMgr.h"
 #include "Core.h"
 #include "DebugManager.h"
+#include <time.h>
 //#include <chrono> // ns
 void TimeManager::Init()
 {
@@ -45,14 +46,7 @@ void TimeManager::Update()
 	}
 }
 
-bool TimeManager::TimePass(float duration)
+void TimeManager::TimePass(float duration, bool &result)
 {
-	float time = 0;
-	while (time <= duration)
-	{
-		int a = 0;
-		time += _deltaTime;
-		continue;
-	}
-	return true;
+	
 }

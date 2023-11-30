@@ -20,6 +20,6 @@ private:
 	float _accFrameTime; // 시간 누적
 
 public:
-	bool TimePass(float duration);
+	void TimePass(float duration, bool& result);
 };
 
