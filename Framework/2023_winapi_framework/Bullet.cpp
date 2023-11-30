@@ -39,7 +39,6 @@ void Bullet::Update()
 		pos.y <= GetClampMin().y || pos.y >= GetClampMax().y )
 	{
 		Reflect();
-		DebugLog(Text(pos.x) + L" " + Text(pos.y));
 	}
 	SetPos(pos);
 }
@@ -63,8 +62,6 @@ void Bullet::Reflect()
 	Vector2 normal = GetPos();
 	Vector2 clampMin = GetClampMin();
 	Vector2 clampMax = GetClampMax();
- 	/*normal = Vector2(std::clamp(normal.x, clampMin.x, clampMax.x)
-				, std::clamp(normal.y, clampMin.y, clampMax.y));*/
 
 	if (normal.x == clampMin.x || normal.x == clampMax.x)
 	{

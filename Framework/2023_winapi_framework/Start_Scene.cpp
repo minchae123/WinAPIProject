@@ -10,6 +10,7 @@
 #include "PlayerController.h"
 #include "DebugManager.h"
 #include "Wall.h"
+#include "Enemy.h"
 
 void Start_Scene::Init()
 {
@@ -19,7 +20,11 @@ void Start_Scene::Init()
 	pObj->SetPos((Vector2({Core::GetInstance()->GetResolution().x /2, Core::GetInstance()->GetResolution().y / 2})));
 	pObj->SetScale(Vector2(30.f,30.f));
 	AddObject(pObj, OBJECT_GROUP::PLAYER);
-	// 몬스터 세팅 마구마구 배치를 해봅시다.
+	
+	Object* enemyObj = new Enemy;
+	enemyObj->SetPos((Vector2(100, 100)));
+	enemyObj->SetScale(Vector2(30.f, 30.f));
+	AddObject(enemyObj, OBJECT_GROUP::ENEMY);
 
 	//Vector2 vResolution = Core::GetInstance()->GetResolution();
 	//Monster* pMonster = nullptr;

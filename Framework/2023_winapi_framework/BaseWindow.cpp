@@ -2,6 +2,8 @@
 #include "BaseWindow.h"
 #include "Resource.h"
 #include "Core.h"
+#include <time.h>
+
 BaseWindow::BaseWindow(POINT ptResolution)
 	: _hWnd(0)
 	, _instance(0)
@@ -16,6 +18,7 @@ BaseWindow::~BaseWindow()
 int BaseWindow::Run(HINSTANCE hInst, LPWSTR lpCmdline, int nCmdShow)
 {
     //this->m_hWnd;
+    srand((unsigned int)time(NULL));
     _instance = hInst;
     this->MyRegisterClass();
     this->WindowCreate();

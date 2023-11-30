@@ -12,10 +12,9 @@ public:
     void Render(HDC dc) override;
 private:
     void Move();
-    void CreateBullet();
+    void ShootBullet();
 private:
     Texture* _texture;
     float _moveSpeed;
-    Vector2 _rightVec;
 };
 

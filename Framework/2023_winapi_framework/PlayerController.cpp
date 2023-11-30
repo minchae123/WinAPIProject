@@ -15,7 +15,6 @@
 PlayerController::PlayerController()
 	: _texture(nullptr)
 	, _moveSpeed(200.f)
-	, _rightVec(Vector2(1, 0))
 {
 }
 
@@ -61,13 +60,13 @@ void PlayerController::Move()
 	}
 	if (KEY_DOWN(KEY_TYPE::SPACE))
 	{
-		CreateBullet();
+		ShootBullet();
 	}
 	//pos.x = std::clamp(pos.y, _clampMin.y, _clampMax.y);
 	SetPos(pos);
 }
 
-void PlayerController::CreateBullet()
+void PlayerController::ShootBullet()
 {
 	Vector2 mousePos = KeyManager::GetInstance()->GetMousePos();
 	Vector2 pos = GetPos();
