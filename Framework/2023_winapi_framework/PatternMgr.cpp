@@ -16,7 +16,7 @@ void PatternMgr::Init()
 
 void PatternMgr::Update()
 {
-	if (KEY_DOWN(KEY_TYPE::LEFT))
+	if (KEY_DOWN(KEY_TYPE::H))
 		HeartPattern();
 }
 

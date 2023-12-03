@@ -42,7 +42,7 @@ void Enemy::Move()
 
 void Enemy::ShootBullet()
 {
-	Object* player = SceneManager::GetInstance()->GetCurScene()->GetGroupObject(OBJECT_GROUP::PLAYER)[0];
+	/*Object* player = SceneManager::GetInstance()->GetCurScene()->GetGroupObject(OBJECT_GROUP::PLAYER)[0];
 	Vector2 playerPos = player->GetPos();
 	Vector2 pos = GetPos();
 	Vector2 dir = Vector2(playerPos.x - pos.x, playerPos.y - pos.y);
@@ -51,5 +51,5 @@ void Enemy::ShootBullet()
 	newBullet->SetScale(Vector2(25.f, 25.f));
 	newBullet->SetDir(dir);
 	newBullet->SetName(L"EnemyBullet");
-	SceneManager::GetInstance()->GetCurScene()->AddObject(newBullet, OBJECT_GROUP::BULLET);
+	SceneManager::GetInstance()->GetCurScene()->AddObject(newBullet, OBJECT_GROUP::BULLET);*/
 }

@@ -71,7 +71,7 @@ void Player::Update()
 	}
 	if (KEY_DOWN(KEY_TYPE::SPACE))
 	{
-		CreateBullet();
+		//CreateBullet();
 		ResourceManager::GetInstance()->Play(L"Shoot");
 	}
 	if(KEY_PRESS(KEY_TYPE::CTRL))

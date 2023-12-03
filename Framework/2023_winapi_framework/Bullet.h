@@ -1,4 +1,3 @@
-#pragma once
 #include "Object.h"
 #include "DebugManager.h"
 class Texture;
@@ -20,6 +19,7 @@ public:
         _dir.Normalize();
     }
     void SetSpeed(float speed) { _moveSpeed = speed; }
+    void SetObj(Object* obj) { _shootObj = obj; }
 private:
 //    float m_fDir; // 총알 방향(-1 위, 1 아래);
     float _theta; // 삼각함수 방향.
@@ -27,5 +27,7 @@ private:
     Vector2 _dir;
     Texture* _texture;
     bool _test;
+    Object* _shootObj;
+    int _cnt;
 };
 

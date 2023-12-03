@@ -58,6 +58,7 @@ void PlayerController::Move()
 	{
 		pos.y = std::clamp(pos.y + _moveSpeed * DeltaTime, GetClampMin().y + scale.y / 2, GetClampMax().y - scale.y / 2);
 	}
+	
 	if (KEY_DOWN(KEY_TYPE::SPACE))
 	{
 		ShootBullet();
@@ -85,5 +86,6 @@ void PlayerController::ShootBullet()
 	newBullet->SetScale(Vector2(25.f, 25.f));
 	newBullet->SetDir(dir);
 	newBullet->SetName(L"PlayerBullet");
+	newBullet->SetObj(this);
 	SceneManager::GetInstance()->GetCurScene()->AddObject(newBullet, OBJECT_GROUP::BULLET);
 }

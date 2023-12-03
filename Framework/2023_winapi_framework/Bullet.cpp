@@ -14,6 +14,7 @@ Bullet::Bullet()
 	, _texture(nullptr)
 	, _moveSpeed(500.f)
 	, _test(true)
+	, _shootObj(nullptr)
 {
 	_texture = ResourceManager::GetInstance()->TexLoad(L"Bullet", L"Texture\\Bullet.bmp");
 	CreateCollider();
@@ -25,22 +26,30 @@ Bullet::~Bullet()
 
 void Bullet::Update()
 {
-	Vector2 pos = GetPos();
-	pos.x += _moveSpeed * DeltaTime * _dir.x;
-	pos.y += _moveSpeed * DeltaTime * _dir.y;
-	pos = Vector2(std::clamp(pos.x, GetClampMin().x, GetClampMax().x)
-		, std::clamp(pos.y, GetClampMin().y, GetClampMax().y));
-	/*
-	pos.x += _moveSpeed * DeltaTime * cosf(m_fTheta);
-	pos.y += _moveSpeed * DeltaTime * sinf(m_fTheta);
-	*/
-
-	if (pos.x <= GetClampMin().x || pos.x >= GetClampMax().x ||
-		pos.y <= GetClampMin().y || pos.y >= GetClampMax().y )
+	if (_cnt >= 10)
 	{
-		Reflect();
+		EventManager::GetInstance()->DeleteObject(this);
 	}
-	SetPos(pos);
+
+	if (_shootObj != nullptr)
+	{
+		Vector2 pos = GetPos();
+		pos.x += _moveSpeed * DeltaTime * _dir.x;
+		pos.y += _moveSpeed * DeltaTime * _dir.y;
+		pos = Vector2(std::clamp(pos.x, GetClampMin().x, GetClampMax().x)
+			, std::clamp(pos.y, GetClampMin().y, GetClampMax().y));
+		/*
+		pos.x += _moveSpeed * DeltaTime * cosf(m_fTheta);
+		pos.y += _moveSpeed * DeltaTime * sinf(m_fTheta);
+		*/
+
+		if (pos.x <= GetClampMin().x || pos.x >= GetClampMax().x ||
+			pos.y <= GetClampMin().y || pos.y >= GetClampMax().y )
+		{
+			Reflect();
+		}
+		SetPos(pos);
+	}
 }
 
 void Bullet::Render(HDC _dc)
@@ -62,7 +71,7 @@ void Bullet::Reflect()
 	Vector2 normal = GetPos();
 	Vector2 clampMin = GetClampMin();
 	Vector2 clampMax = GetClampMax();
-
+	_cnt++;
 	if (normal.x == clampMin.x || normal.x == clampMax.x)
 	{
 		_dir.x *= -1;
