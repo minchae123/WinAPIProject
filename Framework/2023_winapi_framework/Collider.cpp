@@ -52,6 +52,24 @@ void Collider::StayCollision(Collider* other)
 	_ownerObject->StayCollision(other);
 }
 
+Vector2 Collider::GetHeightVector()
+{
+	float angle = _ownerObject->GetAngle();
+	float radian = angle * M_PI / 180.f;
+	float cosTheta = cosf(radian);
+	float sinTheta = sinf(radian);
+	return Vector2(-_scale.y * 0.5f * sinTheta, _scale.y * 0.5f * cosTheta);
+}
+
+Vector2 Collider::GetWidthVector()
+{
+	float angle = _ownerObject->GetAngle();
+	float radian = angle * M_PI / 180.f;
+	float cosTheta = cosf(radian);
+	float sinTheta = sinf(radian);
+	return Vector2(_scale.x * 0.5f * cosTheta, _scale.x * 0.5f * sinTheta);
+}
+
 void Collider::FinalUpdate()
 {
 	// Object위치를 따라가야 하는거야.

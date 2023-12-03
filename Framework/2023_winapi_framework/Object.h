@@ -30,6 +30,7 @@ public:
 	const wstring& GetName() const { return _name; }
 	void SetName(wstring name) { _name = name; }
 	bool GetIsDead() const { return !_isAlive; }
+	const float& GetAngle() const { return _angle; }
 private:
 	void SetDead() { _isAlive = false; }
 	friend class EventManager;
@@ -45,5 +46,8 @@ private:
 	wstring _name; // ¿Ã∏ß.
 	bool _isAlive;
 	Animator* _pAnimator;
+protected:
+	float _angle;
+	float _rotateSpeed;
 };
 

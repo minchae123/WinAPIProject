@@ -62,6 +62,15 @@ void PlayerController::Move()
 	{
 		ShootBullet();
 	}
+
+	if (KEY_PRESS(KEY_TYPE::Q))
+	{
+		_angle -= _rotateSpeed * DeltaTime;
+	}
+	if (KEY_PRESS(KEY_TYPE::E))
+	{
+		_angle += _rotateSpeed * DeltaTime;
+	}
 	//pos.x = std::clamp(pos.y, _clampMin.y, _clampMax.y);
 	SetPos(pos);
 }

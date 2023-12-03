@@ -12,6 +12,8 @@ Object::Object()
 	, _pAnimator(nullptr)
 	, _clampMin(Vector2(100, 100))
 	, _clampMax(Vector2(900, 600))
+	, _rotateSpeed(100.f)
+	, _angle(0.f)
 {
 }
 

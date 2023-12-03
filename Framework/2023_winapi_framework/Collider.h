@@ -25,6 +25,8 @@ public:
 	{ return _finalPos; }
 	const UINT& GetID() const { return _ID; }
 	const Object* GetObj() const { return _ownerObject; }
+	Vector2 GetHeightVector();
+	Vector2 GetWidthVector();
 private:
 	UINT _check;
 	Object* _ownerObject;

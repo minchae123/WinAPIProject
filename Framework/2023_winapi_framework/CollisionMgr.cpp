@@ -91,11 +91,11 @@ void CollisionManager::CollisionGroupUpdate(OBJECT_GROUP eLeft, OBJECT_GROUP eRi
 	}
 }
 
-bool CollisionManager::IsCollision(Collider* pLeft, Collider* pRight)
+bool CollisionManager::IsCollision(Collider* left, Collider* right)
 {
 	// 충돌검사 알고리즘
 	// AABB 
-	Vector2 vLeftPos = pLeft->GetFinalPos();
+	/*Vector2 vLeftPos = pLeft->GetFinalPos();
 	Vector2 vRightPos = pRight->GetFinalPos();
 	Vector2 vLeftScale = pLeft->GetScale();
 	Vector2 vRightScale = pRight->GetScale();
@@ -105,7 +105,41 @@ bool CollisionManager::IsCollision(Collider* pLeft, Collider* pRight)
 		return true;
 	}
 
-	return false;
+	return false;*/
+
+	//OBB
+	//OBB 충돌
+	Vector2 leftPos = left->GetFinalPos();
+	Vector2 rightPos = right->GetFinalPos();
+	// 1. distance를 구한다.
+	Vector2 distance = rightPos - leftPos;
+	// 2. Ah와 Aw, Bh와 Bw를 구한다.
+	Vector2 aHeight = left->GetHeightVector();
+	Vector2 aWidth = left->GetWidthVector();
+	Vector2 bHeight = right->GetHeightVector();
+	Vector2 bWidth = right->GetWidthVector();
+	// 3. 투영을 해서 d에 대한 값과 w(너비) 및 h(높이)를 이용하여 충돌이 났는지 확인한다.
+
+	// 4개의 충돌이 모두 발생햇는지 안했는지 따라서 모두 발생했으면 true 아니면 false
+	Vector2 vectors[4] = { aWidth, aHeight, bHeight, bWidth };
+	for (int i = 0; i < 4; ++i)
+	{
+		double sum = 0;
+		Vector2 normal = vectors[i].Normal(); // 정규화된 벡터를 구한다.
+		// 한 축을 중심으로 나머지 내적한 값(투명)한 것들을 다 더 한다.
+		for (int j = 0; j < 4; ++j)
+		{
+			sum += abs(vectors[j].Dot(normal));
+		}
+		// 두 점 사이의 거리를
+		float distanceVector = distance.Dot(normal);
+
+		if (abs(distanceVector) > sum)
+		{
+			return false;
+		}
+	}
+	return true;
 }
 
 void CollisionManager::CheckGroup(OBJECT_GROUP eLeft, OBJECT_GROUP eRight)

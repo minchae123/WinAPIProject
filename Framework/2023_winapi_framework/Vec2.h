@@ -11,6 +11,15 @@ public:
 	Vector2(const Vector2& _vec);
 public:
 	float Length() { return (float)(sqrt(pow(x, 2) + pow(y, 2))); }
+	Vector2 Normal()
+	{
+		float length = Length();
+		return Vector2(x / length, y / length);
+	}
+	float Dot(Vector2 other)
+	{
+		return x * other.x + y * other.y;
+	}
 	Vector2& Normalize()
 	{
 		float fLen = Length();
