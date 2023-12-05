@@ -1,6 +1,7 @@
 #pragma once
 class Collider;
 class Animator;
+class Timer;
 class Object
 {
 public:
@@ -13,6 +14,7 @@ public:
 	virtual void EnterCollision(Collider* other);
 	virtual void ExitCollision(Collider* other);
 	virtual void StayCollision(Collider* other);
+	virtual void EndTimer(Timer* timer);
 	void Component_Render(HDC dc);
 public:
 	void SetPos(Vector2 pos) { _pos = pos; }

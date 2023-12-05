@@ -36,7 +36,6 @@ void Animation::Update()
 			_curFrame = 0;
 			_accTime = 0.f;
 		}
-
 	}
 }
 

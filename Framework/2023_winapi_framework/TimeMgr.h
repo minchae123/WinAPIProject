@@ -1,4 +1,6 @@
 #pragma once
+class Object;
+class Timer;
 class TimeManager
 {
 	SINGLE(TimeManager);
@@ -20,6 +22,8 @@ private:
 	float _accFrameTime; // 시간 누적
 
 public:
-	void TimePass(float duration, bool& result);
+	void TimePass(float duration, Object* obj);
+private:
+	vector<Timer*> _vecTimer;
 };
 

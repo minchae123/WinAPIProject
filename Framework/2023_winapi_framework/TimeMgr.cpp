@@ -2,7 +2,9 @@
 #include "TimeMgr.h"
 #include "Core.h"
 #include "DebugManager.h"
-#include <time.h>
+#include "Timer.h"
+#include "Object.h"
+
 //#include <chrono> // ns
 void TimeManager::Init()
 {
@@ -44,9 +46,16 @@ void TimeManager::Update()
 		//wsprintf();
 		//SetWindowText(Core::GetInst()->GetHwnd(), titlebuf);
 	}
+
+	for (size_t i = 0; i < _vecTimer.size(); ++i)
+	{
+		_vecTimer[i]->Update();
+	}
 }
 
-void TimeManager::TimePass(float duration, bool &result)
+void TimeManager::TimePass(float duration, Object* obj)
 {
-	
+	Timer* newTimer = new Timer;
+	newTimer->SetTimer(duration, obj);
+	_vecTimer.push_back(newTimer);
 }

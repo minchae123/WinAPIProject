@@ -178,6 +178,9 @@
     <ClInclude Include="PatternMgr.h">
       <Filter>Engine\03. Manager\PaternManager</Filter>
     </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Engine\04. Object\AddObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -279,6 +282,9 @@
     </ClCompile>
     <ClCompile Include="PatternMgr.cpp">
       <Filter>Engine\03. Manager\PaternManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Engine\04. Object\AddObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

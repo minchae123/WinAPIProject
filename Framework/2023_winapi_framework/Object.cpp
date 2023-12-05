@@ -4,6 +4,7 @@
 #include "TimeMgr.h"
 #include "Collider.h"
 #include "Animator.h"
+#include "Timer.h"
 Object::Object()
 	: _pCollider(nullptr)
 	, _pos{}
@@ -72,6 +73,11 @@ void Object::ExitCollision(Collider* other)
 void Object::StayCollision(Collider* other)
 {
 
+}
+
+void Object::EndTimer(Timer* timer)
+{
+	delete(timer);
 }
 
 void Object::Component_Render(HDC dc)

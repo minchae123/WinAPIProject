@@ -36,6 +36,11 @@ void PlayerController::Render(HDC dc)
 	Component_Render(dc);
 }
 
+void PlayerController::EndTimer(Timer* timer)
+{
+	DebugLog(L"시간 끝남");
+}
+
 void PlayerController::Move()
 {
 	Vector2 pos = GetPos();
@@ -87,5 +92,6 @@ void PlayerController::ShootBullet()
 	newBullet->SetDir(dir);
 	newBullet->SetName(L"PlayerBullet");
 	newBullet->SetObj(this);
+	TimeManager::GetInstance()->TimePass(0.4f, this);
 	SceneManager::GetInstance()->GetCurScene()->AddObject(newBullet, OBJECT_GROUP::BULLET);
 }

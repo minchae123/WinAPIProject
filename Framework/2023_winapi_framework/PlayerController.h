@@ -10,6 +10,7 @@ public:
 public:
     void Update() override;
     void Render(HDC dc) override;
+    void EndTimer(Timer* timer) override;
 private:
     void Move();
     void ShootBullet();
