@@ -7,6 +7,9 @@
 #include "TimeMgr.h"
 #include "DebugManager.h"
 #include "KeyMgr.h"
+#include <coroutine>
+#include <chrono>
+#include <thread>
 
 void PatternMgr::Init()
 {
@@ -42,19 +45,10 @@ void PatternMgr::CreateBullet(Vector2 dir, Vector2 pos)
 	SceneManager::GetInstance()->GetCurScene()->AddObject(pBullet, OBJECT_GROUP::BULLET);
 }
 
+
 void PatternMgr::HeartPattern()
 {
-	CreateBullet({ 0,2 }, { 500,500 });		
-	//CreateBullet({ 2,3 }, { 500,500 });
-	//CreateBullet({ -2,3 }, { 500,500 });
-	//CreateBullet({ 4,2 }, { 500,500 });
-	//CreateBullet({ -4,2 }, { 500,500 });
-	//CreateBullet({ 4,0 }, { 500,500 });
-	//CreateBullet({ -4,0 }, { 500,500 });
-	//CreateBullet({ 2,-2 }, { 500,500 });
-	//CreateBullet({ -2,-2 }, { 500,500 });
-	//CreateBullet({ 0,-4 }, { 500,500 });
-	// 각 점마다 스피드 설정 필요함
+	CreateBullet({ 0,2 }, { 500,500 });
 }
 
 void PatternMgr::SpreadPattern(int count)
@@ -64,6 +58,5 @@ void PatternMgr::SpreadPattern(int count)
 		float angle = (360 / count) * i;
 		float rad = Deg2Rad(angle);
 		CreateBullet(rad, { 500, 500 });
-		int a = 0;
-	}
+	} 
 }
