@@ -10,7 +10,9 @@ public:
 public:
     void Update() override;
     void Render(HDC dc) override;
-    void EndTimer(Timer* timer) override;
+    virtual void EnterCollision(Collider* other) override;
+    virtual void ExitCollision(Collider* other) override;
+    virtual void StayCollision(Collider* other) override;
 private:
     void Move();
     void ShootBullet();
