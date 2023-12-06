@@ -14,13 +14,24 @@ void Intro_Scene::Update()
 {
 	Scene::Update();
 
+	if (KEY_DOWN(KEY_TYPE::UP))
+	{
+		num--;
+	}
+	if (KEY_DOWN(KEY_TYPE::DOWN))
+	{
+		num++;
+	}
+
+	num = std::clamp(num, 0, 2);
+
 	if (KEY_DOWN(KEY_TYPE::ENTER))
 	{
 		switch (num)
 		{
 		case 0: // 게임 시작
 		{
-			SceneManager::GetInstance()->LoadScene(L"Game_Scene");
+			SceneManager::GetInstance()->LoadScene(L"Start_Scene");
 		}
 			break;
 		case 1: // 게임 방법
