@@ -181,6 +181,9 @@
     <ClInclude Include="Timer.h">
       <Filter>Engine\04. Object\AddObject</Filter>
     </ClInclude>
+    <ClInclude Include="Health.h">
+      <Filter>Engine\07. Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -285,6 +288,9 @@
     </ClCompile>
     <ClCompile Include="Timer.cpp">
       <Filter>Engine\04. Object\AddObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Health.cpp">
+      <Filter>Engine\07. Component</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

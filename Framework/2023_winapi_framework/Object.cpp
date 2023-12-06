@@ -5,12 +5,15 @@
 #include "Collider.h"
 #include "Animator.h"
 #include "Timer.h"
+#include "Health.h"
+
 Object::Object()
 	: _pCollider(nullptr)
+	, _pAnimator(nullptr)
+	, _health(nullptr)
 	, _pos{}
 	, _scale{}
 	, _isAlive(true)
-	, _pAnimator(nullptr)
 	, _clampMin(Vector2(100, 100))
 	, _clampMax(Vector2(900, 600))
 	, _rotateSpeed(100.f)
@@ -24,7 +27,8 @@ Object::~Object()
 		delete _pCollider;
 	if (nullptr != _pAnimator)
 		delete _pAnimator;
-
+	if (nullptr != _health)
+		delete _health;
 }
 
 void Object::CreateCollider()
@@ -37,6 +41,12 @@ void Object::CreateAnimator()
 {
 	_pAnimator = new Animator;
 	_pAnimator->_ownerObject = this;
+}
+
+void Object::CreateHealth()
+{
+	_health = new Health;
+	_health->_ownerObject = this;
 }
 
 void Object::Update()
@@ -82,10 +92,11 @@ void Object::EndTimer(Timer* timer)
 
 void Object::Component_Render(HDC dc)
 {
+	if (nullptr != _health)
+		_health->Render(dc);
 	if (nullptr != _pCollider)
 		_pCollider->Render(dc);
 	if (nullptr != _pAnimator)
 		_pAnimator->Render(dc);
-
 }
 

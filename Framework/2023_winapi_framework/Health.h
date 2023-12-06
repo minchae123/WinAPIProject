@@ -1,0 +1,20 @@
+#pragma once
+class Object;
+class Health
+{
+public:
+	Health();
+	~Health();
+public:
+	void Update();
+	void Render(HDC dc);
+public: 
+	Object* GetObj() const { return _ownerObject; }
+	void Damage(int damage);
+	void SetHP(int hp) { _hp = hp; }
+private:
+	int _hp;
+	Object* _ownerObject;
+	friend class Object;
+};
+
