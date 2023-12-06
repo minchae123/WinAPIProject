@@ -181,8 +181,8 @@
     <ClInclude Include="Timer.h">
       <Filter>Engine\04. Object\AddObject</Filter>
     </ClInclude>
-    <ClInclude Include="Intro_Scene.h">
-      <Filter>Engine\05. Scene\MainScene</Filter>
+    <ClInclude Include="Health.h">
+      <Filter>Engine\07. Component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -289,8 +289,8 @@
     <ClCompile Include="Timer.cpp">
       <Filter>Engine\04. Object\AddObject</Filter>
     </ClCompile>
-    <ClCompile Include="Intro_Scene.cpp">
-      <Filter>Engine\05. Scene\MainScene</Filter>
+    <ClCompile Include="Health.cpp">
+      <Filter>Engine\07. Component</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

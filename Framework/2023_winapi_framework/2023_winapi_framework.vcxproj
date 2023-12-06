@@ -182,7 +182,7 @@
     <ClInclude Include="EventMgr.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Game_Scene.h" />
-    <ClInclude Include="Intro_Scene.h" />
+    <ClInclude Include="Health.h" />
     <ClInclude Include="KeyMgr.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Object.h" />
@@ -217,7 +217,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EventMgr.cpp" />
     <ClCompile Include="Game_Scene.cpp" />
-    <ClCompile Include="Intro_Scene.cpp" />
+    <ClCompile Include="Health.cpp" />
     <ClCompile Include="KeyMgr.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Monster.cpp" />

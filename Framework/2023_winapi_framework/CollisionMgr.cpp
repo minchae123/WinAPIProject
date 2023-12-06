@@ -95,21 +95,21 @@ bool CollisionManager::IsCollision(Collider* left, Collider* right)
 {
 	// 충돌검사 알고리즘
 	// AABB 
-	/*Vector2 vLeftPos = pLeft->GetFinalPos();
-	Vector2 vRightPos = pRight->GetFinalPos();
-	Vector2 vLeftScale = pLeft->GetScale();
-	Vector2 vRightScale = pRight->GetScale();
+	Vector2 vLeftPos = left->GetFinalPos();
+	Vector2 vRightPos = right->GetFinalPos();
+	Vector2 vLeftScale = left->GetScale();
+	Vector2 vRightScale = right->GetScale();
 	if (abs(vRightPos.x - vLeftPos.x) < (vLeftScale.x + vRightScale.x) / 2.f
 		&& abs(vRightPos.y - vLeftPos.y) < (vLeftScale.y + vRightScale.y) / 2.f)
 	{
 		return true;
 	}
 
-	return false;*/
+	return false;
 
 	//OBB
 	//OBB 충돌
-	Vector2 leftPos = left->GetFinalPos();
+	/*Vector2 leftPos = left->GetFinalPos();
 	Vector2 rightPos = right->GetFinalPos();
 	// 1. distance를 구한다.
 	Vector2 distance = rightPos - leftPos;
@@ -139,7 +139,7 @@ bool CollisionManager::IsCollision(Collider* left, Collider* right)
 			return false;
 		}
 	}
-	return true;
+	return true;*/
 }
 
 void CollisionManager::CheckGroup(OBJECT_GROUP eLeft, OBJECT_GROUP eRight)
