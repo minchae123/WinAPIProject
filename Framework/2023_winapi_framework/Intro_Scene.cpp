@@ -1,7 +1,9 @@
 #include "pch.h"
 #include "Intro_Scene.h"
 #include "ResMgr.h"
-
+#include "KeyMgr.h"
+#include "Scene.h"
+#include "SceneMgr.h"
 
 void Intro_Scene::Init()
 {
@@ -11,6 +13,30 @@ void Intro_Scene::Init()
 void Intro_Scene::Update()
 {
 	Scene::Update();
+
+	if (KEY_DOWN(KEY_TYPE::ENTER))
+	{
+		switch (num)
+		{
+		case 0: // 게임 시작
+		{
+			SceneManager::GetInstance()->LoadScene(L"Game_Scene");
+		}
+			break;
+		case 1: // 게임 방법
+		{
+
+		}
+			break;
+		case 2: // 게임 종료
+		{
+			PostQuitMessage(0); 
+		}
+			break;
+		default:
+			break;
+		}
+	}
 }
 
 void Intro_Scene::Render(HDC _dc)
@@ -18,8 +44,8 @@ void Intro_Scene::Render(HDC _dc)
 	Scene::Render(_dc);
 	BitBlt(_dc
 		, (int)(0)
-		, (int)(0)
-		, 1280, 720, tex->GetDC()
+		, (int)(-50)
+		, 1280, 780, tex->GetDC()
 		, 0, 0, SRCCOPY);
 }
 

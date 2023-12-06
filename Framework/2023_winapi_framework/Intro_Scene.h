@@ -12,5 +12,6 @@ public:
 
 public:
     Texture* tex;
+    int num = 0;
 };
 
