@@ -16,7 +16,7 @@ void Health::Update()
 {
 	if (_hp <= 0)
 	{
-		EventManager::GetInstance()->DeleteObject(_ownerObject);
+		//EventManager::GetInstance()->DeleteObject(_ownerObject);
 	}
 }
 
