@@ -6,12 +6,15 @@
 #include "SceneMgr.h"
 #include "Scene.h"
 #include "Player.h"
+#include "Timer.h"
+#include "TimeMgr.h"
 
 Enemy::Enemy()
 	: _texture(nullptr)
 	, _moveSpeed(200.f)
 {
 	CreateCollider();
+	TimeManager::GetInstance()->TimePass(2.f, this);
 }
 
 Enemy::~Enemy()
@@ -20,14 +23,7 @@ Enemy::~Enemy()
 
 void Enemy::Update()
 {
-	Move();
-	int r = rand() % 10000;
-
-	if (r <= 10)
-	{
-		DebugLog(L"Shoot");
-		ShootBullet();
-	}
+	
 }
 
 void Enemy::Render(HDC dc)
@@ -39,20 +35,10 @@ void Enemy::Render(HDC dc)
 	Component_Render(dc);
 }
 
-void Enemy::Move()
+void Enemy::EndTimer(Timer* timer)
 {
-	Vector2 pos = GetPos();
-
-	if (pos.x <= GetClampMin().x ||
-		pos.x >= GetClampMax().x)
-	{
-		// ªÛ«œ
-	}
-	if (pos.y <= GetClampMin().y || 
-		pos.y >= GetClampMax().y)
-	{
-		// ¡¬øÏ
-	}
+	ShootBullet();
+	TimeManager::GetInstance()->TimePass(2.f, this);
 }
 
 void Enemy::ShootBullet()

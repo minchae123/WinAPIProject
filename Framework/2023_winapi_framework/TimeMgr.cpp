@@ -14,6 +14,7 @@ void TimeManager::Init()
 	_frameCount = 0;
 	_fps = 0;
 	_accFrameTime = 0.f;
+	_currentIdx = 0;
 	// 현재 카운트의 틱을 가져온다.(지난시간)
 	// 1초 2초 이런 초가 아니야. Frequency로 알아야해.
 	QueryPerformanceCounter(&_llPrevCount);
@@ -49,13 +50,23 @@ void TimeManager::Update()
 
 	for (size_t i = 0; i < _vecTimer.size(); ++i)
 	{
-		_vecTimer[i]->Update();
+		if(_vecTimer[i]->GetOn())
+			_vecTimer[i]->Update();
 	}
 }
 
+int cnt = 0;
+
 void TimeManager::TimePass(float duration, Object* obj)
 {
+	DebugLog(Text(cnt++));
 	Timer* newTimer = new Timer;
 	newTimer->SetTimer(duration, obj);
+	newTimer->SetIdx(_currentIdx++);
 	_vecTimer.push_back(newTimer);
+}
+
+void TimeManager::PopTime(int idx)
+{
+	//_vecTimer.erase(_vecTimer.begin() + idx);
 }

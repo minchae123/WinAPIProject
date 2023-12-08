@@ -19,7 +19,7 @@ void Start_Scene::Init()
 
 	Object* pObj = new PlayerController;
 	pObj->SetPos((Vector2({Core::GetInstance()->GetResolution().x /2, Core::GetInstance()->GetResolution().y / 2})));
-	pObj->SetScale(Vector2(30.f,30.f));
+	pObj->SetScale(Vector2(100.f,100.f));
 	AddObject(pObj, OBJECT_GROUP::PLAYER);
 	
 	Object* enemyObj = new Enemy;

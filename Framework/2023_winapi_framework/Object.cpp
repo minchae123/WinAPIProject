@@ -87,7 +87,7 @@ void Object::StayCollision(Collider* other)
 
 void Object::EndTimer(Timer* timer)
 {
-	delete(timer);
+	delete timer;
 }
 
 void Object::Component_Render(HDC dc)
