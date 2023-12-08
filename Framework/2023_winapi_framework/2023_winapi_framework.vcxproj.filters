@@ -68,7 +68,7 @@
     <Filter Include="Engine\03. Manager\DebugManager">
       <UniqueIdentifier>{4422f890-318a-4bf0-9520-94e47efaa115}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\03. Manager\PaternManager">
+    <Filter Include="Engine\03. Manager\PatternManager">
       <UniqueIdentifier>{b4200277-cda9-4284-8e00-52e6b4f26c5d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -176,7 +176,7 @@
       <Filter>Engine\04. Object\AddObject</Filter>
     </ClInclude>
     <ClInclude Include="PatternMgr.h">
-      <Filter>Engine\03. Manager\PaternManager</Filter>
+      <Filter>Engine\03. Manager\PatternManager</Filter>
     </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>Engine\04. Object\AddObject</Filter>
@@ -186,6 +186,9 @@
     </ClInclude>
     <ClInclude Include="Intro_Scene.h">
       <Filter>Engine\05. Scene\MainScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Bullet.h">
+      <Filter>Engine\04. Object\MainObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -287,7 +290,7 @@
       <Filter>Engine\04. Object\AddObject</Filter>
     </ClCompile>
     <ClCompile Include="PatternMgr.cpp">
-      <Filter>Engine\03. Manager\PaternManager</Filter>
+      <Filter>Engine\03. Manager\PatternManager</Filter>
     </ClCompile>
     <ClCompile Include="Timer.cpp">
       <Filter>Engine\04. Object\AddObject</Filter>
@@ -297,6 +300,9 @@
     </ClCompile>
     <ClCompile Include="Intro_Scene.cpp">
       <Filter>Engine\05. Scene\MainScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Bullet.cpp">
+      <Filter>Engine\04. Object\MainObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

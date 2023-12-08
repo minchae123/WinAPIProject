@@ -7,42 +7,44 @@
 #include "TimeMgr.h"
 #include "DebugManager.h"
 #include "KeyMgr.h"
-#include <coroutine>
-#include <chrono>
-#include <thread>
 
 void PatternMgr::Init()
 {
 	//HeartPattern();
-	SpreadPattern(10);
+	//SpreadPattern(10);
+	//SquarePattern();
 }
 
 void PatternMgr::Update()
 {
 	if (KEY_DOWN(KEY_TYPE::H))
-		HeartPattern();
+	{
+		SquarePattern();
+	}
 }
 
 void PatternMgr::CreateBullet(float angle, Vector2 pos)
 {
-	Bullet* pBullet = new Bullet;
-	Vector2 vBulletPos = pos;
-	pBullet->SetPos(vBulletPos);
-	pBullet->SetScale(Vector2(25.f, 25.f));
-	pBullet->SetDir(angle);
-	pBullet->SetName(L"Enemy_Bullet");
-	SceneManager::GetInstance()->GetCurScene()->AddObject(pBullet, OBJECT_GROUP::BULLET);
+	Vector2 shootPos = pos;
+	Bullet* newBullet = new Bullet;
+	newBullet->SetPos(pos);
+	newBullet->SetScale(Vector2(25.f, 25.f));
+	newBullet->SetDir(angle);
+	newBullet->SetName(L"Enemy_Bullet");
+	newBullet->SetObj(nullptr);
+	SceneManager::GetInstance()->GetCurScene()->AddObject(newBullet, OBJECT_GROUP::BULLET);
 }
 
 void PatternMgr::CreateBullet(Vector2 dir, Vector2 pos)
 {
-	Bullet* pBullet = new Bullet;
-	Vector2 vBulletPos = pos;
-	pBullet->SetPos(vBulletPos);
-	pBullet->SetScale(Vector2(25.f, 25.f));
-	pBullet->SetDir(dir);
-	pBullet->SetName(L"Enemy_Bullet");
-	SceneManager::GetInstance()->GetCurScene()->AddObject(pBullet, OBJECT_GROUP::BULLET);
+	Vector2 shootPos = pos;
+	Bullet* newBullet = new Bullet;
+	newBullet->SetPos(pos);
+	newBullet->SetScale(Vector2(25.f, 25.f));
+	newBullet->SetDir(dir);
+	newBullet->SetName(L"Enemy_Bullet");
+	newBullet->SetObj(nullptr);
+	SceneManager::GetInstance()->GetCurScene()->AddObject(newBullet, OBJECT_GROUP::BULLET);
 }
 
 
@@ -58,5 +60,14 @@ void PatternMgr::SpreadPattern(int count)
 		float angle = (360 / count) * i;
 		float rad = Deg2Rad(angle);
 		CreateBullet(rad, { 500, 500 });
-	} 
+	}
 }
+
+void PatternMgr::SquarePattern()
+{
+	CreateBullet(0, { 500,500});
+	CreateBullet(90, { 500,500 });
+	CreateBullet(180, { 500,500});
+	CreateBullet(270, { 500,500 });
+}
+

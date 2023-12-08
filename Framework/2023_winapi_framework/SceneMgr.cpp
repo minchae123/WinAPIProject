@@ -14,7 +14,7 @@ void SceneManager::Init()
 	RegisterScene(L"Intro_Scene", std::make_shared<Intro_Scene>());
 
 	// Ã¹ ¾À ÁöÁ¤
-	LoadScene(L"Start_Scene");
+	LoadScene(L"Intro_Scene");
 }
 
 void SceneManager::Update()
@@ -26,7 +26,7 @@ void SceneManager::Update()
 void SceneManager::Render(HDC dc)
 {
 	_pCurScene->Render(dc);
-	DebugManager::GetInstance()->Render(dc);
+	//	xDebugManager::GetInstance()->Render(dc);
 }
 
 void SceneManager::LoadScene(const wstring& scenename)

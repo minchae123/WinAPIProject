@@ -178,6 +178,7 @@
     <ClInclude Include="DebugManager.h" />
     <ClInclude Include="define.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Enemy_Bullet.h" />
     <ClInclude Include="enums.h" />
     <ClInclude Include="EventMgr.h" />
     <ClInclude Include="framework.h" />
@@ -216,6 +217,7 @@
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="DebugManager.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Enemy_Bullet.cpp" />
     <ClCompile Include="EventMgr.cpp" />
     <ClCompile Include="Game_Scene.cpp" />
     <ClCompile Include="Health.cpp" />

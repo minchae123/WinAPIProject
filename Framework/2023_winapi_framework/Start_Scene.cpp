@@ -59,11 +59,6 @@ void Start_Scene::Init()
 void Start_Scene::Update()
 {
 	Scene::Update();
-	if (KEY_DOWN(KEY_TYPE::ENTER))
-	{
-		SceneManager::GetInstance()->LoadScene(L"Intro_Scene");
-	}
-		// ¾À º¯°æ
 }
 
 void Start_Scene::Render(HDC _dc)

@@ -31,25 +31,23 @@ void Bullet::Update()
 		EventManager::GetInstance()->DeleteObject(this);
 	}
 
-	if (_shootObj != nullptr)
-	{
-		Vector2 pos = GetPos();
-		pos.x += _moveSpeed * DeltaTime * _dir.x;
-		pos.y += _moveSpeed * DeltaTime * _dir.y;
-		pos = Vector2(std::clamp(pos.x, GetClampMin().x, GetClampMax().x)
-			, std::clamp(pos.y, GetClampMin().y, GetClampMax().y));
-		/*
-		pos.x += _moveSpeed * DeltaTime * cosf(m_fTheta);
-		pos.y += _moveSpeed * DeltaTime * sinf(m_fTheta);
-		*/
+	//if (_shootObj != nullptr)
+	Vector2 pos = GetPos();
+	pos.x += _moveSpeed * DeltaTime * _dir.x;
+	pos.y += _moveSpeed * DeltaTime * _dir.y;
+	pos = Vector2(std::clamp(pos.x, GetClampMin().x, GetClampMax().x)
+		, std::clamp(pos.y, GetClampMin().y, GetClampMax().y));
+	
+	//pos.y += _moveSpeed * DeltaTime * sinf(_theta);
+	//pos.x += _moveSpeed * DeltaTime * cosf(_theta);
+	
 
-		if (pos.x <= GetClampMin().x || pos.x >= GetClampMax().x ||
-			pos.y <= GetClampMin().y || pos.y >= GetClampMax().y )
-		{
-			Reflect();
-		}
-		SetPos(pos);
+	if (pos.x <= GetClampMin().x || pos.x >= GetClampMax().x ||
+		pos.y <= GetClampMin().y || pos.y >= GetClampMax().y )
+	{
+		Reflect();
 	}
+	SetPos(pos);
 }
 
 void Bullet::Render(HDC _dc)
