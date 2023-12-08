@@ -50,7 +50,7 @@ void Start_Scene::Init()
 
 	ResourceManager::GetInstance()->LoadSound(L"BGM", L"Sound\\Retro_bgm.wav", true);
 	ResourceManager::GetInstance()->LoadSound(L"Shoot", L"Sound\\laserShoot.wav", false);
-	ResourceManager::GetInstance()->Play(L"BGM");
+	//ResourceManager::GetInstance()->Play(L"BGM");
 
 	// 충돌체크해야되는것들을 설정하자.
 	CollisionManager::GetInstance()->CheckGroup(OBJECT_GROUP::BULLET, OBJECT_GROUP::MONSTER);

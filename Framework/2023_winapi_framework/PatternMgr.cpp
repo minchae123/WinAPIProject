@@ -14,7 +14,7 @@
 void PatternMgr::Init()
 {
 	//HeartPattern();
-	//SpreadPattern(10);
+	SpreadPattern(10);
 }
 
 void PatternMgr::Update()

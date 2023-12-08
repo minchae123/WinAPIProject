@@ -11,7 +11,10 @@ public:
     virtual void Release() override;
 
 public:
-    Texture* tex;
+    Texture* backTex;
+    Texture* selectTex;
     int num = 0;
+    float x;
+    float y = 395;
 };
 
