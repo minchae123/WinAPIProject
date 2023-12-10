@@ -22,10 +22,10 @@ void Start_Scene::Init()
 	pObj->SetScale(Vector2(100.f,100.f));
 	AddObject(pObj, OBJECT_GROUP::PLAYER);
 	
-	Object* enemyObj = new Enemy;
+	/*Object* enemyObj = new Enemy;
 	enemyObj->SetPos((Vector2(300, 100)));
 	enemyObj->SetScale(Vector2(30.f, 30.f));
-	AddObject(enemyObj, OBJECT_GROUP::ENEMY);
+	AddObject(enemyObj, OBJECT_GROUP::ENEMY);*/
 
 	/*ResourceManager::GetInstance()->LoadSound(L"BGM", L"Sound\\Retro_bgm.wav", true);
 	ResourceManager::GetInstance()->LoadSound(L"Shoot", L"Sound\\laserShoot.wav", false);
@@ -33,7 +33,7 @@ void Start_Scene::Init()
 
 	// 충돌체크해야되는것들을 설정하자.
 	CollisionManager::GetInstance()->CheckGroup(OBJECT_GROUP::PLAYER, OBJECT_GROUP::BULLET);
-	CollisionManager::GetInstance()->CheckGroup(OBJECT_GROUP::ENEMY, OBJECT_GROUP::BULLET);
+	CollisionManager::GetInstance()->CheckGroup(OBJECT_GROUP::BULLET, OBJECT_GROUP::ENEMY);
 }
 
 void Start_Scene::Update()

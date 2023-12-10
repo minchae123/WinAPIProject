@@ -8,22 +8,26 @@
 #include "Player.h"
 #include "Timer.h"
 #include "TimeMgr.h"
+#include "Health.h"
 
 Enemy::Enemy()
 	: _texture(nullptr)
 	, _moveSpeed(200.f)
 {
 	CreateCollider();
+	CreateHealth();
+	GetHealth()->SetHP(10);
 	TimeManager::GetInstance()->TimePass(2.f, this);
 }
 
 Enemy::~Enemy()
 {
+
 }
 
 void Enemy::Update()
 {
-	
+	GetHealth()->Update();
 }
 
 void Enemy::Render(HDC dc)
@@ -39,6 +43,11 @@ void Enemy::EndTimer(Timer* timer)
 {
 	ShootBullet();
 	TimeManager::GetInstance()->TimePass(2.f, this);
+}
+
+void Enemy::EnterCollision(Collider* other)
+{
+	GetHealth()->Damage(1);
 }
 
 void Enemy::ShootBullet()

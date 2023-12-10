@@ -31,12 +31,13 @@ PlayerController::PlayerController()
 
 PlayerController::~PlayerController()
 {
+
 }
 
 void PlayerController::Update()
 {
 	Move();
-	//GetAnimator()->Update();
+	GetAnimator()->Update();
 	GetHealth()->Update();
 }
 

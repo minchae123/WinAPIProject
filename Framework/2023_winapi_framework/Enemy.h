@@ -12,6 +12,7 @@ public:
     void Update() override;
     void Render(HDC dc) override;
     void EndTimer(Timer* timer) override;
+    virtual void EnterCollision(Collider* other) override;
 private:
     void ShootBullet();
 private:
