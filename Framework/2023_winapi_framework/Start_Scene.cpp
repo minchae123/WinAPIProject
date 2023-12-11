@@ -11,6 +11,7 @@
 #include "DebugManager.h"
 #include "Wall.h"
 #include "Enemy.h"
+#include "SpawnManager.h"
 
 void Start_Scene::Init()
 {
@@ -34,11 +35,13 @@ void Start_Scene::Init()
 	// 충돌체크해야되는것들을 설정하자.
 	CollisionManager::GetInstance()->CheckGroup(OBJECT_GROUP::PLAYER, OBJECT_GROUP::BULLET);
 	CollisionManager::GetInstance()->CheckGroup(OBJECT_GROUP::BULLET, OBJECT_GROUP::ENEMY);
+	SpawnManager::GetInstance()->Init();
 }
 
 void Start_Scene::Update()
 {
 	Scene::Update();
+	SpawnManager::GetInstance()->Update();
 }
 
 void Start_Scene::Render(HDC _dc)
