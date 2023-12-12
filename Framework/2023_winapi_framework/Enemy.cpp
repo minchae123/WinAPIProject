@@ -9,15 +9,25 @@
 #include "Timer.h"
 #include "TimeMgr.h"
 #include "Health.h"
+#include "ResMgr.h"
+#include "Animation.h"
+#include "Animator.h"
 
 Enemy::Enemy()
 	: _texture(nullptr)
 	, _moveSpeed(200.f)
+	, _time(0)
+	, _spawnTime(2.f)
 {
+	_texture = ResourceManager::GetInstance()->TexLoad(L"Enemy", L"Texture\\Bat.bmp");
 	CreateCollider();
 	CreateHealth();
+
+	CreateAnimator();
+	GetAnimator()->CreateAnim(L"EnemyIdle", _texture, Vector2(0, 0), Vector2(300, 300), Vector2(300.f, 0.f), 2, 0.5f);
+	GetAnimator()->PlayAnim(L"EnemyIdle", true);
 	GetHealth()->SetHP(10);
-	TimeManager::GetInstance()->TimePass(2.f, this);
+	//TimeManager::GetInstance()->TimePass(2.f, this);
 }
 
 Enemy::~Enemy()
@@ -28,21 +38,26 @@ Enemy::~Enemy()
 void Enemy::Update()
 {
 	GetHealth()->Update();
+
+	_time += DeltaTime;
+
+	if (_time >= _spawnTime)
+	{
+		_time = 0;
+		ShootBullet();
+	}
 }
 
 void Enemy::Render(HDC dc)
 {
-	Vector2 pos = GetPos();
-	Vector2 scale = GetScale();
-
-	CIRCLE_RENDER(pos.x, pos.y, scale.x, scale.y, dc);
 	Component_Render(dc);
 }
 
 void Enemy::EndTimer(Timer* timer)
 {
-	ShootBullet();
-	TimeManager::GetInstance()->TimePass(2.f, this);
+	 
+	//ShootBullet();
+	//TimeManager::GetInstance()->TimePass(2.f, this);
 }
 
 void Enemy::EnterCollision(Collider* other)
