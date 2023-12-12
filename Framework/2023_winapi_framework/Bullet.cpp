@@ -5,7 +5,9 @@
 #include "Texture.h"
 #include "DebugManager.h"
 #include "EventMgr.h"
-#include <string>
+#include "Animation.h"
+#include "Animator.h"
+#include "Core.h"
 
 Bullet::Bullet()
 //	: m_fDir(-1.f)
@@ -17,8 +19,11 @@ Bullet::Bullet()
 	, _shootObj(nullptr)
 	, _cnt(0)
 {
-	_texture = ResourceManager::GetInstance()->TexLoad(L"Bullet", L"Texture\\Bullet.bmp");
+	_texture = ResourceManager::GetInstance()->TexLoad(L"Bullet", L"Texture\\EBullet.bmp");
 	CreateCollider();
+
+	CreateAnimator();
+	//GetAnimator()->CreateAnim
 }
 
 Bullet::~Bullet()
@@ -44,11 +49,10 @@ void Bullet::Update()
 		pos.y += _moveSpeed * DeltaTime * sinf(_theta);
 		pos.x += _moveSpeed * DeltaTime * cosf(_theta);
 	}
+
 	pos = Vector2(std::clamp(pos.x, GetClampMin().x, GetClampMax().x)
 		, std::clamp(pos.y, GetClampMin().y, GetClampMax().y));
 	
-	
-
 	if (pos.x <= GetClampMin().x || pos.x >= GetClampMax().x ||
 		pos.y <= GetClampMin().y || pos.y >= GetClampMax().y )
 	{
@@ -59,15 +63,41 @@ void Bullet::Update()
 
 void Bullet::Render(HDC _dc)
 {
-	Vector2 vPos = GetPos();
-	Vector2 vScale = GetScale();
+	Vector2 pos = GetPos();
+	Vector2 scale = GetScale();
 	int Width = _texture->GetWidth();
 	int Height = _texture->GetHeight();
-	TransparentBlt(_dc
-		, (int)(vPos.x - vScale.x / 2)
-		, (int)(vPos.y - vScale.y / 2)
+	/*TransparentBlt(_dc
+		, (int)(pos.x - scale.x / 2)
+		, (int)(pos.y - scale.y / 2)
 		, Width, Height, _texture->GetDC()
-		, 0, 0, Width,Height, RGB(255,0,255));
+		, 100, 100, Width / 5, Height / 5, RGB(255, 0, 255));
+	Component_Render(_dc);*/
+
+	/*HBITMAP stretchBit = CreateCompatibleBitmap(_dc
+		, Core::GetInstance()->GetResolution().x
+		, Core::GetInstance()->GetResolution().y);
+	HDC stretchDC = CreateCompatibleDC(_dc);
+	SelectObject(stretchDC, stretchBit);
+
+	PatBlt(stretchDC, 0, 0
+		, Core::GetInstance()->GetResolution().x
+		, Core::GetInstance()->GetResolution().y, WHITENESS);
+
+	StretchBlt(stretchDC
+		, (int)(pos.x - scale.x / 2)
+		, (int)(pos.y - scale.y / 2)
+		, Width / 5, Height / 5, _texture->GetDC()
+		, 0, 0, Width, Height, SRCCOPY);
+
+	TransparentBlt(_dc
+		, (int)(pos.x - scale.x / 2)
+		, (int)(pos.y - scale.y / 2)
+		, Width, Height, _texture->GetDC()
+		, 0, 0, Width, Height, RGB(255, 0, 255));
+	Component_Render(_dc);
+
+	DeleteObject(stretchBit);*/
 	Component_Render(_dc);
 }
 
