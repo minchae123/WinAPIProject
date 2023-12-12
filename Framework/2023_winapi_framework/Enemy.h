@@ -18,5 +18,7 @@ private:
 private:
     Texture* _texture;
     float _moveSpeed;
+    float _time;
+    float _spawnTime;
 };
 
