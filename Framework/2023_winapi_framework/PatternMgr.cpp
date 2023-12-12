@@ -19,7 +19,7 @@ void PatternMgr::Update()
 {
 	if (KEY_DOWN(KEY_TYPE::H))
 	{
-		SquarePattern();
+		//SquarePattern();
 	}
 }
 

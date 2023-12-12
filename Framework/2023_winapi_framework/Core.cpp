@@ -8,6 +8,7 @@
 #include "CollisionMgr.h"
 #include "EventMgr.h"
 #include "PatternMgr.h"
+#include "PatternController.h"
 bool Core::Init(HWND hWnd, POINT ptResolution)
 {
 	// === 변수 초기화 === 
@@ -34,6 +35,7 @@ bool Core::Init(HWND hWnd, POINT ptResolution)
 	ResourceManager::GetInstance()->Init();
 	SceneManager::GetInstance()->Init();
 	PatternMgr::GetInstance()->Init();
+	PatternController::GetInstance()->Init();
 
 	return true;
 }
@@ -53,6 +55,7 @@ void Core::Update()
 	SceneManager::GetInstance()->Update();
 	CollisionManager::GetInstance()->Update();
 	PatternMgr::GetInstance()->Update();
+	PatternController::GetInstance()->Update();
 }
 
 void Core::Render()
