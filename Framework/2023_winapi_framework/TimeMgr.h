@@ -9,6 +9,7 @@ public:
 	void Update();
 public:
 	const float& GetDeltaTime() const { return _deltaTime; }
+	const float& GetTime() const { return _accFrameTime; }
 private:
 	// DT(1프레임당 시간: Delta time)
 	LARGE_INTEGER _llPrevCount; // 이전시간

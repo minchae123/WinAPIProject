@@ -1,6 +1,10 @@
 #include "pch.h"
 #include "Health.h"
 #include "EventMgr.h"
+#include "Object.h"
+#include "SceneMgr.h"
+#include "Scene.h"
+#include "DebugManager.h"
 
 Health::Health()
 	: _hp(0)
@@ -16,7 +20,15 @@ void Health::Update()
 {
 	if (_hp <= 0)
 	{
-		EventManager::GetInstance()->DeleteObject(_ownerObject);
+		if (_ownerObject->GetName() == L"Player")
+		{
+			//SceneManager::GetInstance()->LoadScene(L"");
+			DebugLog(L"Player Á×À½");
+		}
+		else
+		{
+			EventManager::GetInstance()->DeleteObject(_ownerObject);
+		}
 	}
 }
 

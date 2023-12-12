@@ -111,6 +111,7 @@ void PlayerController::EnterCollision(Collider* other)
 	const Object* otherObj = other->GetObj();
 	if (otherObj->GetName() == L"Bullet")
 	{
+		DebugLog(L"Ã¼·Â ±ïÀÓ");
 		GetHealth()->Damage(1);
 	}
 }
