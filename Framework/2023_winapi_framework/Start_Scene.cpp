@@ -15,8 +15,9 @@
 
 void Start_Scene::Init()
 {
-	Object* wObj = new Wall;
-	AddObject(wObj, OBJECT_GROUP::WALL);
+	back = ResourceManager::GetInstance()->TexLoad(L"BG", L"Texture\\GameBg.bmp");
+	//Object* wObj = new Wall;
+	//AddObject(wObj, OBJECT_GROUP::WALL);
 
 	Object* pObj = new PlayerController;
 	pObj->SetPos((Vector2({Core::GetInstance()->GetResolution().x /2, Core::GetInstance()->GetResolution().y / 2})));
@@ -47,6 +48,7 @@ void Start_Scene::Update()
 
 void Start_Scene::Render(HDC _dc)
 {	
+	BitBlt(_dc, (int)(100), (int)(100), 1280, 1700, back->GetDC(), 0, 0, SRCCOPY);
 	Scene::Render(_dc);
 	DebugManager::GetInstance()->Render(_dc);
 }

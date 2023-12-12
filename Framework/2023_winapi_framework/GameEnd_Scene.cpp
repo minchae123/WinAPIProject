@@ -29,12 +29,12 @@ void GameEnd_Scene::Update()
 	{
 	case 0: // 게임 다시 시작
 	{
-		y = 395;
+		y = 555;
 	}
 	break;
 	case 1: // 게임 종료
 	{
-		y = 485;
+		y = 640;
 	}
 	break;
 	default:
@@ -66,6 +66,27 @@ void GameEnd_Scene::Render(HDC _dc)
 	Scene::Render(_dc);
 	BitBlt(_dc, (int)(0), (int)(-50), 1280, 780, backTex->GetDC(), 0, 0, SRCCOPY);
 	TransparentBlt(_dc, 400, y, 64, 64, selectTex->GetDC(), 0, 0, 64, 64, RGB(255, 255, 255));
+
+	int fontSize = 70; // 원하는 폰트 크기 선택
+	HFONT hFont = CreateFont(fontSize, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_OUTLINE_PRECIS,
+		CLIP_DEFAULT_PRECIS, ANTIALIASED_QUALITY, DEFAULT_PITCH | FF_SWISS, L"Arial");
+
+	// 폰트를 디바이스 컨텍스트에 선택
+	HFONT hOldFont = (HFONT)SelectObject(_dc, hFont);
+
+	// 시간 텍스트 렌더링
+	wstring time = L"생존시간 : " + Text(1);
+	SetBkMode(_dc, TRANSPARENT);
+	SetTextColor(_dc, RGB(255, 255, 255));
+	TextOut(_dc, 300, 300, time.c_str(), time.length());
+
+	// 점수 텍스트 렌더링
+	wstring score = L"처치한 적 : " + Text(1);
+	TextOut(_dc, 300, 400, score.c_str(), score.length());
+
+	// 이전 폰트로 복원
+	SelectObject(_dc, hOldFont);
+	DeleteObject(hFont);
 }
 
 void GameEnd_Scene::Release()
