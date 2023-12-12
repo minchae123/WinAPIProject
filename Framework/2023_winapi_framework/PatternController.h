@@ -12,12 +12,14 @@ public:
 public:
 	void CreateBullet(float angle, Vector2 pos);
 	void CreateBullet(Vector2 dir, Vector2 pos);
-	Vector2 SpanwRandomPos();
+	Vector2 SpawnRandomPos();
 
 public: // 패턴 종류
-	void HeartPattern();
 	void SpreadPattern(int count, Vector2 pos);
 	void SquarePattern(Vector2 pos);
-	void 
+	void RhombPattern(Vector2 pos);
+	void TrianglePattern(Vector2 pos);
+	void HexagonPattern(Vector2 pos);
+	void SinPattern(Vector2 pos);
 };
 

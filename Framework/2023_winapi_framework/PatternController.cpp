@@ -5,6 +5,7 @@
 #include "Bullet.h"
 #include "KeyMgr.h"
 #include "DebugManager.h"
+#include "TimeMgr.h"
 
 void PatternController::Init()
 {
@@ -14,8 +15,11 @@ void PatternController::Update()
 {
 	if (KEY_DOWN(KEY_TYPE::H))
 	{
-		SpreadPattern(10 , SpanwRandomPos());
-		//SquarePattern(SpanwRandomPos());
+		//SpreadPattern(10 , SpawnRandomPos());
+		//SquarePattern(SpawnRandomPos());
+		//RhombPattern(SpawnRandomPos());
+		//TrianglePattern(SpawnRandomPos());
+		//HexagonPattern(SpawnRandomPos());
 	}
 }
 
@@ -41,7 +45,7 @@ void PatternController::CreateBullet(Vector2 dir, Vector2 pos)
 	SceneManager::GetInstance()->GetCurScene()->AddObject(newBullet, OBJECT_GROUP::BULLET);
 }
 
-Vector2 PatternController::SpanwRandomPos()
+Vector2 PatternController::SpawnRandomPos()
 {
 	Vector2 clampMax = GetClampMax();
 	Vector2 clampMin = GetClampMin();
@@ -52,12 +56,7 @@ Vector2 PatternController::SpanwRandomPos()
 	return { rx, ry };
 }
 
-void PatternController::HeartPattern()
-{
-
-}
-
-void PatternController::SpreadPattern(int count, Vector2 pos) // 동그랗게 퍼지는 패턴
+void PatternController::SpreadPattern(int count, Vector2 pos) // 동그랗게 퍼지기
 {
 	for (int i = 0; i < count; i++)
 	{
@@ -67,10 +66,36 @@ void PatternController::SpreadPattern(int count, Vector2 pos) // 동그랗게 퍼지는
 	}
 }
 
-void PatternController::SquarePattern(Vector2 pos) // 네방향으로 퍼지는 패턴
+void PatternController::SquarePattern(Vector2 pos) // 상하좌우 퍼지는 패턴
 {
 	CreateBullet({ 1,0 }, pos);
 	CreateBullet({ -1,0 }, pos);
 	CreateBullet({ 0,1 }, pos);
 	CreateBullet({ 0,-1 }, pos);
+}
+
+void PatternController::RhombPattern(Vector2 pos) // 사각형 
+{
+	CreateBullet({ 1,1 }, pos);
+	CreateBullet({ -1,1 }, pos);
+	CreateBullet({ -1,-1 }, pos);
+	CreateBullet({ 1,-1 }, pos);
+}
+
+void PatternController::TrianglePattern(Vector2 pos) // 삼각형 
+{
+	SpreadPattern(3, pos);
+}
+
+void PatternController::HexagonPattern(Vector2 pos) // 육각형 
+{
+	SpreadPattern(6, pos);
+}
+
+void PatternController::SinPattern(Vector2 pos)
+{
+	for (int i = 0; i < 10; i++)
+	{
+
+	}
 }
