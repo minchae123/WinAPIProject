@@ -26,7 +26,7 @@ void SceneManager::Update()
 void SceneManager::Render(HDC dc)
 {
 	_pCurScene->Render(dc);
-	//	xDebugManager::GetInstance()->Render(dc);
+	DebugManager::GetInstance()->Render(dc);
 }
 
 void SceneManager::LoadScene(const wstring& scenename)

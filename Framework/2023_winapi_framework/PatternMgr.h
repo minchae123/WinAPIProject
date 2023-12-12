@@ -15,6 +15,5 @@ public:
 public: // 패턴 종류
 	void HeartPattern();
 	void SpreadPattern(int count);
-	void SquarePattern();
-
+	void SquarePattern(Vector2 pos);
 };

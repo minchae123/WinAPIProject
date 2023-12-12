@@ -4,6 +4,7 @@
 #include "SceneMgr.h"
 #include "Bullet.h"
 #include "KeyMgr.h"
+#include "DebugManager.h"
 
 void PatternController::Init()
 {
@@ -13,20 +14,18 @@ void PatternController::Update()
 {
 	if (KEY_DOWN(KEY_TYPE::H))
 	{
-		SpreadPattern(10);
+		//SpreadPattern(10);
+		SquarePattern(SpanwRandomPos());
 	}
 }
 
 void PatternController::CreateBullet(float angle, Vector2 pos)
 {
-	//Vector2 mousePos = KeyManager::GetInstance()->GetMousePos();
-	//Vector2 pos = GetPos();
-	//Vector2 dir = Vector2(mousePos.x - pos.x, mousePos.y - pos.y);
-	//Vector2 shootPos = Vector2(pos.x + dir.x * 3, pos.y + dir.y * 3);
 	Bullet* newBullet = new Bullet;
 	newBullet->SetPos(pos);
 	newBullet->SetScale(Vector2(25.f, 25.f));
-	newBullet->SetDir(angle);
+	//newBullet->SetDir(angle);
+	newBullet->SetDir({1,2});
 	newBullet->SetName(L"EnemyBullet");
 	newBullet->SetObj(this);
 	SceneManager::GetInstance()->GetCurScene()->AddObject(newBullet, OBJECT_GROUP::BULLET);
@@ -34,13 +33,32 @@ void PatternController::CreateBullet(float angle, Vector2 pos)
 
 void PatternController::CreateBullet(Vector2 dir, Vector2 pos)
 {
+	Bullet* newBullet = new Bullet;
+	newBullet->SetPos(pos);
+	newBullet->SetScale(Vector2(25.f, 25.f));
+	newBullet->SetDir(dir);
+	newBullet->SetName(L"EnemyBullet");
+	newBullet->SetObj(this);
+	SceneManager::GetInstance()->GetCurScene()->AddObject(newBullet, OBJECT_GROUP::BULLET);
+}
+
+Vector2 PatternController::SpanwRandomPos()
+{
+	Vector2 clampMax = GetClampMax();
+	Vector2 clampMin = GetClampMin();
+
+	int rx = rand() % (int)(clampMax.x - clampMin.x) + clampMin.x;
+	int ry = rand() % (int)(clampMax.y - clampMin.y) + clampMin.y;
+
+	return { rx, ry };
 }
 
 void PatternController::HeartPattern()
 {
+
 }
 
-void PatternController::SpreadPattern(int count)
+void PatternController::SpreadPattern(int count) // 동그랗게 퍼지는 패턴
 {
 	for (int i = 0; i < count; i++)
 	{
@@ -50,6 +68,10 @@ void PatternController::SpreadPattern(int count)
 	}
 }
 
-void PatternController::SquarePattern()
+void PatternController::SquarePattern(Vector2 pos) // 네방향으로 퍼지는 패턴
 {
+	CreateBullet({ 1,0 }, pos);
+	CreateBullet({ -1,0 }, pos);
+	CreateBullet({ 0,1 }, pos);
+	CreateBullet({ 0,-1 }, pos);
 }

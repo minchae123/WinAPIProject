@@ -63,11 +63,12 @@ void PatternMgr::SpreadPattern(int count)
 	}
 }
 
-void PatternMgr::SquarePattern()
+void PatternMgr::SquarePattern(Vector2 pos)
 {
-	CreateBullet(0, { 500,500});
-	CreateBullet(90, { 500,500 });
-	CreateBullet(180, { 500,500});
-	CreateBullet(270, { 500,500 });
-}
+	DebugLog(L"Square");
 
+	CreateBullet({ 1,0 }, pos);
+	CreateBullet({ -1,0 }, pos);
+	CreateBullet({ 0,1 }, pos);
+	CreateBullet({ 0,-1 }, pos);
+}
