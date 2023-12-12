@@ -193,6 +193,10 @@
     <ClInclude Include="PatternController.h">
       <Filter>Engine\03. Manager\PatternManager</Filter>
     </ClInclude>
+    <ClInclude Include="SpawnManager.h" />
+    <ClInclude Include="GameEnd_Scene.h">
+      <Filter>Engine\05. Scene\MainScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -309,6 +313,10 @@
     </ClCompile>
     <ClCompile Include="PatternController.cpp">
       <Filter>Engine\03. Manager\PatternManager</Filter>
+    </ClCompile>
+    <ClCompile Include="SpawnManager.cpp" />
+    <ClCompile Include="GameEnd_Scene.cpp">
+      <Filter>Engine\05. Scene\MainScene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

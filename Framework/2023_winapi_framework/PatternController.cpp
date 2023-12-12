@@ -13,21 +13,32 @@ void PatternController::Init()
 {
 }
 
+
 void PatternController::Update()
 {
-	if (KEY_DOWN(KEY_TYPE::H))
+	time += DeltaTime;
+	
+	if (time >= 5.f)
 	{
-		//SpreadPattern(10 , SpawnRandomPos());
-		//SquarePattern(SpawnRandomPos());
-		//RhombPattern(SpawnRandomPos());
-		//TrianglePattern(SpawnRandomPos());
-		//HexagonPattern(SpawnRandomPos());
-		RandomPattern(10, SpawnRandomPos());
-		//SinPattern(SpawnRandomPos());
+		time = 0;
+		RandomSelectPattern();
 	}
+	
 }
 
-void PatternController::CreateBullet(float angle, Vector2 pos, float speed = 0)
+void PatternController::CreateBullet(Vector2 dir, Vector2 pos, float speed)
+{
+	Bullet* newBullet = new Bullet;
+	newBullet->SetPos(pos);
+	newBullet->SetScale(Vector2(25.f, 25.f));
+	newBullet->SetDir(dir);
+	newBullet->SetSpeed(speed);
+	newBullet->SetName(L"EnemyBullet");
+	newBullet->SetObj(this);
+	SceneManager::GetInstance()->GetCurScene()->AddObject(newBullet, OBJECT_GROUP::BULLET);
+}
+
+void PatternController::CreateBullet(float angle, Vector2 pos)
 {
 	Bullet* newBullet = new Bullet;
 	newBullet->SetPos(pos);
@@ -96,7 +107,7 @@ void PatternController::HexagonPattern(Vector2 pos) // 육각형
 	SpreadPattern(6, pos);
 }
 
-void PatternController::RandomPattern(int count, Vector2 pos)
+void PatternController::RandomPattern(int count, Vector2 pos) // 랜덤으로 마구마구
 {
 	for (int i = 0; i < count; i++)
 	{
@@ -105,7 +116,61 @@ void PatternController::RandomPattern(int count, Vector2 pos)
 	}
 }
 
-void PatternController::SinPattern(Vector2 pos)
+void PatternController::HeartPattern(Vector2 pos) // 하트 모양
 {
+	CreateBullet({ 0,-2 }, pos, 300);
+	CreateBullet({ -2,-3 }, pos, 450);
+	CreateBullet({ 2,-3 }, pos, 450);
+	CreateBullet({ -4,-2 }, pos, 500);
+	CreateBullet({ 4,-2 }, pos, 500);
+	CreateBullet({ -4,0 }, pos, 550);
+	CreateBullet({ 4,0 }, pos, 550);
+	CreateBullet({ -2,2 }, pos, 450);
+	CreateBullet({ 2,2 }, pos, 450);
+	CreateBullet({ 0,4 }, pos, 500);
+}
 
+void PatternController::RandomSelectPattern()
+{
+	int r = rand() % 7;
+	switch (r)
+	{
+	case 0:
+	{
+		SpreadPattern(10, SpawnRandomPos());
+	}
+		break;
+	case 1:
+	{
+		SquarePattern(SpawnRandomPos());
+	}
+		break;
+	case 2:
+	{
+		RhombPattern(SpawnRandomPos());
+	}
+		break;
+	case 3:
+	{
+		TrianglePattern(SpawnRandomPos());
+	}
+		break;
+	case 4:
+	{
+		HexagonPattern(SpawnRandomPos());
+	}
+		break;
+	case 5:
+	{
+		RandomPattern(5, SpawnRandomPos());
+	}
+		break;
+	case 6:
+	{
+		HeartPattern(SpawnRandomPos());
+	}
+		break;
+	default:
+		break;
+	}
 }
