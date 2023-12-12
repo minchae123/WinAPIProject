@@ -1,7 +1,7 @@
 #pragma once
 #include "Object.h"
 class PatternController :
-    public Object
+	public Object
 {
 	SINGLE(PatternController);
 
@@ -16,7 +16,8 @@ public:
 
 public: // 패턴 종류
 	void HeartPattern();
-	void SpreadPattern(int count);
+	void SpreadPattern(int count, Vector2 pos);
 	void SquarePattern(Vector2 pos);
+	void 
 };
 

@@ -14,8 +14,8 @@ void PatternController::Update()
 {
 	if (KEY_DOWN(KEY_TYPE::H))
 	{
-		//SpreadPattern(10);
-		SquarePattern(SpanwRandomPos());
+		SpreadPattern(10 , SpanwRandomPos());
+		//SquarePattern(SpanwRandomPos());
 	}
 }
 
@@ -24,8 +24,7 @@ void PatternController::CreateBullet(float angle, Vector2 pos)
 	Bullet* newBullet = new Bullet;
 	newBullet->SetPos(pos);
 	newBullet->SetScale(Vector2(25.f, 25.f));
-	//newBullet->SetDir(angle);
-	newBullet->SetDir({1,2});
+	newBullet->SetDir(angle);
 	newBullet->SetName(L"EnemyBullet");
 	newBullet->SetObj(this);
 	SceneManager::GetInstance()->GetCurScene()->AddObject(newBullet, OBJECT_GROUP::BULLET);
@@ -58,13 +57,13 @@ void PatternController::HeartPattern()
 
 }
 
-void PatternController::SpreadPattern(int count) // 동그랗게 퍼지는 패턴
+void PatternController::SpreadPattern(int count, Vector2 pos) // 동그랗게 퍼지는 패턴
 {
 	for (int i = 0; i < count; i++)
 	{
 		float angle = (360 / count) * i;
 		float rad = Deg2Rad(angle);
-		CreateBullet(rad, { 500, 500 });
+		CreateBullet(rad, pos);
 	}
 }
 
