@@ -30,7 +30,7 @@ void SpawnManager::Spawn() // 직사각형 abdc라고 할때
 	Vector2 spawnPos = SpawnPos();
 	Object* enemyObj = new Enemy;
 	enemyObj->SetPos(spawnPos);
-	enemyObj->SetScale(Vector2(30.f, 30.f));
+	enemyObj->SetScale(Vector2(100.f, 100.f));
 	SceneManager::GetInstance()->GetCurScene()->AddObject(enemyObj, OBJECT_GROUP::ENEMY);
 }
 
