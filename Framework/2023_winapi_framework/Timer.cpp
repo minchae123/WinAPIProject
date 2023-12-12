@@ -24,7 +24,9 @@ void Timer::Update()
 
 	if (_time >= _curTime)
 	{
+		TimeManager::GetInstance()->PopTime(_idx);
 		_ownerObject->EndTimer(this);
+		_onTimer = false;
 	}
 }
 
