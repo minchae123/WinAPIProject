@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Wall.h"
+#include "DebugManager.h"
 
 Wall::Wall()
 {

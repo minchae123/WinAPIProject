@@ -12,33 +12,41 @@
 #include "KeyMgr.h"
 #include "Health.h"
 #include "CollisionMgr.h"
+#include "ResMgr.h"
 
 PlayerController::PlayerController()
 	: _texture(nullptr)
 	, _moveSpeed(200.f)
 {
+	_texture = ResourceManager::GetInstance()->TexLoad(L"Player", L"Texture\\Player.bmp");
 	CreateCollider();
+
+	CreateAnimator();
+	GetAnimator()->CreateAnim(L"PlayerIdle", _texture, Vector2(0, 0), Vector2(300.f, 300.f), Vector2(300.f, 0.f), 2, 0.5f);
+	GetAnimator()->PlayAnim(L"PlayerIdle", true);
+
 	CreateHealth();
 	GetHealth()->SetHP(5);
 }
 
 PlayerController::~PlayerController()
 {
+
 }
 
 void PlayerController::Update()
 {
 	Move();
-	//GetAnimator()->Update();
+	GetAnimator()->Update();
 	GetHealth()->Update();
 }
 
 void PlayerController::Render(HDC dc)
 {
-	Vector2 pos = GetPos();
+	/*Vector2 pos = GetPos();
 	Vector2 scale = GetScale();
 
-	RECT_RENDER(pos.x, pos.y, scale.x, scale.y, dc);
+	RECT_RENDER(pos.x, pos.y, scale.x, scale.y, dc);*/
 	Component_Render(dc);
 }
 
@@ -87,9 +95,10 @@ void PlayerController::ShootBullet()
 	Vector2 mousePos = KeyManager::GetInstance()->GetMousePos();
 	Vector2 pos = GetPos();
 	Vector2 dir = Vector2(mousePos.x - pos.x, mousePos.y - pos.y);
-	Vector2 shootPos = Vector2(pos.x + dir.x * 3, pos.y + dir.y * 3);
+	dir = dir.Normalize();
+	Vector2 shootPos = Vector2(pos.x + dir.x * 50, pos.y + dir.y * 50);
 	Bullet* newBullet = new Bullet;
-	newBullet->SetPos(pos);
+	newBullet->SetPos(shootPos);
 	newBullet->SetScale(Vector2(25.f, 25.f));
 	newBullet->SetDir(dir);
 	newBullet->SetName(L"Bullet");

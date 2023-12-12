@@ -10,7 +10,7 @@ public:
 	void Render(HDC dc);
 public: 
 	Object* GetObj() const { return _ownerObject; }
-	void Damage(int damage);
+	void Damage(int damage = 1);
 	void SetHP(int hp) { _hp = hp; }
 private:
 	int _hp;

@@ -57,6 +57,8 @@ void Object::Update()
 //	if(KeyMgr::GetInst()->GetKey(KEY_TYPE::LEFT) == KEY_STATE::UP)
 
 	//m_obj.SetPos(vPos);
+	if (_health != nullptr)
+		_health->Update();
 }
 
 void Object::FinalUpdate()
@@ -87,16 +89,16 @@ void Object::StayCollision(Collider* other)
 
 void Object::EndTimer(Timer* timer)
 {
-	delete(timer);
+	delete timer;
 }
 
 void Object::Component_Render(HDC dc)
 {
 	if (nullptr != _health)
 		_health->Render(dc);
-	if (nullptr != _pCollider)
-		_pCollider->Render(dc);
 	if (nullptr != _pAnimator)
 		_pAnimator->Render(dc);
+	if (nullptr != _pCollider)
+		_pCollider->Render(dc);
 }
 

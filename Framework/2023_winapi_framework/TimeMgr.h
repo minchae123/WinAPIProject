@@ -23,7 +23,9 @@ private:
 
 public:
 	void TimePass(float duration, Object* obj);
+	void PopTime(int idx);
 private:
 	vector<Timer*> _vecTimer;
+	int _currentIdx;
 };
 
