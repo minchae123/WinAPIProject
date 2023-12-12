@@ -22,11 +22,11 @@ private:
 	UINT  _frameCount; // 프레임 호출 체크
 	float _accFrameTime; // 시간 누적
 
+	vector<Timer*> _vecTimer;
+	int _currentIdx;
+
 public:
 	void TimePass(float duration, Object* obj);
 	void PopTime(int idx);
-private:
-	vector<Timer*> _vecTimer;
-	int _currentIdx;
 };
 

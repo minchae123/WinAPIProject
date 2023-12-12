@@ -6,6 +6,8 @@
 #include "KeyMgr.h"
 #include "DebugManager.h"
 #include "TimeMgr.h"
+#include <cstdio>
+#include <ctime>
 
 void PatternController::Init()
 {
@@ -20,10 +22,12 @@ void PatternController::Update()
 		//RhombPattern(SpawnRandomPos());
 		//TrianglePattern(SpawnRandomPos());
 		//HexagonPattern(SpawnRandomPos());
+		RandomPattern(10, SpawnRandomPos());
+		//SinPattern(SpawnRandomPos());
 	}
 }
 
-void PatternController::CreateBullet(float angle, Vector2 pos)
+void PatternController::CreateBullet(float angle, Vector2 pos, float speed = 0)
 {
 	Bullet* newBullet = new Bullet;
 	newBullet->SetPos(pos);
@@ -92,10 +96,16 @@ void PatternController::HexagonPattern(Vector2 pos) // À°°¢Çü
 	SpreadPattern(6, pos);
 }
 
+void PatternController::RandomPattern(int count, Vector2 pos)
+{
+	for (int i = 0; i < count; i++)
+	{
+		float randAngle = rand() % 360;
+		CreateBullet(randAngle, pos);
+	}
+}
+
 void PatternController::SinPattern(Vector2 pos)
 {
-	for (int i = 0; i < 10; i++)
-	{
 
-	}
 }
