@@ -12,7 +12,11 @@ public:
     void Render(HDC _dc) override;
     void Reflect();
 public:
-    void SetDir(float _f) { _theta = _f; }
+    void SetDir(float _f) 
+    { 
+        _theta = _f;
+        _vecMove = false;
+    }
     void SetDir(Vector2 _vDir) 
     { 
         _dir = _vDir; 
@@ -26,7 +30,7 @@ private:
     float _moveSpeed;
     Vector2 _dir;
     Texture* _texture;
-    bool _test;
+    bool _vecMove;
     Object* _shootObj;
     int _cnt;
 };

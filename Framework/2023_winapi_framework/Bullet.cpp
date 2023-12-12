@@ -10,11 +10,12 @@
 Bullet::Bullet()
 //	: m_fDir(-1.f)
 	: _theta(0.f)
-	, _dir(Vector2(0.f,0.f))
+	, _dir(Vector2(0.f, 0.f))
 	, _texture(nullptr)
 	, _moveSpeed(500.f)
-	, _test(true)
+	, _vecMove(true)
 	, _shootObj(nullptr)
+	, _cnt(0)
 {
 	_texture = ResourceManager::GetInstance()->TexLoad(L"Bullet", L"Texture\\Bullet.bmp");
 	CreateCollider();
@@ -33,13 +34,19 @@ void Bullet::Update()
 
 	//if (_shootObj != nullptr)
 	Vector2 pos = GetPos();
-	pos.x += _moveSpeed * DeltaTime * _dir.x;
-	pos.y += _moveSpeed * DeltaTime * _dir.y;
+	if (_vecMove)
+	{
+		pos.x += _moveSpeed * DeltaTime * _dir.x;
+		pos.y += _moveSpeed * DeltaTime * _dir.y;
+	}
+	else
+	{
+		pos.y += _moveSpeed * DeltaTime * sinf(_theta);
+		pos.x += _moveSpeed * DeltaTime * cosf(_theta);
+	}
 	pos = Vector2(std::clamp(pos.x, GetClampMin().x, GetClampMax().x)
 		, std::clamp(pos.y, GetClampMin().y, GetClampMax().y));
 	
-	//pos.y += _moveSpeed * DeltaTime * sinf(_theta);
-	//pos.x += _moveSpeed * DeltaTime * cosf(_theta);
 	
 
 	if (pos.x <= GetClampMin().x || pos.x >= GetClampMax().x ||

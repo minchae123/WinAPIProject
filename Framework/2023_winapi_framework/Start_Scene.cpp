@@ -47,6 +47,7 @@ void Start_Scene::Update()
 void Start_Scene::Render(HDC _dc)
 {	
 	Scene::Render(_dc);
+	DebugManager::GetInstance()->Render(_dc);
 }
 
 void Start_Scene::Release()
