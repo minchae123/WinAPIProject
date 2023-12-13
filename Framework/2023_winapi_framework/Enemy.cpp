@@ -12,6 +12,7 @@
 #include "ResMgr.h"
 #include "Animation.h"
 #include "Animator.h"
+#include "Collider.h"
 
 Enemy::Enemy()
 	: _texture(nullptr)
@@ -21,11 +22,14 @@ Enemy::Enemy()
 {
 	_texture = ResourceManager::GetInstance()->TexLoad(L"Enemy", L"Texture\\Bat.bmp");
 	CreateCollider();
-	CreateHealth();
+	GetCollider()->SetScale({ 100, 70 });
+	GetCollider()->SetOffSetPos({ 0, -20 });
 
 	CreateAnimator();
 	GetAnimator()->CreateAnim(L"EnemyIdle", _texture, Vector2(0, 0), Vector2(300, 300), Vector2(300.f, 0.f), 2, 0.5f);
 	GetAnimator()->PlayAnim(L"EnemyIdle", true);
+
+	CreateHealth();
 	GetHealth()->SetHP(10);
 	//TimeManager::GetInstance()->TimePass(2.f, this);
 }

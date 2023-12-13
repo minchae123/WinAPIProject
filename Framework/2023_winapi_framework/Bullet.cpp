@@ -61,44 +61,34 @@ void Bullet::Update()
 	SetPos(pos);
 }
 
-void Bullet::Render(HDC _dc)
+void Bullet::Render(HDC dc)
 {
 	Vector2 pos = GetPos();
 	Vector2 scale = GetScale();
 	int Width = _texture->GetWidth();
 	int Height = _texture->GetHeight();
-	/*TransparentBlt(_dc
-		, (int)(pos.x - scale.x / 2)
-		, (int)(pos.y - scale.y / 2)
-		, Width, Height, _texture->GetDC()
-		, 100, 100, Width / 5, Height / 5, RGB(255, 0, 255));
-	Component_Render(_dc);*/
+	int destWidth = Width / 5;
+	int destHeight = Height / 5;
+	int destX = (int)(pos.x - scale.x / 2);
+	int destY = (int)(pos.y - scale.y / 2);
+	destX -= (destWidth - scale.x) / 2;
+	destY -= (destHeight - scale.y) / 2;
 
-	/*HBITMAP stretchBit = CreateCompatibleBitmap(_dc
+	HDC stretchDC = CreateCompatibleDC(dc);
+	HBITMAP hBitmapDest = CreateCompatibleBitmap(dc
 		, Core::GetInstance()->GetResolution().x
 		, Core::GetInstance()->GetResolution().y);
-	HDC stretchDC = CreateCompatibleDC(_dc);
-	SelectObject(stretchDC, stretchBit);
-
-	PatBlt(stretchDC, 0, 0
-		, Core::GetInstance()->GetResolution().x
-		, Core::GetInstance()->GetResolution().y, WHITENESS);
-
+	SelectObject(stretchDC, hBitmapDest);
 	StretchBlt(stretchDC
-		, (int)(pos.x - scale.x / 2)
-		, (int)(pos.y - scale.y / 2)
-		, Width / 5, Height / 5, _texture->GetDC()
-		, 0, 0, Width, Height, SRCCOPY);
-
-	TransparentBlt(_dc
-		, (int)(pos.x - scale.x / 2)
-		, (int)(pos.y - scale.y / 2)
-		, Width, Height, _texture->GetDC()
-		, 0, 0, Width, Height, RGB(255, 0, 255));
-	Component_Render(_dc);
-
-	DeleteObject(stretchBit);*/
-	Component_Render(_dc);
+		, 0, 0, destWidth, destHeight
+		, _texture->GetDC(), 0, 0, Width, Height, SRCCOPY);
+	TransparentBlt(dc
+		, destX , destY
+		, destWidth, destHeight, stretchDC
+		, 0, 0, destWidth, destHeight, RGB(255, 0, 255));
+	DeleteObject(hBitmapDest);
+	DeleteDC(stretchDC);
+	Component_Render(dc);
 }
 
 void Bullet::Reflect()

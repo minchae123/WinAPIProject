@@ -42,24 +42,28 @@ void Animation::Update()
 void Animation::Render(HDC dc)
 {
 	// 기본 애니메이션
-	/*Object* pObj = _animator->GetObj();
+	Object* pObj = _animator->GetObj();
 	Vector2 vPos = pObj->GetPos();
+	Vector2 scale = pObj->GetScale();
 
 	// 오프셋 적용
 	vPos = vPos + _vecAnimationFrame[_curFrame].vOffset;
+	int destWidth = _vecAnimationFrame[_curFrame].vSlice.x / scale.x;
+	int destHeight = _vecAnimationFrame[_curFrame].vSlice.y / scale.y;
+
 	TransparentBlt(dc
-		,(int)(vPos.x - _vecAnimationFrame[_curFrame].vSlice.x /2.f)
-		,(int)(vPos.y - _vecAnimationFrame[_curFrame].vSlice.y / 2.f)
-		,(int)(_vecAnimationFrame[_curFrame].vSlice.x)
-		,(int)(_vecAnimationFrame[_curFrame].vSlice.y)
+		,(int)(vPos.x - destWidth /2.f)
+		,(int)(vPos.y - destHeight / 2.f)
+		,(int)(destWidth)
+		,(int)(destHeight)
 		,_texture->GetDC()
 		,(int)(_vecAnimationFrame[_curFrame].vLT.x)
 		,(int)(_vecAnimationFrame[_curFrame].vLT.y)
 		,(int)(_vecAnimationFrame[_curFrame].vSlice.x)
 		,(int)(_vecAnimationFrame[_curFrame].vSlice.y)
-		,RGB(255,0,255));*/
+		,RGB(255,0,255));
 	// 회전 애니메이션
-	Object* pObj = _animator->GetObj();
+	/*Object* pObj = _animator->GetObj();
 	Vector2 pos = pObj->GetPos();
 	Vector2 scale = pObj->GetScale();
 	Vector2 center = pos;
@@ -123,10 +127,10 @@ void Animation::Render(HDC dc)
 		, (int)(pos.y - _vecAnimationFrame[_curFrame].vSlice.y / 2.f)
 		, (int)(_vecAnimationFrame[_curFrame].vSlice.x)
 		, (int)(_vecAnimationFrame[_curFrame].vSlice.y)
-		, nullptr, 0, 0);*/
+		, nullptr, 0, 0);
 
 	DeleteDC(alphaDC);
-	DeleteObject(alphaBit);
+	DeleteObject(alphaBit);*/
 }
 
 void Animation::Create(Texture* texture, Vector2 leftTop, Vector2 sliceSize, Vector2 step, int framecount, float duration)
