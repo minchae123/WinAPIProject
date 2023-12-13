@@ -125,6 +125,7 @@ void Animation::Render(HDC dc)
 		, (int)(_vecAnimationFrame[_curFrame].vSlice.y)
 		, nullptr, 0, 0);
 
+	DeleteDC(alphaDC);
 	DeleteObject(alphaBit);
 }
 
