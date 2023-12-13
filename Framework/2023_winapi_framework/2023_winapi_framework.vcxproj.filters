@@ -71,6 +71,9 @@
     <Filter Include="Engine\03. Manager\PatternManager">
       <UniqueIdentifier>{b4200277-cda9-4284-8e00-52e6b4f26c5d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\03. Manager\ResultManager">
+      <UniqueIdentifier>{d89225f9-2d31-4c7e-9691-94425bdc1c6e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -197,6 +200,9 @@
     <ClInclude Include="GameEnd_Scene.h">
       <Filter>Engine\05. Scene\MainScene</Filter>
     </ClInclude>
+    <ClInclude Include="ResultManager.h">
+      <Filter>Engine\03. Manager\ResultManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -317,6 +323,9 @@
     <ClCompile Include="SpawnManager.cpp" />
     <ClCompile Include="GameEnd_Scene.cpp">
       <Filter>Engine\05. Scene\MainScene</Filter>
+    </ClCompile>
+    <ClCompile Include="ResultManager.cpp">
+      <Filter>Engine\03. Manager\ResultManager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
