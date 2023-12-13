@@ -185,6 +185,7 @@
     <ClInclude Include="GameEnd_Scene.h" />
     <ClInclude Include="Game_Scene.h" />
     <ClInclude Include="Health.h" />
+    <ClInclude Include="InfoManager.h" />
     <ClInclude Include="Intro_Scene.h" />
     <ClInclude Include="KeyMgr.h" />
     <ClInclude Include="Monster.h" />
@@ -226,6 +227,7 @@
     <ClCompile Include="GameEnd_Scene.cpp" />
     <ClCompile Include="Game_Scene.cpp" />
     <ClCompile Include="Health.cpp" />
+    <ClCompile Include="InfoManager.cpp" />
     <ClCompile Include="Intro_Scene.cpp" />
     <ClCompile Include="KeyMgr.cpp" />
     <ClCompile Include="main.cpp" />

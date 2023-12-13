@@ -32,7 +32,7 @@ Bullet::~Bullet()
 
 void Bullet::Update()
 {
-	if (_cnt >= 3)
+	if (_cnt >= 4)
 	{
 		EventManager::GetInstance()->DeleteObject(this);
 	}

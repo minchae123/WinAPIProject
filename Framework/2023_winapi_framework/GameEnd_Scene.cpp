@@ -3,10 +3,11 @@
 #include "SceneMgr.h"
 #include "KeyMgr.h"
 #include "ResMgr.h"
+#include "ResultManager.h"
 
 void GameEnd_Scene::Init()
 {
-	backTex = ResourceManager::GetInstance()->TexLoad(L"Background", L"Texture\\EndBack.bmp");
+	backTex = ResourceManager::GetInstance()->TexLoad(L"EBG", L"Texture\\EndBack.bmp");
 	selectTex = ResourceManager::GetInstance()->TexLoad(L"Select", L"Texture\\Select.bmp");
 }
 
@@ -75,13 +76,15 @@ void GameEnd_Scene::Render(HDC _dc)
 	HFONT hOldFont = (HFONT)SelectObject(_dc, hFont);
 
 	// 시간 텍스트 렌더링
-	wstring time = L"생존시간 : " + Text(1);
+	int timeI = ResultManager::GetInstance()->GetTime();
+	wstring time = L"생존시간 : " + Text(timeI);
 	SetBkMode(_dc, TRANSPARENT);
 	SetTextColor(_dc, RGB(255, 255, 255));
 	TextOut(_dc, 300, 300, time.c_str(), time.length());
 
 	// 점수 텍스트 렌더링
-	wstring score = L"처치한 적 : " + Text(1);
+	int scoreI = ResultManager::GetInstance()->GetMonster();
+	wstring score = L"처치한 적 : " + Text(scoreI);
 	TextOut(_dc, 300, 400, score.c_str(), score.length());
 
 	// 이전 폰트로 복원

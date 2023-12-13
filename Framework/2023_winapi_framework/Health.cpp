@@ -5,6 +5,7 @@
 #include "SceneMgr.h"
 #include "Scene.h"
 #include "DebugManager.h"
+#include "ResultManager.h"
 
 Health::Health()
 	: _hp(0)
@@ -22,11 +23,13 @@ void Health::Update()
 	{
 		if (_ownerObject->GetName() == L"Player")
 		{
-			//SceneManager::GetInstance()->LoadScene(L"");
-			DebugLog(L"Player Á×À½");
+			ResultManager::GetInstance()->StopTime();
+			SceneManager::GetInstance()->LoadScene(L"GameEnd_Scene");
+			//DebugLog(L"Player Á×À½");
 		}
 		else
 		{
+			ResultManager::GetInstance()->SetMonster();
 			EventManager::GetInstance()->DeleteObject(_ownerObject);
 		}
 	}

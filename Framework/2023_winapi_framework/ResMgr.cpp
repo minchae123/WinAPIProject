@@ -77,12 +77,13 @@ void ResourceManager::LoadSound(const wstring& strKey, const wstring& strReleati
     str.assign(strFilePath.begin(), strFilePath.end());
 
     // 루프할지 말지 결정
-    FMOD_MODE eMode = FMOD_LOOP_NORMAL; // 반복 출력
+    FMOD_MODE eMode = FMOD_LOOP_NORMAL; // 반복 출력   
     if (!IsLoop)
         eMode = FMOD_DEFAULT; // 사운드 1번만 출력
 
     SoundInfo* ptSound = new SoundInfo;
     ptSound->IsLoop = IsLoop;
+  
     // 사운드 객체를 만드는 것은 system임.
                             //파일경로,  FMOD_MODE, NULL, &sound
     _pSystem->createSound(str.c_str(), eMode, nullptr, &ptSound->pSound);
@@ -99,8 +100,8 @@ void ResourceManager::Play(const wstring& strKey)
     if (!ptSound->IsLoop)
         eChannel = SOUND_CHANNEL::EFFECT;
     // 사운드 재생 함수. &channel로 어떤 채널을 통해 재생되는지 포인터 넘김
+    Volume(eChannel, 0.2f);
     _pSystem->playSound(ptSound->pSound, nullptr, false, &_pChannel[(UINT)eChannel]);
-
 }
 
 void ResourceManager::Stop(SOUND_CHANNEL eChannel)

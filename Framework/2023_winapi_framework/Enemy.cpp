@@ -55,7 +55,6 @@ void Enemy::Render(HDC dc)
 
 void Enemy::EndTimer(Timer* timer)
 {
-	 
 	//ShootBullet();
 	//TimeManager::GetInstance()->TimePass(2.f, this);
 }

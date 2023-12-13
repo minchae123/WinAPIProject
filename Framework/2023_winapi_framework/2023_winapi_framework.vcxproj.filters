@@ -74,6 +74,9 @@
     <Filter Include="Engine\03. Manager\ResultManager">
       <UniqueIdentifier>{d89225f9-2d31-4c7e-9691-94425bdc1c6e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\03. Manager\InfoManager">
+      <UniqueIdentifier>{cecb37f8-cc6d-4b79-b9b8-e09e3a4e3322}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -203,6 +206,9 @@
     <ClInclude Include="ResultManager.h">
       <Filter>Engine\03. Manager\ResultManager</Filter>
     </ClInclude>
+    <ClInclude Include="InfoManager.h">
+      <Filter>Engine\03. Manager\InfoManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -326,6 +332,9 @@
     </ClCompile>
     <ClCompile Include="ResultManager.cpp">
       <Filter>Engine\03. Manager\ResultManager</Filter>
+    </ClCompile>
+    <ClCompile Include="InfoManager.cpp">
+      <Filter>Engine\03. Manager\InfoManager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

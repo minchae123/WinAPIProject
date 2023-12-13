@@ -13,6 +13,7 @@
 #include "Health.h"
 #include "CollisionMgr.h"
 #include "ResMgr.h"
+#include "ResultManager.h"
 
 PlayerController::PlayerController()
 	: _texture(nullptr)
@@ -27,6 +28,7 @@ PlayerController::PlayerController()
 
 	CreateHealth();
 	GetHealth()->SetHP(5);
+	ResultManager::GetInstance()->HeartSet(GetHealth()->GetHealth());
 }
 
 PlayerController::~PlayerController()
@@ -109,9 +111,10 @@ void PlayerController::ShootBullet()
 void PlayerController::EnterCollision(Collider* other)
 {
 	const Object* otherObj = other->GetObj();
-	if (otherObj->GetName() == L"Bullet")
+	if (otherObj->GetName() == L"EnemyBullet")
 	{
 		DebugLog(L"Ã¼·Â ±ïÀÓ");
+		ResultManager::GetInstance()->HeartSet(GetHealth()->GetHealth());
 		GetHealth()->Damage(1);
 	}
 }

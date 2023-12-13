@@ -106,7 +106,7 @@ void Animation::Render(HDC dc)
 		, Core::GetInstance()->GetResolution().x
 		, Core::GetInstance()->GetResolution().y, WHITENESS);
 
-	TransparentBlt(alphaDC
+	TransparentBlt(dc
 		, (int)(pos.x - _vecAnimationFrame[_curFrame].vSlice.x / 2.f)
 		, (int)(pos.y - _vecAnimationFrame[_curFrame].vSlice.y / 2.f)
 		, (int)(_vecAnimationFrame[_curFrame].vSlice.x)
@@ -118,12 +118,12 @@ void Animation::Render(HDC dc)
 		, (int)(_vecAnimationFrame[_curFrame].vSlice.y)
 		, RGB(255, 0, 255));
 
-	PlgBlt(dc, point, alphaDC
+	/*PlgBlt(alphaDC, point, alphaDC
 		, (int)(pos.x - _vecAnimationFrame[_curFrame].vSlice.x / 2.f)
 		, (int)(pos.y - _vecAnimationFrame[_curFrame].vSlice.y / 2.f)
 		, (int)(_vecAnimationFrame[_curFrame].vSlice.x)
 		, (int)(_vecAnimationFrame[_curFrame].vSlice.y)
-		, nullptr, 0, 0);
+		, nullptr, 0, 0);*/
 
 	DeleteDC(alphaDC);
 	DeleteObject(alphaBit);

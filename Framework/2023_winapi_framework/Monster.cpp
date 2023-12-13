@@ -41,8 +41,10 @@ void Monster::EnterCollision(Collider* _pOther)
 	{
 		// 昏力贸府秦林搁蹬.
 		m_iHp--;
-		if(m_iHp<=0)
+		if (m_iHp <= 0)
+		{
 			EventManager::GetInstance()->DeleteObject(this);
+		}
 	}
 }
 

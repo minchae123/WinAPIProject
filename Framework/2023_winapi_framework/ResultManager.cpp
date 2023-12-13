@@ -8,6 +8,7 @@ void ResultManager::Init()
 	_maxMonsterScore	= 0;
 	_monsterScore		= 0;
 	_timeScore			= 0;
+	heart = 0;
 	_playTime			= true;
 }
 
