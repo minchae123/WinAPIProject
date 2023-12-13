@@ -21,7 +21,8 @@ void Start_Scene::Init()
 	//AddObject(wObj, OBJECT_GROUP::WALL);
 
 	Object* pObj = new PlayerController;
-	pObj->SetPos((Vector2({Core::GetInstance()->GetResolution().x /2, Core::GetInstance()->GetResolution().y / 2})));
+	pObj->SetPos((Vector2({Core::GetInstance()
+		->GetResolution().x /2, Core::GetInstance()->GetResolution().y / 2})));
 	pObj->SetScale(Vector2(5.f, 5.f));
 	pObj->SetName(L"Player");
 	AddObject(pObj, OBJECT_GROUP::PLAYER);
