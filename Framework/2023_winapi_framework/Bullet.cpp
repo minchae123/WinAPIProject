@@ -14,7 +14,7 @@ Bullet::Bullet()
 	: _theta(0.f)
 	, _dir(Vector2(0.f, 0.f))
 	, _texture(nullptr)
-	, _moveSpeed(500.f)
+	, _moveSpeed(400.f)
 	, _vecMove(true)
 	, _shootObj(nullptr)
 	, _cnt(0)
@@ -32,7 +32,7 @@ Bullet::~Bullet()
 
 void Bullet::Update()
 {
-	if (_cnt >= 4)
+	if (_cnt >= 10)
 	{
 		EventManager::GetInstance()->DeleteObject(this);
 	}

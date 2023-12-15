@@ -10,7 +10,7 @@
 void SpawnManager::Init()
 {
 	_time = 0;
-	_spawnTime = 10;
+	_spawnTime = 6;
 	Spawn();
 }
 

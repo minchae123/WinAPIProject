@@ -13,6 +13,7 @@
 #include "Enemy.h"
 #include "SpawnManager.h"
 #include "InfoManager.h"
+#include "ResultManager.h"
 
 void Start_Scene::Init()
 {
@@ -21,7 +22,8 @@ void Start_Scene::Init()
 	//AddObject(wObj, OBJECT_GROUP::WALL);
 
 	Object* pObj = new PlayerController;
-	pObj->SetPos((Vector2({Core::GetInstance()->GetResolution().x /2, Core::GetInstance()->GetResolution().y / 2})));
+	pObj->SetPos((Vector2({Core::GetInstance()
+		->GetResolution().x /2, Core::GetInstance()->GetResolution().y / 2})));
 	pObj->SetScale(Vector2(5.f, 5.f));
 	pObj->SetName(L"Player");
 	AddObject(pObj, OBJECT_GROUP::PLAYER);
@@ -40,12 +42,14 @@ void Start_Scene::Init()
 	CollisionManager::GetInstance()->CheckGroup(OBJECT_GROUP::PLAYER, OBJECT_GROUP::BULLET);
 	CollisionManager::GetInstance()->CheckGroup(OBJECT_GROUP::BULLET, OBJECT_GROUP::ENEMY);
 	SpawnManager::GetInstance()->Init();
+	ResultManager::GetInstance()->Init();
 }
 
 void Start_Scene::Update()
 {
 	Scene::Update();
 	SpawnManager::GetInstance()->Update();
+	ResultManager::GetInstance()->Update();
 }
 
 void Start_Scene::Render(HDC _dc)

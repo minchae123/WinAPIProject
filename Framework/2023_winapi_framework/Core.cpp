@@ -38,7 +38,6 @@ bool Core::Init(HWND hWnd, POINT ptResolution)
 	SceneManager::GetInstance()->Init();
 	PatternMgr::GetInstance()->Init();
 	PatternController::GetInstance()->Init();
-	ResultManager::GetInstance()->Init();
 
 	return true;
 }
@@ -59,7 +58,6 @@ void Core::Update()
 	CollisionManager::GetInstance()->Update();
 	PatternMgr::GetInstance()->Update();
 	PatternController::GetInstance()->Update();
-	ResultManager::GetInstance()->Update();
 }
 
 void Core::Render()
