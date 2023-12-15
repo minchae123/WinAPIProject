@@ -34,7 +34,10 @@ void InfoManager::Render(HDC dc)
 	hp = ResultManager::GetInstance()->GetHeart();
 	for (int i = 0; i < hp; i++)
 	{
-		TransparentBlt(dc, 800 + (i * 100), 150, 128, 128, fHeart->GetDC(), 0, 0, 128, 128, RGB(255, 0, 255));
+		if(i<3)
+			TransparentBlt(dc, 850 + (i * 100), 150, 128, 128, fHeart->GetDC(), 0, 0, 128, 128, RGB(255, 0, 255));
+		else
+			TransparentBlt(dc, 850 + ((i-3) * 100), 250, 128, 128, fHeart->GetDC(), 0, 0, 128, 128, RGB(255, 0, 255));
 	}
 
 	// 이전 폰트로 복원
