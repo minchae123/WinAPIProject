@@ -13,8 +13,10 @@ public:
 public:
     Texture* backTex;
     Texture* selectTex;
+    Texture* infoTex;
     int num = 0;
     float x;
     float y = 395;
+    bool info = false;
 };
 

@@ -9,6 +9,7 @@ void Intro_Scene::Init()
 {
 	backTex = ResourceManager::GetInstance()->TexLoad(L"Background", L"Texture\\Title.bmp");
 	selectTex = ResourceManager::GetInstance()->TexLoad(L"Select", L"Texture\\Select.bmp");
+	infoTex = ResourceManager::GetInstance()->TexLoad(L"Info", L"Texure\\Info.bmp");
 }
 
 void Intro_Scene::Update()
@@ -58,6 +59,8 @@ void Intro_Scene::Update()
 			break;
 		case 1: // 게임 방법
 		{
+			info = true;
+			int a = 9;
 		}
 			break;
 		case 2: // 게임 종료
@@ -69,6 +72,11 @@ void Intro_Scene::Update()
 			break;
 		}
 	}
+
+	if (KEY_DOWN(KEY_TYPE::ESC))
+	{
+		info = false;
+	}
 }
 
 void Intro_Scene::Render(HDC _dc)
@@ -76,6 +84,11 @@ void Intro_Scene::Render(HDC _dc)
 	Scene::Render(_dc);
 	BitBlt(_dc, (int)(0), (int)(-50), 1280, 780, backTex->GetDC(), 0, 0, SRCCOPY);
 	TransparentBlt(_dc, 400, y, 64, 64, selectTex->GetDC(), 0, 0, 64, 64, RGB(255, 255, 255));
+	if (info)
+	{
+		int  a = 0;
+		TransparentBlt(_dc, 400, y, 64, 64, infoTex->GetDC(), 0, 0, 64, 64, RGB(255, 0, 255));
+	}
 }
 
 void Intro_Scene::Release()
