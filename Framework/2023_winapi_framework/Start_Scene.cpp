@@ -18,16 +18,18 @@
 void Start_Scene::Init()
 {
 	back = ResourceManager::GetInstance()->TexLoad(L"BG", L"Texture\\GameBg.bmp");
+	background = ResourceManager::GetInstance()->TexLoad(L"Backgroundd", L"Texture\\Background.bmp");
+
 	//Object* wObj = new Wall;
 	//AddObject(wObj, OBJECT_GROUP::WALL);
 
 	Object* pObj = new PlayerController;
-	pObj->SetPos((Vector2({Core::GetInstance()
-		->GetResolution().x /2, Core::GetInstance()->GetResolution().y / 2})));
+	pObj->SetPos((Vector2({ Core::GetInstance()
+		->GetResolution().x / 2, Core::GetInstance()->GetResolution().y / 2 })));
 	pObj->SetScale(Vector2(5.f, 5.f));
 	pObj->SetName(L"Player");
 	AddObject(pObj, OBJECT_GROUP::PLAYER);
-	
+
 	InfoManager::GetInstance()->Init();
 	/*Object* enemyObj = new Enemy;
 	enemyObj->SetPos((Vector2(300, 100)));
@@ -53,8 +55,9 @@ void Start_Scene::Update()
 }
 
 void Start_Scene::Render(HDC _dc)
-{	
-	BitBlt(_dc, (int)(100), (int)(100), 1280, 1700, back->GetDC(), 0, 0, SRCCOPY);
+{
+	BitBlt(_dc, 0, 0, 1920, 1080, background->GetDC(), 0, 0, SRCCOPY);
+	BitBlt(_dc, 100, 100, 1280, 1700, back->GetDC(), 0, 0, SRCCOPY);
 	Scene::Render(_dc);
 	//<<DebugManager::GetInstance()->Render(_dc);
 	InfoManager::GetInstance()->Render(_dc);

@@ -12,5 +12,6 @@ public:
 
 private:
     Texture* back;
+    Texture* background;
 };
 
