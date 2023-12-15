@@ -32,12 +32,14 @@ void InfoManager::Render(HDC dc)
 	TextOut(dc, 1000, 250, score.c_str(), score.length());
 
 	hp = ResultManager::GetInstance()->GetHeart();
+	int x = 950;
+	int y = 500;
 	for (int i = 0; i < hp; i++)
 	{
 		if(i<3)
-			TransparentBlt(dc, 850 + (i * 100), 150, 128, 128, fHeart->GetDC(), 0, 0, 128, 128, RGB(255, 0, 255));
+			TransparentBlt(dc, x + (i * 100), y, 128, 128, fHeart->GetDC(), 0, 0, 128, 128, RGB(255, 0, 255));
 		else
-			TransparentBlt(dc, 850 + ((i-3) * 100), 250, 128, 128, fHeart->GetDC(), 0, 0, 128, 128, RGB(255, 0, 255));
+			TransparentBlt(dc, x + ((i-3) * 100), y + 100, 128, 128, fHeart->GetDC(), 0, 0, 128, 128, RGB(255, 0, 255));
 	}
 
 	// 이전 폰트로 복원

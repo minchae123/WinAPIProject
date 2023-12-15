@@ -209,6 +209,9 @@
     <ClInclude Include="InfoManager.h">
       <Filter>Engine\03. Manager\InfoManager</Filter>
     </ClInclude>
+    <ClInclude Include="Menu_Scene.h">
+      <Filter>Engine\05. Scene\MainScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -335,6 +338,9 @@
     </ClCompile>
     <ClCompile Include="InfoManager.cpp">
       <Filter>Engine\03. Manager\InfoManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu_Scene.cpp">
+      <Filter>Engine\05. Scene\MainScene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
