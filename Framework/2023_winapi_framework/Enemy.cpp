@@ -13,10 +13,10 @@
 #include "Animation.h"
 #include "Animator.h"
 #include "Collider.h"
+#include "Object.h"
 
 Enemy::Enemy()
 	: _texture(nullptr)
-	, _moveSpeed(200.f)
 	, _time(0)
 	, _spawnTime(2.f)
 {
@@ -27,7 +27,7 @@ Enemy::Enemy()
 
 	CreateAnimator();
 	GetAnimator()->CreateAnim(L"EnemyIdle", _texture, Vector2(0, 0), Vector2(300, 300), Vector2(300.f, 0.f), 2, 0.5f);
-	GetAnimator()->PlayAnim(L"EnemyIdle", true);
+	GetAnimator()->PlayAnim(L"EnemyIdle", true, 100);
 
 	CreateHealth();
 	GetHealth()->SetHP(10);

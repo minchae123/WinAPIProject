@@ -13,6 +13,7 @@
 #include "Enemy.h"
 #include "SpawnManager.h"
 #include "InfoManager.h"
+#include "ResultManager.h"
 
 void Start_Scene::Init()
 {
@@ -41,12 +42,14 @@ void Start_Scene::Init()
 	CollisionManager::GetInstance()->CheckGroup(OBJECT_GROUP::PLAYER, OBJECT_GROUP::BULLET);
 	CollisionManager::GetInstance()->CheckGroup(OBJECT_GROUP::BULLET, OBJECT_GROUP::ENEMY);
 	SpawnManager::GetInstance()->Init();
+	ResultManager::GetInstance()->Init();
 }
 
 void Start_Scene::Update()
 {
 	Scene::Update();
 	SpawnManager::GetInstance()->Update();
+	ResultManager::GetInstance()->Update();
 }
 
 void Start_Scene::Render(HDC _dc)

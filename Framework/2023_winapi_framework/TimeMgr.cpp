@@ -45,7 +45,7 @@ void TimeManager::Update()
 		static wchar_t titlebuf[50] = {};		
 		swprintf_s(titlebuf, L"FPS: %d, DT: %f", _fps, _deltaTime);
 		//wsprintf();
-		//SetWindowText(Core::GetInst()->GetHwnd(), titlebuf);
+		SetWindowText(Core::GetInstance()->GetHwnd(), titlebuf);
 	}
 
 	for (size_t i = 0; i < _vecTimer.size(); ++i)

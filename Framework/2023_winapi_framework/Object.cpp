@@ -98,7 +98,7 @@ void Object::Component_Render(HDC dc)
 		_health->Render(dc);
 	if (nullptr != _pAnimator)
 		_pAnimator->Render(dc);
-	if (nullptr != _pCollider)
-		_pCollider->Render(dc);
+	/*if (nullptr != _pCollider)
+		_pCollider->Render(dc);*/
 }
 

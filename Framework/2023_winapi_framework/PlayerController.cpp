@@ -17,7 +17,7 @@
 
 PlayerController::PlayerController()
 	: _texture(nullptr)
-	, _moveSpeed(200.f)
+	, _moveSpeed(300.f)
 {
 	_texture = ResourceManager::GetInstance()->TexLoad(L"Player", L"Texture\\Player.bmp");
 	CreateCollider();

@@ -13,11 +13,10 @@ public:
     void Render(HDC dc) override;
     void EndTimer(Timer* timer) override;
     virtual void EnterCollision(Collider* other) override;
-private:
+public:
     void ShootBullet();
-private:
+protected:
     Texture* _texture;
-    float _moveSpeed;
     float _time;
     float _spawnTime;
 };
