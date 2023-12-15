@@ -16,7 +16,7 @@ void ResultManager::Update()
 {
 	if (_monsterScore > _maxMonsterScore)
 	{
-		_maxMonsterScore = _monsterScore;
+ 		_maxMonsterScore = _monsterScore;
 	}
 
 	if (_timeScore > _maxTimeScore)
@@ -24,6 +24,9 @@ void ResultManager::Update()
 		_maxTimeScore = _timeScore;
 	}
 
-	if(_playTime)
+	if (_playTime)
+	{
 		_timeScore += DeltaTime;
+	}
+
 }

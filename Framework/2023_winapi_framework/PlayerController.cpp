@@ -27,7 +27,7 @@ PlayerController::PlayerController()
 	GetAnimator()->PlayAnim(L"PlayerIdle", true);
 
 	CreateHealth();
-	GetHealth()->SetHP(5);
+	GetHealth()->SetHP(6);
 	ResultManager::GetInstance()->HeartSet(GetHealth()->GetHealth());
 }
 
