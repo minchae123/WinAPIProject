@@ -24,9 +24,6 @@ void ResultManager::Update()
 		_maxTimeScore = _timeScore;
 	}
 
-	if (_playTime)
-	{
-		_timeScore += DeltaTime;
-	}
+	_timeScore += DeltaTime;
 
 }

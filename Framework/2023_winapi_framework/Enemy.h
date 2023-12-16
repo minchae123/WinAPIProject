@@ -17,7 +17,10 @@ public:
     void ShootBullet();
 protected:
     Texture* _texture;
+    Texture* _hitTexture;
     float _time;
     float _spawnTime;
+    float _hitTime;
+    bool _hit;
 };
 
