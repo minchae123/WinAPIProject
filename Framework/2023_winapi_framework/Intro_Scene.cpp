@@ -9,7 +9,7 @@ Intro_Scene::Intro_Scene() : info{false}, num {0}, x {400}, y {395}
 {
 	backTex = ResourceManager::GetInstance()->TexLoad(L"Background", L"Texture\\Title.bmp");
 	selectTex = ResourceManager::GetInstance()->TexLoad(L"Select", L"Texture\\Select.bmp");
-	infoTex = ResourceManager::GetInstance()->TexLoad(L"GameInfo", L"Texure\\Info.bmp");
+	//infoTex = ResourceManager::GetInstance()->TexLoad(L"GameInfo", L"Texure\\Info.bmp");
 }
 
 Intro_Scene::~Intro_Scene()

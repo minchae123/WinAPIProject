@@ -16,8 +16,12 @@ public:
 private:
     void Move();
     void ShootBullet();
+    void Damage();
 private:
     Texture* _texture;
+    Texture* _hitTexture;
     float _moveSpeed;
+    float _time;
+    bool _hit;
 };
 

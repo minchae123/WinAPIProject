@@ -18,12 +18,16 @@
 PlayerController::PlayerController()
 	: _texture(nullptr)
 	, _moveSpeed(300.f)
+	, _hitTexture(nullptr)
+	, _time(0)
 {
 	_texture = ResourceManager::GetInstance()->TexLoad(L"Player", L"Texture\\Player.bmp");
+	_hitTexture = ResourceManager::GetInstance()->TexLoad(L"PlayerDamage", L"Texture\\Playerhit.bmp");
 	CreateCollider();
 
 	CreateAnimator();
 	GetAnimator()->CreateAnim(L"PlayerIdle", _texture, Vector2(0, 0), Vector2(300.f, 300.f), Vector2(300.f, 0.f), 2, 0.5f);
+	GetAnimator()->CreateAnim(L"PlayerDamage", _hitTexture, Vector2(0, 0), Vector2(300.f, 300.f), Vector2(300.f, 0.f), 2, 0.5f);
 	GetAnimator()->PlayAnim(L"PlayerIdle", true);
 
 	CreateHealth();
@@ -41,7 +45,19 @@ void PlayerController::Update()
 	Move();
 	GetAnimator()->Update();
 	GetHealth()->Update();
-}
+
+	if (_hit)
+	{
+		_time += DeltaTime;
+
+		if (_time >= 0.5f)
+		{
+			_hit = false;
+			_time = 0;
+			GetAnimator()->PlayAnim(L"PlayerIdle", true);
+		}
+	}
+}	
 
 void PlayerController::Render(HDC dc)
 {
@@ -108,14 +124,20 @@ void PlayerController::ShootBullet()
 	SceneManager::GetInstance()->GetCurScene()->AddObject(newBullet, OBJECT_GROUP::BULLET);
 }
 
+void PlayerController::Damage()
+{
+	_hit = true;
+	ResultManager::GetInstance()->HeartSet(GetHealth()->GetHealth());
+	GetHealth()->Damage(1);
+	GetAnimator()->PlayAnim(L"PlayerDamage", false);
+}
+
 void PlayerController::EnterCollision(Collider* other)
 {
 	const Object* otherObj = other->GetObj();
 	if (otherObj->GetName() == L"EnemyBullet")
 	{
-		DebugLog(L"Ã¼·Â ±ïÀÓ");
-		ResultManager::GetInstance()->HeartSet(GetHealth()->GetHealth());
-		GetHealth()->Damage(1);
+		Damage();
 	}
 }
 
