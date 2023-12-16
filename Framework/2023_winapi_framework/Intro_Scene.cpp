@@ -53,7 +53,8 @@ void Intro_Scene::Update()
 		{
 		case 0: // 게임 시작
 		{
-			SceneManager::GetInstance()->LoadScene(L"Start_Scene");
+			//SceneManager::GetInstance()->LoadScene(L"Start_Scene");
+			SceneLoad(L"Menu_Scene");
 		}
 			break;
 		case 1: // 게임 방법

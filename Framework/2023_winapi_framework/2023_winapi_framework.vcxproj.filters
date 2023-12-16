@@ -77,6 +77,15 @@
     <Filter Include="Engine\03. Manager\InfoManager">
       <UniqueIdentifier>{cecb37f8-cc6d-4b79-b9b8-e09e3a4e3322}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\09. UI">
+      <UniqueIdentifier>{f06e876e-b916-4478-9e03-5b59c9a85997}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\09. UI\Button">
+      <UniqueIdentifier>{f75a9491-766f-4062-83f3-ad3e82ab8707}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\09. UI\Button\AddButton">
+      <UniqueIdentifier>{b7a60580-9746-472b-835e-8988ea032187}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -212,6 +221,12 @@
     <ClInclude Include="Menu_Scene.h">
       <Filter>Engine\05. Scene\MainScene</Filter>
     </ClInclude>
+    <ClInclude Include="UI.h">
+      <Filter>Engine\09. UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Engine\09. UI\Button</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -341,6 +356,12 @@
     </ClCompile>
     <ClCompile Include="Menu_Scene.cpp">
       <Filter>Engine\05. Scene\MainScene</Filter>
+    </ClCompile>
+    <ClCompile Include="UI.cpp">
+      <Filter>Engine\09. UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Engine\09. UI\Button</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
