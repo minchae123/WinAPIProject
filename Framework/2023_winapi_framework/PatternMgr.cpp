@@ -30,7 +30,7 @@ void PatternMgr::CreateBullet(float angle, Vector2 pos)
 	newBullet->SetPos(pos);
 	newBullet->SetScale(Vector2(25.f, 25.f));
 	newBullet->SetDir(angle);
-	newBullet->SetName(L"Enemy_Bullet");
+	newBullet->SetName(L"Bullet");
 	newBullet->SetObj(nullptr);
 	SceneManager::GetInstance()->GetCurScene()->AddObject(newBullet, OBJECT_GROUP::BULLET);
 }
@@ -42,7 +42,7 @@ void PatternMgr::CreateBullet(Vector2 dir, Vector2 pos)
 	newBullet->SetPos(pos);
 	newBullet->SetScale(Vector2(25.f, 25.f));
 	newBullet->SetDir(dir);
-	newBullet->SetName(L"Enemy_Bullet");
+	newBullet->SetName(L"Bullet");
 	newBullet->SetObj(nullptr);
 	SceneManager::GetInstance()->GetCurScene()->AddObject(newBullet, OBJECT_GROUP::BULLET);
 }

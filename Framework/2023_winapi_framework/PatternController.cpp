@@ -32,7 +32,7 @@ void PatternController::CreateBullet(Vector2 dir, Vector2 pos, float speed)
 	newBullet->SetScale(Vector2(25.f, 25.f));
 	newBullet->SetDir(dir);
 	newBullet->SetSpeed(speed);
-	newBullet->SetName(L"EnemyBullet");
+	newBullet->SetName(L"Bullet");
 	newBullet->SetObj(this);
 	SceneManager::GetInstance()->GetCurScene()->AddObject(newBullet, OBJECT_GROUP::BULLET);
 }
@@ -43,7 +43,7 @@ void PatternController::CreateBullet(float angle, Vector2 pos)
 	newBullet->SetPos(pos);
 	newBullet->SetScale(Vector2(25.f, 25.f));
 	newBullet->SetDir(angle);
-	newBullet->SetName(L"EnemyBullet");
+	newBullet->SetName(L"Bullet");
 	newBullet->SetObj(this);
 	SceneManager::GetInstance()->GetCurScene()->AddObject(newBullet, OBJECT_GROUP::BULLET);
 }
@@ -54,7 +54,7 @@ void PatternController::CreateBullet(Vector2 dir, Vector2 pos)
 	newBullet->SetPos(pos);
 	newBullet->SetScale(Vector2(25.f, 25.f));
 	newBullet->SetDir(dir);
-	newBullet->SetName(L"EnemyBullet");
+	newBullet->SetName(L"Bullet");
 	newBullet->SetObj(this);
 	SceneManager::GetInstance()->GetCurScene()->AddObject(newBullet, OBJECT_GROUP::BULLET);
 }

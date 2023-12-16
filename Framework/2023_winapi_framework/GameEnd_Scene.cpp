@@ -9,6 +9,7 @@ void GameEnd_Scene::Init()
 {
 	backTex = ResourceManager::GetInstance()->TexLoad(L"EBG", L"Texture\\EndBack.bmp");
 	selectTex = ResourceManager::GetInstance()->TexLoad(L"Select", L"Texture\\Select.bmp");
+	ResourceManager::GetInstance()->Pause(SOUND_CHANNEL::BGM, true);
 }
 
 void GameEnd_Scene::Update()

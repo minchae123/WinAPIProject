@@ -73,7 +73,10 @@ Vector2 Collider::GetWidthVector()
 void Collider::FinalUpdate()
 {
 	// Object위치를 따라가야 하는거야.
-	Vector2 vObjPos = _ownerObject->GetPos();
-	_finalPos = vObjPos + _offsetPos;
+	if (_ownerObject != nullptr)
+	{
+		Vector2 vObjPos = _ownerObject->GetPos();
+		_finalPos = vObjPos + _offsetPos;
+	}
 }
 

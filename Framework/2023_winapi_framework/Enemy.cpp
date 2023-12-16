@@ -14,12 +14,13 @@
 #include "Animator.h"
 #include "Animation.h"
 #include "Health.h"
+#include "ResultManager.h"
 
 Enemy::Enemy(int hp)
 	: _texture(nullptr)
 	, _hitTexture(nullptr)
 	, _time(0)
-	, _spawnTime(2.f)
+	, _spawnTime(1.f)
 	, _hit(false)
 	, _hitTime(0)
 	, _hp(hp)
@@ -65,6 +66,7 @@ void Enemy::Update()
 		{
 			_hit = false;
 			_hitTime = 0;
+			ResultManager::GetInstance()->SetMonster();
 			GetAnimator()->PlayAnim(L"EnemyIdle", true);
 		}
 	}

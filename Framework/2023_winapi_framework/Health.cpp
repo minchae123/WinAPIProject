@@ -29,7 +29,6 @@ void Health::Update()
 		}
 		else
 		{
-			ResultManager::GetInstance()->SetMonster();
 			EventManager::GetInstance()->DeleteObject(_ownerObject);
 		}
 	}

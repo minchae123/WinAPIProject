@@ -55,19 +55,19 @@ void Level_Scene::Update()
 		case 0: // 1 레벨
 		{
 			SceneLoad(L"Start_Scene");
-			LevelManager::GetInstance()->Init(2, 150.f, 3);
+			LevelManager::GetInstance()->Init(3, 200.f, 3);
 		}
 		break;
 		case 1: // 2 레벨
 		{
 			SceneLoad(L"Start_Scene");
-			LevelManager::GetInstance()->Init(4, 200.f, 5);
+			LevelManager::GetInstance()->Init(5, 350.f, 7);
 		}
 		break;
 		case 2: // 3 레벨
 		{
 			SceneLoad(L"Start_Scene");
-			LevelManager::GetInstance()->Init(6, 250.f, 6);
+			LevelManager::GetInstance()->Init(10, 500.f, 10);
 		}
 		break;
 		default:

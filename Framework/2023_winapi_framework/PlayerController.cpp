@@ -34,6 +34,7 @@ PlayerController::PlayerController()
 	GetHealth()->SetHP(6);
 	ResultManager::GetInstance()->HeartSet(GetHealth()->GetHealth());
 	ResourceManager::GetInstance()->LoadSound(L"Shoot", L"Sound\\shoot.wav", false);
+	ResourceManager::GetInstance()->LoadSound(L"Hit", L"Sound\\Hit.wav", false);
 }
 
 PlayerController::~PlayerController()
@@ -115,7 +116,7 @@ void PlayerController::ShootBullet()
 	Vector2 pos = GetPos();
 	Vector2 dir = Vector2(mousePos.x - pos.x, mousePos.y - pos.y);
 	dir = dir.Normalize();
-	Vector2 shootPos = Vector2(pos.x + dir.x * 50, pos.y + dir.y * 50);
+	Vector2 shootPos = Vector2(pos.x + dir.x * 60, pos.y + dir.y * 60);
 	Bullet* newBullet = new Bullet;
 	newBullet->SetPos(shootPos);
 	newBullet->SetScale(Vector2(25.f, 25.f));
@@ -133,12 +134,13 @@ void PlayerController::Damage()
 	ResultManager::GetInstance()->HeartSet(GetHealth()->GetHealth());
 	GetHealth()->Damage(1);
 	GetAnimator()->PlayAnim(L"PlayerDamage", false);
+	ResourceManager::GetInstance()->Play(L"Hit");
 }
 
 void PlayerController::EnterCollision(Collider* other)
 {
 	const Object* otherObj = other->GetObj();
-	if (otherObj->GetName() == L"EnemyBullet")
+	if (otherObj->GetName() == L"Bullet")
 	{
 		Damage();
 	}
