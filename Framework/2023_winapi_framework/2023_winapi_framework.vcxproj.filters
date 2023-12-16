@@ -218,6 +218,9 @@
     <ClInclude Include="LevelManager.h">
       <Filter>Engine\03. Manager\LevelManager</Filter>
     </ClInclude>
+    <ClInclude Include="Explain_Scene.h">
+      <Filter>Engine\05. Scene\MainScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -350,6 +353,9 @@
     </ClCompile>
     <ClCompile Include="LevelManager.cpp">
       <Filter>Engine\03. Manager\LevelManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Explain_Scene.cpp">
+      <Filter>Engine\05. Scene\MainScene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

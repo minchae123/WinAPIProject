@@ -6,7 +6,7 @@
 #include "GameEnd_Scene.h"
 #include "DebugManager.h"
 #include "Level_Scene.h"
-
+#include "Explain_Scene.h"
 void SceneManager::Init()
 {
 	_pCurScene = nullptr;
@@ -15,6 +15,7 @@ void SceneManager::Init()
 	RegisterScene(L"Game_Scene", std::make_shared<Game_Scene>());
 	RegisterScene(L"Intro_Scene", std::make_shared<Intro_Scene>());
 	RegisterScene(L"GameEnd_Scene", std::make_shared<GameEnd_Scene>());
+	RegisterScene(L"Explain_Scene", std::make_shared<Explain_Scene>());
 	RegisterScene(L"Level_Scene", std::make_shared<Level_Scene>());
 	
 	// Ã¹ ¾À ÁöÁ¤

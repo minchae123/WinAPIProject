@@ -181,6 +181,7 @@
     <ClInclude Include="Enemy_Bullet.h" />
     <ClInclude Include="enums.h" />
     <ClInclude Include="EventMgr.h" />
+    <ClInclude Include="Explain_Scene.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="GameEnd_Scene.h" />
     <ClInclude Include="Game_Scene.h" />
@@ -226,6 +227,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Enemy_Bullet.cpp" />
     <ClCompile Include="EventMgr.cpp" />
+    <ClCompile Include="Explain_Scene.cpp" />
     <ClCompile Include="GameEnd_Scene.cpp" />
     <ClCompile Include="Game_Scene.cpp" />
     <ClCompile Include="Health.cpp" />

@@ -58,7 +58,7 @@ void Intro_Scene::Update()
 			break;
 		case 1: // ���� ���
 		{
-			//info = true;
+			SceneManager::GetInstance()->LoadScene(L"Explain_Scene");
 		}
 			break;
 		case 2: // ���� ����
@@ -85,6 +85,9 @@ void Intro_Scene::Render(HDC _dc)
 	}
 	BitBlt(_dc, (int)(0), (int)(-50), 1280, 780, backTex->GetDC(), 0, 0, SRCCOPY);
 	TransparentBlt(_dc, 400, y, 64, 64, selectTex->GetDC(), 0, 0, 64, 64, RGB(255, 255, 255));
+	//int Width = explainTex->GetWidth();
+	//int Height = explainTex->GetHeight();
+	//TransparentBlt(_dc, 400, 400, Width, Height, explainTex->GetDC(), 0, 0, Width, Height, RGB(255, 255, 255));
 }
 
 void Intro_Scene::Release()
