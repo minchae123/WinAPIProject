@@ -5,20 +5,11 @@
 #include "Scene.h"
 #include "SceneMgr.h"
 
-Intro_Scene::Intro_Scene() : info{false}, num {0}, x {400}, y {395}
-{
-	//infoTex = ResourceManager::GetInstance()->TexLoad(L"Info", L"Texure\\Howto.bmp");
-	backTex = ResourceManager::GetInstance()->TexLoad(L"Background", L"Texture\\Title.bmp");
-	selectTex = ResourceManager::GetInstance()->TexLoad(L"Select", L"Texture\\Select.bmp");
-}
-
-Intro_Scene::~Intro_Scene()
-{
-}
-
 void Intro_Scene::Init()
 {
-
+	backTex = ResourceManager::GetInstance()->TexLoad(L"Background", L"Texture\\Title.bmp");
+	selectTex = ResourceManager::GetInstance()->TexLoad(L"Select", L"Texture\\Select.bmp");
+	explainTex = ResourceManager::GetInstance()->TexLoad(L"Explain", L"Texrue\\222.bmp");
 }
 
 void Intro_Scene::Update()
@@ -63,8 +54,7 @@ void Intro_Scene::Update()
 		{
 		case 0: // 게임 시작
 		{
-			SceneManager::GetInstance()->LoadScene(L"Start_Scene");
-			//SceneLoad(L"Menu_Scene");
+			SceneManager::GetInstance()->LoadScene(L"Level_Scene");
 		}
 			break;
 		case 1: // 게임 방법
@@ -96,6 +86,7 @@ void Intro_Scene::Render(HDC _dc)
 	}
 	BitBlt(_dc, (int)(0), (int)(-50), 1280, 780, backTex->GetDC(), 0, 0, SRCCOPY);
 	TransparentBlt(_dc, 400, y, 64, 64, selectTex->GetDC(), 0, 0, 64, 64, RGB(255, 255, 255));
+	TransparentBlt(_dc, 400, y, 600, 700, explainTex->GetDC(), 0, 0, 64, 64, RGB(255, 255, 255));
 	//BitBlt(_dc, 0, 0, 1000, 1300, infoTex->GetDC(), 0, 0, SRCCOPY);
 	//TransparentBlt(_dc, 0, 0, 600, 700, infoTex->GetDC(), 0, 0, 600, 700, RGB(255, 0, 255));
 }

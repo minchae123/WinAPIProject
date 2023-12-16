@@ -2,17 +2,12 @@
 #include "Level_Scene.h"
 #include "KeyMgr.h"
 #include "SceneMgr.h"
-
-Level_Scene::Level_Scene()
-{
-}
-
-Level_Scene::~Level_Scene()
-{
-}
+#include "ResMgr.h"
 
 void Level_Scene::Init()
 {
+	selectTex = ResourceManager::GetInstance()->TexLoad(L"Select", L"Texture\\Select.bmp");
+	backTex = ResourceManager::GetInstance()->TexLoad(L"lBack", L"Texture\\levelBack.bmp");
 }
 
 void Level_Scene::Update()
@@ -34,17 +29,17 @@ void Level_Scene::Update()
 	{
 	case 0: // 게임 시작
 	{
-		y = 395;
+		y = 210;
 	}
 	break;
 	case 1: // 게임 방법
 	{
-		y = 485;
+		y = 340;
 	}
 	break;
 	case 2: // 게임 종료
 	{
-		y = 570;
+		y = 470;
 	}
 	break;
 	default:
@@ -57,14 +52,17 @@ void Level_Scene::Update()
 		{
 		case 0: // 1 레벨
 		{
+			SceneLoad(L"Start_Scene");
 		}
 		break;
 		case 1: // 2 레벨
 		{
+			SceneLoad(L"Start_Scene");
 		}
 		break;
 		case 2: // 3 레벨
 		{
+			SceneLoad(L"Start_Scene");
 		}
 		break;
 		default:
@@ -75,6 +73,9 @@ void Level_Scene::Update()
 
 void Level_Scene::Render(HDC _dc)
 {
+	Scene::Render(_dc);
+	BitBlt(_dc, (int)(0), (int)(-50), 1280, 780, backTex->GetDC(), 0, 0, SRCCOPY);
+	TransparentBlt(_dc, 400, y, 64, 64, selectTex->GetDC(), 0, 0, 64, 64, RGB(255, 255, 255));
 }
 
 void Level_Scene::Release()

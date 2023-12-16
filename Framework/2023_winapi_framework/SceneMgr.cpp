@@ -5,7 +5,7 @@
 #include "Intro_Scene.h"
 #include "GameEnd_Scene.h"
 #include "DebugManager.h"
-#include "Menu_Scene.h"
+#include "Level_Scene.h"
 
 void SceneManager::Init()
 {
@@ -15,7 +15,7 @@ void SceneManager::Init()
 	RegisterScene(L"Game_Scene", std::make_shared<Game_Scene>());
 	RegisterScene(L"Intro_Scene", std::make_shared<Intro_Scene>());
 	RegisterScene(L"GameEnd_Scene", std::make_shared<GameEnd_Scene>());
-	RegisterScene(L"Menu_Scene", std::make_shared<Menu_Scene>());
+	RegisterScene(L"Level_Scene", std::make_shared<Level_Scene>());
 	
 	// Ã¹ ¾À ÁöÁ¤
 	LoadScene(L"Intro_Scene");

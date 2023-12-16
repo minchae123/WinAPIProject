@@ -38,6 +38,9 @@
     <Filter Include="Engine\05. Scene\MainScene">
       <UniqueIdentifier>{778388a4-812c-4f2f-bf25-b2a688d9477f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\04. Object\MainObject">
+      <UniqueIdentifier>{98af6e95-a7bc-4285-84a0-cb2e770cefa1}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Engine\06. Resource">
       <UniqueIdentifier>{baacb026-a0b3-4c36-87be-c02f2586d26b}</UniqueIdentifier>
     </Filter>
@@ -73,18 +76,6 @@
     </Filter>
     <Filter Include="Engine\03. Manager\InfoManager">
       <UniqueIdentifier>{cecb37f8-cc6d-4b79-b9b8-e09e3a4e3322}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\09. UI">
-      <UniqueIdentifier>{f06e876e-b916-4478-9e03-5b59c9a85997}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\09. UI\Button">
-      <UniqueIdentifier>{f75a9491-766f-4062-83f3-ad3e82ab8707}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\09. UI\Button\AddButton">
-      <UniqueIdentifier>{b7a60580-9746-472b-835e-8988ea032187}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\04. Object\TObject%28선생님 예시자료%29">
-      <UniqueIdentifier>{98af6e95-a7bc-4285-84a0-cb2e770cefa1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -137,10 +128,13 @@
       <Filter>Engine\05. Scene\MainScene</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>Engine\04. Object\TObject%28선생님 예시자료%29</Filter>
+      <Filter>Engine\04. Object\MainObject</Filter>
     </ClInclude>
     <ClInclude Include="Monster.h">
-      <Filter>Engine\04. Object\TObject%28선생님 예시자료%29</Filter>
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Engine\04. Object\MainObject</Filter>
     </ClInclude>
     <ClInclude Include="Res.h">
       <Filter>Engine\06. Resource</Filter>
@@ -200,7 +194,7 @@
       <Filter>Engine\05. Scene\MainScene</Filter>
     </ClInclude>
     <ClInclude Include="Enemy_Bullet.h">
-      <Filter>Engine\04. Object\TObject%28선생님 예시자료%29</Filter>
+      <Filter>Engine\04. Object\MainObject</Filter>
     </ClInclude>
     <ClInclude Include="PatternController.h">
       <Filter>Engine\03. Manager\PatternManager</Filter>
@@ -215,17 +209,8 @@
     <ClInclude Include="InfoManager.h">
       <Filter>Engine\03. Manager\InfoManager</Filter>
     </ClInclude>
-    <ClInclude Include="Menu_Scene.h">
+    <ClInclude Include="Level_Scene.h">
       <Filter>Engine\05. Scene\MainScene</Filter>
-    </ClInclude>
-    <ClInclude Include="UI.h">
-      <Filter>Engine\09. UI</Filter>
-    </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>Engine\09. UI\Button</Filter>
-    </ClInclude>
-    <ClInclude Include="Bullet.h">
-      <Filter>Engine\04. Object\AddObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -276,10 +261,13 @@
       <Filter>Engine\02. Core</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>Engine\04. Object\TObject%28선생님 예시자료%29</Filter>
+      <Filter>Engine\04. Object\MainObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Engine\04. Object\MainObject</Filter>
     </ClCompile>
     <ClCompile Include="Monster.cpp">
-      <Filter>Engine\04. Object\TObject%28선생님 예시자료%29</Filter>
+      <Filter>Engine\04. Object\MainObject</Filter>
     </ClCompile>
     <ClCompile Include="Res.cpp">
       <Filter>Engine\06. Resource</Filter>
@@ -336,7 +324,7 @@
       <Filter>Engine\05. Scene\MainScene</Filter>
     </ClCompile>
     <ClCompile Include="Enemy_Bullet.cpp">
-      <Filter>Engine\04. Object\TObject%28선생님 예시자료%29</Filter>
+      <Filter>Engine\04. Object\MainObject</Filter>
     </ClCompile>
     <ClCompile Include="PatternController.cpp">
       <Filter>Engine\03. Manager\PatternManager</Filter>
@@ -351,17 +339,8 @@
     <ClCompile Include="InfoManager.cpp">
       <Filter>Engine\03. Manager\InfoManager</Filter>
     </ClCompile>
-    <ClCompile Include="Menu_Scene.cpp">
+    <ClCompile Include="Level_Scene.cpp">
       <Filter>Engine\05. Scene\MainScene</Filter>
-    </ClCompile>
-    <ClCompile Include="UI.cpp">
-      <Filter>Engine\09. UI</Filter>
-    </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>Engine\09. UI\Button</Filter>
-    </ClCompile>
-    <ClCompile Include="Bullet.cpp">
-      <Filter>Engine\04. Object\AddObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
