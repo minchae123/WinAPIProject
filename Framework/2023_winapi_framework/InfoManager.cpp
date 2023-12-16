@@ -24,17 +24,20 @@ void InfoManager::Render(HDC dc)
 	wstring time = L"생존시간 : " + Text(timeI);
 	SetBkMode(dc, TRANSPARENT);
 	SetTextColor(dc, RGB(0, 0, 0));
-	TextOut(dc, 1000, 200, time.c_str(), time.length());
+	TextOut(dc, 960, 300, time.c_str(), time.length());
 
 	// 점수 텍스트 렌더링
 	int scoreI = ResultManager::GetInstance()->GetMonster();
 	wstring score = L"처치한 적 : " + Text(scoreI);
-	TextOut(dc, 1000, 250, score.c_str(), score.length());
+	TextOut(dc, 960, 350, score.c_str(), score.length());
 
 	hp = ResultManager::GetInstance()->GetHeart();
 	for (int i = 0; i < hp; i++)
 	{
-		TransparentBlt(dc, 620 + (i * 100), 10, 128, 128, fHeart->GetDC(), 0, 0, 128, 128, RGB(255, 0, 255));
+		if (i < 3)
+			TransparentBlt(dc, 937 + (i * 100), 110, 128, 128, fHeart->GetDC(), 0, 0, 128, 128, RGB(255, 0, 255));
+		else
+			TransparentBlt(dc, 937 + ((i - 3) * 100), 190, 128, 128, fHeart->GetDC(), 0, 0, 128, 128, RGB(255, 0, 255));
 	}
 
 	// 이전 폰트로 복원

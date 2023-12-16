@@ -23,7 +23,6 @@ void PatternController::Update()
 		time = 0;
 		RandomSelectPattern();
 	}
-	
 }
 
 void PatternController::CreateBullet(Vector2 dir, Vector2 pos, float speed)
