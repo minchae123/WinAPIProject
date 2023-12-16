@@ -33,7 +33,7 @@ void InfoManager::Render(HDC dc)
 
 	// 점수 텍스트 렌더링
 	int scoreI = ResultManager::GetInstance()->GetMonster();
-	wstring score = L"처치한 적 : " + Text(scoreI);
+	wstring score = L"점수 : " + Text(scoreI);
 	TextOut(dc, 960, 350, score.c_str(), score.length());
 
 	hp = ResultManager::GetInstance()->GetHeart();

@@ -85,7 +85,7 @@ void GameEnd_Scene::Render(HDC _dc)
 
 	// 점수 텍스트 렌더링
 	int scoreI = ResultManager::GetInstance()->GetMonster();
-	wstring score = L"처치한 적 : " + Text(scoreI);
+	wstring score = L"최종점수 : " + Text(scoreI);
 	TextOut(_dc, 300, 400, score.c_str(), score.length());
 
 	// 이전 폰트로 복원
