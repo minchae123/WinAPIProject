@@ -6,14 +6,15 @@ class Enemy :
     public Object
 {
 public:
-    Enemy();
+    //Enemy();
+    Enemy(int hp);
     ~Enemy();
 public:
     void Update() override;
     void Render(HDC dc) override;
     void EndTimer(Timer* timer) override;
     virtual void EnterCollision(Collider* other) override;
-public:
+private:
     void ShootBullet();
 protected:
     Texture* _texture;
@@ -22,5 +23,6 @@ protected:
     float _spawnTime;
     float _hitTime;
     bool _hit;
+    int _hp;
 };
 

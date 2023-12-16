@@ -188,6 +188,7 @@
     <ClInclude Include="InfoManager.h" />
     <ClInclude Include="Intro_Scene.h" />
     <ClInclude Include="KeyMgr.h" />
+    <ClInclude Include="LevelManager.h" />
     <ClInclude Include="Level_Scene.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Object.h" />
@@ -231,6 +232,7 @@
     <ClCompile Include="InfoManager.cpp" />
     <ClCompile Include="Intro_Scene.cpp" />
     <ClCompile Include="KeyMgr.cpp" />
+    <ClCompile Include="LevelManager.cpp" />
     <ClCompile Include="Level_Scene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Monster.cpp" />

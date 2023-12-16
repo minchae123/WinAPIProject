@@ -77,6 +77,9 @@
     <Filter Include="Engine\03. Manager\InfoManager">
       <UniqueIdentifier>{cecb37f8-cc6d-4b79-b9b8-e09e3a4e3322}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\03. Manager\LevelManager">
+      <UniqueIdentifier>{1dfac209-6588-42e1-94f6-1c3b60766075}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -212,6 +215,9 @@
     <ClInclude Include="Level_Scene.h">
       <Filter>Engine\05. Scene\MainScene</Filter>
     </ClInclude>
+    <ClInclude Include="LevelManager.h">
+      <Filter>Engine\03. Manager\LevelManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2023_winapi_framework.rc">
@@ -341,6 +347,9 @@
     </ClCompile>
     <ClCompile Include="Level_Scene.cpp">
       <Filter>Engine\05. Scene\MainScene</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelManager.cpp">
+      <Filter>Engine\03. Manager\LevelManager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -33,6 +33,6 @@ private:
     Texture* _texture;
     bool _vecMove;
     Object* _shootObj;
-    int _cnt;
+    int _hp;
 };
 
