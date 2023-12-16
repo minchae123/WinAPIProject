@@ -33,6 +33,7 @@ PlayerController::PlayerController()
 	CreateHealth();
 	GetHealth()->SetHP(6);
 	ResultManager::GetInstance()->HeartSet(GetHealth()->GetHealth());
+	ResourceManager::GetInstance()->LoadSound(L"Shoot", L"Sound\\shoot.wav", false);
 }
 
 PlayerController::~PlayerController()
@@ -122,6 +123,8 @@ void PlayerController::ShootBullet()
 	newBullet->SetName(L"Bullet");
 	newBullet->SetObj(this);
 	SceneManager::GetInstance()->GetCurScene()->AddObject(newBullet, OBJECT_GROUP::BULLET);
+
+	ResourceManager::GetInstance()->Play(L"Shoot");
 }
 
 void PlayerController::Damage()

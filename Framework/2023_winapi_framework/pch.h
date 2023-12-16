@@ -6,6 +6,7 @@
 #include <string>
 #include <algorithm>
 #include <memory>
+#include <list>
 #define _USE_MATH_DEFINES
 #include <math.h>
 #include "define.h"
@@ -15,6 +16,7 @@
 using std::vector;
 using std::map;
 using std::wstring;
+using std::list;
 
 // transparent 등 blt 쓸 때 필요
 #pragma comment(lib, "Msimg32.lib")
