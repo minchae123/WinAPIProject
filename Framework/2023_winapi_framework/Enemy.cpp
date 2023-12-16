@@ -25,7 +25,7 @@ Enemy::Enemy()
 	GetCollider()->SetScale({ 100, 70 });
 	GetCollider()->SetOffSetPos({ 0, -20 });
 
-	CreateAnimator();
+	Object::CreateAnimator();
 	GetAnimator()->CreateAnim(L"EnemyIdle", _texture, Vector2(0, 0), Vector2(300, 300), Vector2(300.f, 0.f), 2, 0.5f);
 	GetAnimator()->PlayAnim(L"EnemyIdle", true, 100);
 
