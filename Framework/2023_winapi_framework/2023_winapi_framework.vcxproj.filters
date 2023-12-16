@@ -77,8 +77,8 @@
     <Filter Include="Engine\03. Manager\InfoManager">
       <UniqueIdentifier>{cecb37f8-cc6d-4b79-b9b8-e09e3a4e3322}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\03. Manager\SpawnManager">
-      <UniqueIdentifier>{da17baab-748e-4501-a184-0e52145ef680}</UniqueIdentifier>
+    <Filter Include="Engine\03. Manager\LevelManager">
+      <UniqueIdentifier>{1dfac209-6588-42e1-94f6-1c3b60766075}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -202,6 +202,7 @@
     <ClInclude Include="PatternController.h">
       <Filter>Engine\03. Manager\PatternManager</Filter>
     </ClInclude>
+    <ClInclude Include="SpawnManager.h" />
     <ClInclude Include="GameEnd_Scene.h">
       <Filter>Engine\05. Scene\MainScene</Filter>
     </ClInclude>
@@ -214,8 +215,8 @@
     <ClInclude Include="Level_Scene.h">
       <Filter>Engine\05. Scene\MainScene</Filter>
     </ClInclude>
-    <ClInclude Include="SpawnManager.h">
-      <Filter>Engine\03. Manager\SpawnManager</Filter>
+    <ClInclude Include="LevelManager.h">
+      <Filter>Engine\03. Manager\LevelManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -334,6 +335,7 @@
     <ClCompile Include="PatternController.cpp">
       <Filter>Engine\03. Manager\PatternManager</Filter>
     </ClCompile>
+    <ClCompile Include="SpawnManager.cpp" />
     <ClCompile Include="GameEnd_Scene.cpp">
       <Filter>Engine\05. Scene\MainScene</Filter>
     </ClCompile>
@@ -346,8 +348,8 @@
     <ClCompile Include="Level_Scene.cpp">
       <Filter>Engine\05. Scene\MainScene</Filter>
     </ClCompile>
-    <ClCompile Include="SpawnManager.cpp">
-      <Filter>Engine\03. Manager\SpawnManager</Filter>
+    <ClCompile Include="LevelManager.cpp">
+      <Filter>Engine\03. Manager\LevelManager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

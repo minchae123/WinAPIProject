@@ -9,7 +9,6 @@ void Intro_Scene::Init()
 {
 	backTex = ResourceManager::GetInstance()->TexLoad(L"Background", L"Texture\\Title.bmp");
 	selectTex = ResourceManager::GetInstance()->TexLoad(L"Select", L"Texture\\Select.bmp");
-	explainTex = ResourceManager::GetInstance()->TexLoad(L"ExplainBk", L"Texure\\ExplainT.bmp");
 }
 
 void Intro_Scene::Update()
@@ -29,17 +28,17 @@ void Intro_Scene::Update()
 
 	switch (num)
 	{
-	case 0: // °ÔÀÓ ½ÃÀÛ
+	case 0: // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	{
 		y = 395;
 	}
 	break;
-	case 1: // °ÔÀÓ ¹æ¹ý
+	case 1: // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	{
 		y = 485;
 	}
 	break;
-	case 2: // °ÔÀÓ Á¾·á
+	case 2: // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	{
 		y = 570;
 	}
@@ -52,17 +51,17 @@ void Intro_Scene::Update()
 	{
 		switch (num)
 		{
-		case 0: // °ÔÀÓ ½ÃÀÛ
+		case 0: // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		{
 			SceneManager::GetInstance()->LoadScene(L"Level_Scene");
 		}
 			break;
-		case 1: // °ÔÀÓ ¹æ¹ý
+		case 1: // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		{
 			//info = true;
 		}
 			break;
-		case 2: // °ÔÀÓ Á¾·á
+		case 2: // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		{
 			PostQuitMessage(0); 
 		}
@@ -86,8 +85,6 @@ void Intro_Scene::Render(HDC _dc)
 	}
 	BitBlt(_dc, (int)(0), (int)(-50), 1280, 780, backTex->GetDC(), 0, 0, SRCCOPY);
 	TransparentBlt(_dc, 400, y, 64, 64, selectTex->GetDC(), 0, 0, 64, 64, RGB(255, 255, 255));
-	TransparentBlt(_dc, 0, -50, 1280, 780, explainTex->GetDC(), 0, 0, 1280, 780, RGB(255, 255, 255));
-
 }
 
 void Intro_Scene::Release()

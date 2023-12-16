@@ -52,6 +52,7 @@ void Start_Scene::Update()
 	Scene::Update();
 	SpawnManager::GetInstance()->Update();
 	ResultManager::GetInstance()->Update();
+	InfoManager::GetInstance()->Update();
 }
 
 void Start_Scene::Render(HDC _dc)

@@ -1,12 +1,19 @@
 #include "pch.h"
 #include "InfoManager.h"
 #include "ResultManager.h"
+#include "KeyMgr.h"
 #include "ResMgr.h"
 
 void InfoManager::Init()
 {
 	fHeart = ResourceManager::GetInstance()->TexLoad(L"FHeart", L"Texture\\Fheart.bmp");
 	eHeart = ResourceManager::GetInstance()->TexLoad(L"EHeart", L"Texture\\Eheart.bmp");
+	_surviveTime = 0;
+}
+
+void InfoManager::Update()
+{
+	_surviveTime = ResultManager::GetInstance()->GetTime();
 }
 
 void InfoManager::Render(HDC dc)
@@ -19,9 +26,7 @@ void InfoManager::Render(HDC dc)
 	// 폰트를 디바이스 컨텍스트에 선택
 	HFONT hOldFont = (HFONT)SelectObject(dc, hFont);
 
-	// 시간 텍스트 렌더링
-	int timeI = ResultManager::GetInstance()->GetTime();
-	wstring time = L"생존시간 : " + Text(timeI);
+	wstring time = L"생존시간 : " + Text((int)_surviveTime);
 	SetBkMode(dc, TRANSPARENT);
 	SetTextColor(dc, RGB(0, 0, 0));
 	TextOut(dc, 960, 300, time.c_str(), time.length());

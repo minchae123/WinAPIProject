@@ -8,19 +8,24 @@
 #include "Player.h"
 #include "Timer.h"
 #include "TimeMgr.h"
-#include "Health.h"
 #include "ResMgr.h"
-#include "Animation.h"
-#include "Animator.h"
 #include "Collider.h"
 #include "Object.h"
+#include "Animator.h"
+#include "Animation.h"
+#include "Health.h"
 
-Enemy::Enemy()
+Enemy::Enemy(int hp)
 	: _texture(nullptr)
+	, _hitTexture(nullptr)
 	, _time(0)
 	, _spawnTime(2.f)
+	, _hit(false)
+	, _hitTime(0)
+	, _hp(hp)
 {
 	_texture = ResourceManager::GetInstance()->TexLoad(L"Enemy", L"Texture\\Bat.bmp");
+	_hitTexture = ResourceManager::GetInstance()->TexLoad(L"Enemy", L"Texture\\Bathit.bmp");
 	CreateCollider();
 	GetCollider()->SetScale({ 100, 70 });
 	GetCollider()->SetOffSetPos({ 0, -20 });
@@ -28,9 +33,10 @@ Enemy::Enemy()
 	Object::CreateAnimator();
 	GetAnimator()->CreateAnim(L"EnemyIdle", _texture, Vector2(0, 0), Vector2(300, 300), Vector2(300.f, 0.f), 2, 0.5f);
 	GetAnimator()->PlayAnim(L"EnemyIdle", true, 100);
+	GetAnimator()->CreateAnim(L"EnemyHit", _hitTexture, Vector2(0, 0), Vector2(300, 300), Vector2(300.f, 0.f), 2, 0.5f);
 
-	CreateHealth();
-	GetHealth()->SetHP(5);
+	Object::CreateHealth();
+	GetHealth()->SetHP(_hp);
 	//TimeManager::GetInstance()->TimePass(2.f, this);
 }
 
@@ -50,6 +56,18 @@ void Enemy::Update()
 		_time = 0;
 		ShootBullet();
 	}
+
+	if (_hit)
+	{
+		_time += DeltaTime;
+
+		if (_time >= 0.5f)
+		{
+			_hit = false;
+			_hitTime = 0;
+			GetAnimator()->PlayAnim(L"EnemyIdle", true);
+		}
+	}
 }
 
 void Enemy::Render(HDC dc)
@@ -65,7 +83,12 @@ void Enemy::EndTimer(Timer* timer)
 
 void Enemy::EnterCollision(Collider* other)
 {
-	GetHealth()->Damage(1);
+	if (other->GetObj()->GetName() == L"Bullet")
+	{
+		GetHealth()->Damage(1);
+		GetAnimator()->PlayAnim(L"EnemyHit", false);
+		_hit = true;
+	}
 }
 
 void Enemy::ShootBullet()
@@ -80,7 +103,7 @@ void Enemy::ShootBullet()
 	newBullet->SetPos(shootPos);
 	newBullet->SetScale(Vector2(25.f, 25.f));
 	newBullet->SetDir(dir);
-	newBullet->SetName(L"EnemyBullet");
+	newBullet->SetName(L"Bullet");
 	newBullet->SetObj(this);
 	SceneManager::GetInstance()->GetCurScene()->AddObject(newBullet, OBJECT_GROUP::BULLET);
 }
