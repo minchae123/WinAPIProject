@@ -100,7 +100,7 @@ void Enemy::ShootBullet()
 	Vector2 pos = GetPos();
 	Vector2 dir = Vector2(playerPos.x - pos.x, playerPos.y - pos.y);
 	dir = dir.Normalize();
-	Vector2 shootPos = Vector2(pos.x + dir.x * 50, pos.y + dir.y * 50);
+	Vector2 shootPos = Vector2(pos.x + dir.x * 70, pos.y + dir.y * 70);
 	Bullet* newBullet = new Bullet;
 	newBullet->SetPos(shootPos);
 	newBullet->SetScale(Vector2(25.f, 25.f));
