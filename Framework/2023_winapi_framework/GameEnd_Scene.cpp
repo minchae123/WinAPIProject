@@ -49,7 +49,7 @@ void GameEnd_Scene::Update()
 		{
 		case 0: // 게임 다시 시작
 		{
-			SceneManager::GetInstance()->LoadScene(L"Start_Scene");
+			SceneManager::GetInstance()->LoadScene(L"Level_Scene");
 		}
 		break;
 		case 1: // 게임 종료
