@@ -59,8 +59,8 @@ void Start_Scene::Render(HDC _dc)
 	BitBlt(_dc, 0, 0, 1920, 1080, background->GetDC(), 0, 0, SRCCOPY);
 	BitBlt(_dc, 100, 100, 1280, 1700, back->GetDC(), 0, 0, SRCCOPY);
 	Scene::Render(_dc);
-	//<<DebugManager::GetInstance()->Render(_dc);
 	InfoManager::GetInstance()->Render(_dc);
+	//<<DebugManager::GetInstance()->Render(_dc);
 }
 
 void Start_Scene::Release()

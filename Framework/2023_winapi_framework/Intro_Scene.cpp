@@ -46,7 +46,6 @@ void Intro_Scene::Update()
 	case 1: // 게임 방법
 	{
 		y = 485;
-		int a = 0;
 	}
 	break;
 	case 2: // 게임 종료
@@ -69,8 +68,7 @@ void Intro_Scene::Update()
 			break;
 		case 1: // 게임 방법
 		{
-			info = true;
-			int a = 0;
+			//info = true;
 		}
 			break;
 		case 2: // 게임 종료
