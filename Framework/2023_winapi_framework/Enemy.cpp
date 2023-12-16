@@ -30,7 +30,7 @@ Enemy::Enemy()
 	GetAnimator()->PlayAnim(L"EnemyIdle", true, 100);
 
 	CreateHealth();
-	GetHealth()->SetHP(10);
+	GetHealth()->SetHP(5);
 	//TimeManager::GetInstance()->TimePass(2.f, this);
 }
 
