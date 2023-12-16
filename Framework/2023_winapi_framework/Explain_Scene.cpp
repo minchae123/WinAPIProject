@@ -20,7 +20,6 @@ void Explain_Scene::Update()
 void Explain_Scene::Render(HDC _dc)
 {
 	Scene::Render(_dc);
-	//BitBlt(_dc, (int)(0), (int)(-50), 1280, 780, backTex->GetDC(), 0, 0, SRCCOPY);
 
 	int Width = backTex->GetWidth();
 	int Height = backTex->GetHeight() - 20;

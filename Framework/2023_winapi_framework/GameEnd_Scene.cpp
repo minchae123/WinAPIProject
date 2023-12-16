@@ -71,7 +71,7 @@ void GameEnd_Scene::Render(HDC _dc)
 
 	int fontSize = 70; // 원하는 폰트 크기 선택
 	HFONT hFont = CreateFont(fontSize, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_OUTLINE_PRECIS,
-		CLIP_DEFAULT_PRECIS, ANTIALIASED_QUALITY, DEFAULT_PITCH | FF_SWISS, L"Arial");
+		CLIP_DEFAULT_PRECIS, ANTIALIASED_QUALITY, DEFAULT_PITCH | FF_SWISS, L"고령딸기체");
 
 	// 폰트를 디바이스 컨텍스트에 선택
 	HFONT hOldFont = (HFONT)SelectObject(_dc, hFont);
