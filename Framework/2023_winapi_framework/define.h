@@ -26,3 +26,4 @@ public:							\
 #define Deg2Rad(deg) deg * (M_PI / 180)
 #define DebugLog(value) DebugManager::GetInstance()->SetLog(value)
 #define Text(value) std::to_wstring(value)
+#define SceneLoad(scene) SceneManager::GetInstance()->LoadScene(scene)

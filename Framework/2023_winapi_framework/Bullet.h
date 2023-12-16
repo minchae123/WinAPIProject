@@ -23,6 +23,7 @@ public:
         _dir.Normalize();
     }
     void SetSpeed(float speed) { _moveSpeed = speed; }
+    float GetSpeed() { return _moveSpeed; }
     void SetObj(Object* obj) { _shootObj = obj; }
 private:
 //    float m_fDir; // 총알 방향(-1 위, 1 아래);

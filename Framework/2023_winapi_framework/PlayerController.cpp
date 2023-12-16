@@ -103,7 +103,7 @@ void PlayerController::ShootBullet()
 	newBullet->SetPos(shootPos);
 	newBullet->SetScale(Vector2(25.f, 25.f));
 	newBullet->SetDir(dir);
-	newBullet->SetName(L"Bullet");
+	newBullet->SetName(L"EnemyBullet");
 	newBullet->SetObj(this);
 	SceneManager::GetInstance()->GetCurScene()->AddObject(newBullet, OBJECT_GROUP::BULLET);
 }
