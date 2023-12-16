@@ -9,7 +9,7 @@ void Intro_Scene::Init()
 {
 	backTex = ResourceManager::GetInstance()->TexLoad(L"Background", L"Texture\\Title.bmp");
 	selectTex = ResourceManager::GetInstance()->TexLoad(L"Select", L"Texture\\Select.bmp");
-	explainTex = ResourceManager::GetInstance()->TexLoad(L"Explain", L"Texrue\\222.bmp");
+	explainTex = ResourceManager::GetInstance()->TexLoad(L"ExplainBk", L"Texure\\ExplainT.bmp");
 }
 
 void Intro_Scene::Update()
@@ -86,9 +86,8 @@ void Intro_Scene::Render(HDC _dc)
 	}
 	BitBlt(_dc, (int)(0), (int)(-50), 1280, 780, backTex->GetDC(), 0, 0, SRCCOPY);
 	TransparentBlt(_dc, 400, y, 64, 64, selectTex->GetDC(), 0, 0, 64, 64, RGB(255, 255, 255));
-	TransparentBlt(_dc, 400, y, 600, 700, explainTex->GetDC(), 0, 0, 64, 64, RGB(255, 255, 255));
-	//BitBlt(_dc, 0, 0, 1000, 1300, infoTex->GetDC(), 0, 0, SRCCOPY);
-	//TransparentBlt(_dc, 0, 0, 600, 700, infoTex->GetDC(), 0, 0, 600, 700, RGB(255, 0, 255));
+	TransparentBlt(_dc, 0, -50, 1280, 780, explainTex->GetDC(), 0, 0, 1280, 780, RGB(255, 255, 255));
+
 }
 
 void Intro_Scene::Release()
