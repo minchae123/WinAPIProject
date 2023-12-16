@@ -6,6 +6,7 @@
 #include "DebugManager.h"
 #include "Object.h"
 #include "TimeMgr.h"
+#include "LevelManager.h"
 
 void SpawnManager::Init()
 {
@@ -25,10 +26,10 @@ void SpawnManager::Update()
 	}
 }
 
-void SpawnManager::Spawn() // 직사각형 abdc라고 할때
+void SpawnManager::Spawn()
 {
 	Vector2 spawnPos = SpawnPos();
-	Object* enemyObj = new Enemy;
+	Object* enemyObj = new Enemy(LevelManager::GetInstance()->GetEnemyHP());
 	enemyObj->SetPos(spawnPos);
 	enemyObj->SetScale(Vector2(3.f, 3.f));
 	SceneManager::GetInstance()->GetCurScene()->AddObject(enemyObj, OBJECT_GROUP::ENEMY);

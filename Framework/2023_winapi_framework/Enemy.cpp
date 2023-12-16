@@ -15,13 +15,14 @@
 #include "Animation.h"
 #include "Health.h"
 
-Enemy::Enemy()
+Enemy::Enemy(int hp)
 	: _texture(nullptr)
 	, _hitTexture(nullptr)
 	, _time(0)
 	, _spawnTime(2.f)
 	, _hit(false)
 	, _hitTime(0)
+	, _hp(hp)
 {
 	_texture = ResourceManager::GetInstance()->TexLoad(L"Enemy", L"Texture\\Bat.bmp");
 	_hitTexture = ResourceManager::GetInstance()->TexLoad(L"Enemy", L"Texture\\Bathit.bmp");
@@ -35,7 +36,7 @@ Enemy::Enemy()
 	GetAnimator()->CreateAnim(L"EnemyHit", _hitTexture, Vector2(0, 0), Vector2(300, 300), Vector2(300.f, 0.f), 2, 0.5f);
 
 	Object::CreateHealth();
-	GetHealth()->SetHP(5);
+	GetHealth()->SetHP(_hp);
 	//TimeManager::GetInstance()->TimePass(2.f, this);
 }
 

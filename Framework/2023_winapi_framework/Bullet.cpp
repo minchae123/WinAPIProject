@@ -8,21 +8,22 @@
 #include "Animation.h"
 #include "Animator.h"
 #include "Core.h"
+#include "LevelManager.h"
 
 Bullet::Bullet()
 //	: m_fDir(-1.f)
 	: _theta(0.f)
 	, _dir(Vector2(0.f, 0.f))
 	, _texture(nullptr)
-	, _moveSpeed(400.f)
 	, _vecMove(true)
 	, _shootObj(nullptr)
-	, _cnt(0)
 {
 	_texture = ResourceManager::GetInstance()->TexLoad(L"Bullet", L"Texture\\EBullet.bmp");
 	CreateCollider();
 
 	CreateAnimator();
+	_moveSpeed = LevelManager::GetInstance()->GetBulletSpeed();
+	_hp = LevelManager::GetInstance()->GetBulletHP();
 	//GetAnimator()->CreateAnim
 }
 
@@ -32,7 +33,7 @@ Bullet::~Bullet()
 
 void Bullet::Update()
 {
-	if (_cnt >= 10)
+	if (_hp <= 0)
 	{
 		EventManager::GetInstance()->DeleteObject(this);
 	}
@@ -96,7 +97,7 @@ void Bullet::Reflect()
 	Vector2 normal = GetPos();
 	Vector2 clampMin = GetClampMin();
 	Vector2 clampMax = GetClampMax();
-	_cnt++;
+	_hp--;
 	if (normal.x == clampMin.x || normal.x == clampMax.x)
 	{
 		_dir.x *= -1;

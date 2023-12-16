@@ -3,6 +3,8 @@
 #include "KeyMgr.h"
 #include "SceneMgr.h"
 #include "ResMgr.h"
+#include "SpawnManager.h"
+#include "LevelManager.h"
 
 void Level_Scene::Init()
 {
@@ -53,16 +55,19 @@ void Level_Scene::Update()
 		case 0: // 1 레벨
 		{
 			SceneLoad(L"Start_Scene");
+			LevelManager::GetInstance()->Init(3, 200.f, 5);
 		}
 		break;
 		case 1: // 2 레벨
 		{
 			SceneLoad(L"Start_Scene");
+			LevelManager::GetInstance()->Init(3, 200.f, 5);
 		}
 		break;
 		case 2: // 3 레벨
 		{
 			SceneLoad(L"Start_Scene");
+			LevelManager::GetInstance()->Init(3, 200.f, 5);
 		}
 		break;
 		default:
